@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<%= yield %>
-
+	<!-- RENDER NAVIGATION -->
+	<%= render 'layouts/navigation' %>
+	<div class="container">
+		<!-- RENDER PAGE CONTENT -->
+		<%= yield %>
+	</div>
 </body>
 </html>

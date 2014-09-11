@@ -10,6 +10,11 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require font-awesome
+ *= require nav_1
+ *= require nav_2
+ *= require nav_3
  *= require_tree .
+ *= require custom
  *= require_self
  */
