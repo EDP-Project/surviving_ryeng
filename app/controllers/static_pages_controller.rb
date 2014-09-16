@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
+
   def home
+  	
   end
 
   def contact
@@ -7,4 +9,5 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
 end

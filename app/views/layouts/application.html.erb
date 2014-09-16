@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SurvivingRyeng</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>SurvivingRyeng</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	
 </head>
 <body>
 
 	<!-- RENDER NAVIGATION -->
 	<%= render 'layouts/navigation' %>
+
+<!-- DEVISE NOTIFICATIONS -->
+	<% if notice %>
+		<p class="notice"><%= notice %></p>
+  <% elsif alert %>
+    <p class="alert"><%= alert %></p>
+	<% end %>
+
 	<div class="container">
-		<!-- RENDER PAGE CONTENT -->
-		<%= yield %>
+	<!-- RENDER PAGE CONTENT -->
+	<%= yield %>
 	</div>
 </body>
 </html>

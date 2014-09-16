@@ -1,1 +1,5 @@
-Welcome to Surviving RyEng!
+Welcome to Surviving RyEng <%= ", #{current_user.email}" if user_signed_in? %>
+
+<br>
+
+<%= link_to 'Sign out', log_out_path, method: :delete if user_signed_in? %>
