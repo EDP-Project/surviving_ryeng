@@ -53,8 +53,8 @@ gem 'carrierwave'
 #Use MiniMagick for image processing
 gem "mini_magick"
 
-
-
+#Use Unicorn as the web server (WEBrick is too slow)
+gem 'unicorn'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
