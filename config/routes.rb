@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     #match 'users/:username', to: 'users#show', :as => :show_user, via: :get
   end
 
-
   resources :courses, only: [:show, :index] do  
 
   end
