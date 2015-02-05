@@ -14,6 +14,7 @@
  *= require nav_1
  *= require nav_2
  *= require nav_3
+ *= require forms
  *= require_tree .
  *= require custom
  *= require_self
