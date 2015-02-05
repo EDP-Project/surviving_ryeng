@@ -67,7 +67,7 @@
 	}
 
 	#AnnouncementsHeaderTag{
-		
+		text-style:bold;
 		margin-top: -45px;
 		text-size:16px;
 		color:black;

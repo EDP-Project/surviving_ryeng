@@ -17,5 +17,5 @@
 	  <div id = "SignButtonParameters"><div><%= f.submit "Sign in" %></div></div>
 	<% end %>
 
-	</br></br></br><%= render "devise/shared/links" %>
+	</br></br></br></br><%= render "devise/shared/links" %>
 </div>

@@ -19,7 +19,6 @@
  *= require_self
  *= require_tree
  *= require static_pages
- *= require sign_up
  */
 P{
 

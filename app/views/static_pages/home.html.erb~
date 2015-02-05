@@ -25,7 +25,7 @@
 </div>
 <div id= "AnnouncementsArea">
 	<div id = "AnnouncementsHeaderTag"><p> Announcements:</p></div>
-	<div id = "AnnouncementsMessage">
+	<div id = "AnnoucnementsMessage">
 		<p> Lul announcment one </p>
 		<p> Two </p>
 		<p> Etc...</p>
