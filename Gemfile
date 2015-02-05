@@ -32,6 +32,8 @@ group :production do
 	gem 'rails_12factor'
 end
 
+#Simplified forms
+gem 'simple_form'
 
 #Authentication
 gem 'devise', '~> 3.2.4'
