@@ -1,0 +1,7 @@
+<h1>Users</h1><hr>
+
+<% @users.each do |u| %>
+  <%= link_to "#{u.username}", user_path(id: u.id) %>
+  &nbsp; Member since <%= time_ago_in_words(u.created_at) %> 
+  <br>
+<% end %>

@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+
+#-- Basic routes --
   root 'static_pages#home'
 
-  match '/home', to: 'static_pages#home', via: :get
-  match '/about', to: 'static_pages#about', via: :get
+  match '/home',    to: 'static_pages#home',    via: :get
+  match '/about',   to: 'static_pages#about',   via: :get
   match '/contact', to: 'static_pages#contact', via: :get
+#-- End of basic routes
 
+#-- User routes --
+  #Devise user routes
   devise_for :users, :skip => [:sessions], controllers: {registrations: 'registrations'}
 
   as :user do
@@ -12,14 +17,36 @@ Rails.application.routes.draw do
     get '/signin' => 'devise/sessions#new', :as => :new_user_session
     post '/signin' => 'devise/sessions#create', :as => :user_session
     match '/signout' => 'devise/sessions#destroy', :as => :log_out, :via => :delete
+    match '/signout' => 'devise/sessions#destroy', :via => :get
     #custom route for showing users via UsersController
     #(devise doesn't come with a 'show' view)
-    #match 'users/:username', to: 'users#show', :as => :show_user, via: :get
+    #match '/users/:username', to: 'users#show', :as => :show_user, via: :get
   end
 
+  #Route for allowing users to be viewed publicly
+  match '/user/:username', to: 'users#show', as: :show_profile, via: :get
+  match '/users/:id', to: 'users#show', via: :get
+  match '/users', to: 'users#index', via: :get
+
+    resources :users, only: [:show, :index] do
+      resources :friend_requests, only: [:create]
+      #resources :likes, only: [:create]
+      #resources :messages, only: [:new]
+    end
+#-- End of User routes --
+
+#-- Friendship routes --
+  resources :friend_requests, only: [:destroy]
+  resources :friendships, only: [:index, :create, :destroy]
+#-- End of friendship routes --
+
+
+
+#-- Courses routes
   resources :courses, only: [:show, :index] do  
-
   end
+
+#-- End of courses routes --
 
 
 

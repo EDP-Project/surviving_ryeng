@@ -1,0 +1,32 @@
+<h1>Friends</h1><hr>
+<% @friendships.each do |f| %>
+  <%= link_to f.friend.username, show_via_username_path(f.friend) %> 
+  &nbsp;<%= link_to 'Remove', friendship_path(f), method: :delete %>
+  <br>
+<% end %>
+<br>
+<h1>Friend Requests Sent</h1><hr>
+
+<% @friend_requests_sent.each do |f| %>
+  <div class="well col-xs-6">
+    <h3>Sent to</h3> <p><%= f.receiver.username %></p>
+    <%= link_to friend_request_path(f), method: :delete do %>
+      <span class="fa fa-times" data-toggle="tooltip" title="Cancel"></span>             
+    <% end %>
+  </div>
+  <br>
+<% end %>
+
+<h1>Friend Requests Received</h1><hr>
+<% @friend_requests_received.each do |f| %>
+  <div class="well col-xs-6">
+    <h3>Sent by</h3> <p><%= f.user.username %></p>
+    <%= link_to friendships_path(friend_id: f.user.id), method: :post do %>
+      <span class="fa fa-thumbs-up" data-toggle="tooltip" title="Accept"></span>     
+    <% end %>
+    OR
+    <%= link_to friend_request_path(f), method: :delete do %>
+      <span class="fa fa-thumbs-down" data-toggle="tooltip" title="Reject"></span>
+    <% end %>
+  </div>
+<% end %>
