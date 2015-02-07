@@ -5,7 +5,7 @@
  <%unless @user == current_user %>
 <!-- ADD FRIEND LOGIC HERE -->
   <% if Friendship.friendship_exists?(@user, current_user) %>
-    This nigga is already your friend.
+    This person is your friend!
     <% else %>
     <%= button_to user_friend_requests_path(user_id: @user.id), class: 'btn btn-block btn-add-friend' do %>
       <span class="fa fa-plus-circle"></span>
