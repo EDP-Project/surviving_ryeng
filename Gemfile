@@ -9,8 +9,9 @@ gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-#Use Bootstrap as the front-end framework
+#Use Bootstrap as the front-end framework coupled with material design
 gem "twitter-bootstrap-rails"
+gem 'bootstrap-material-design'
 
 group :development do
 	gem 'better_errors'

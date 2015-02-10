@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require font-awesome
+ *= require bootstrap-material-design
  *= require nav_1
  *= require nav_2
  *= require nav_3
