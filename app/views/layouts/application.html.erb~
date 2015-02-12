@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><%= full_title(yield(:title)) %></title>
+	<title>SurvivingRyeng</title>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
 
 	<style>
 	p{
-		font-family: "Sans Serif","Times New Roman", Times, serif;
+		/*font-family: "Sans Serif","Times New Roman", Times, serif;*/
 	}
 	</style>
 	
@@ -28,11 +28,6 @@
 	<div class="container">
 	<!-- RENDER PAGE CONTENT -->
 	<%= yield %>
-
-	<!-- SHOW PARAMETER/CONTROLLER DEBUG INFO IN DEVELOPMENT ENV -->
-	<% if Rails.env.development? %>
-		<%= debug(params) %>
-	<% end %>
 	</div>
 </body>
 </html>

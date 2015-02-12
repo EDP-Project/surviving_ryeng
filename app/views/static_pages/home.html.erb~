@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div id = "IntroductoryArticleArea">
 	<div id ="VerticalHeaderText">
 		Welcome to Surviving RyEng
@@ -8,12 +7,6 @@
 	<div id ="IntroductoryArticle">
 	<p> Surviving Ryeng is a website dedicated to aid current Ryerson engineering students with their courses. By providing a user driven content system, it is our belief that as a member for Surviving Ryeng you will be able to greatly benefit from the services provided. </p>
 	</div>
-=======
-<!-- Provide page-specific title -->
-<% provide(:title, 'Home') %>
-
-Welcome to Surviving RyEng <%= ", #{current_user.username}" if user_signed_in? %>
->>>>>>> 7be415982f34dff231cf18c3e0b1ee0c510a429f
 
 	<% if user_signed_in? %>
 		<%= button_to 'Sign out', log_out_path, method: :delete %>
@@ -21,7 +14,6 @@ Welcome to Surviving RyEng <%= ", #{current_user.username}" if user_signed_in? %
 		<!--Need to correct this path to the actual location on the dedicated website-->
 		<br><br><a href= "http://localhost:5000/signin" title = "Survivng Ryeng" id = "SignInObject"> Super Sweet Logo </a>
 
-<<<<<<< HEAD
 		<!--<%= link_to new_user_registration_path do %>
 		  <%= image_tag "/assets/images/sign_in.jpg", size: "50x100" %>
 		<% end %>-->
@@ -33,7 +25,7 @@ Welcome to Surviving RyEng <%= ", #{current_user.username}" if user_signed_in? %
 </div>
 <div id= "AnnouncementsArea">
 	<div id = "AnnouncementsHeaderTag"><p> Announcements:</p></div>
-	<div id = "AnnouncementsMessage">
+	<div id = "AnnoucnementsMessage">
 		<p> Lul announcment one </p>
 		<p> Two </p>
 		<p> Etc...</p>
@@ -44,12 +36,4 @@ Welcome to Surviving RyEng <%= ", #{current_user.username}" if user_signed_in? %
 <div id = "footer">
 	<p>About	|	Home	|	Contact Us	</p>
 </div>
-=======
-<% if user_signed_in? %>
-  <%= button_to 'Sign out', log_out_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign up!', new_user_registration_path, class: 'btn btn-material-lightgreen' %>
-  
-    <br>  <p>Already have an account?  <%= link_to 'Sign in', new_user_session_path %></p>
->>>>>>> 7be415982f34dff231cf18c3e0b1ee0c510a429f
 

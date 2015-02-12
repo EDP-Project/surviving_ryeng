@@ -2,4 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+//The code below is for the sign in and sign up image events
+function SignInClicked(){
+	alert('You clicked this');
+	new_user_session_path;
 
+}

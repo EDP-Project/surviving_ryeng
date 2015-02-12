@@ -11,9 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-material-design
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require jquery.turbolinks
 
 //= require gnmenu
@@ -22,9 +20,9 @@
 
 //The code below is for the sign in and sign up image events
 function SignInClicked(){
-//	alert('You clicked login');
+	alert('You clicked login');
 
-//<a href="http://www.w3schools.com">Visit W3Schools.com!</a>
+<a href="http://www.w3schools.com">Visit W3Schools.com!</a>
 //	<%= link_to 'Sign in', new_user_session_path %>
 
 }
