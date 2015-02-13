@@ -1,0 +1,11 @@
+<% if !current_user.admin? %>
+  <p>You do not have permission to view this page.</p>
+<% else %>
+  <h1>Create a Course (admins only)</h1>
+
+  <%= simple_form_for @course do |f| %>
+    <%= f.input :course_code %>
+    <%= f.input :description %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>

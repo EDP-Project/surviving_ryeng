@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   has_many :friends, through: :friendships
   has_many :friend_requests, dependent: :destroy
 
-
+  #-- Courses --
+  has_many :enrollments
+  has_many :courses, through: :enrollments
 
 
 #Used to allow users to login via username

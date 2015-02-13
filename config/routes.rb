@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'courses/index'
+
+  get 'courses/show'
+
 #-- Basic routes --
   root 'static_pages#home'
 
@@ -43,8 +47,8 @@ Rails.application.routes.draw do
 
 
 #-- Courses routes
-  resources :courses, only: [:show, :index] do  
-  end
+  resources :courses, only: [:new, :index, :show]
+  match '/course/:course_code', to: 'courses#show', via: :get 
 
 #-- End of courses routes --
 

@@ -2,10 +2,12 @@
 <html>
 <head>
 	<title><%= full_title(yield(:title)) %></title>
+	<!-- META TAG TELLING SEARCH ENGINES WHAT KEYWORDS ARE ATTRIBUTED TO THIS WEB APP -->
+	<meta name="keywords" content="ryeng, ryerson, ryerson engineering, ryerson course help,
+																COE, ELE, MEC, AER, CHY, MTH">
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
-	
 </head>
 <body>
 
