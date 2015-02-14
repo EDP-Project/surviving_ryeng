@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
 #-- Basic routes --
-  root 'static_pages#home'
+  root 'main_pages#home'
 
-  match '/home',    to: 'static_pages#home',    via: :get
-  match '/about',   to: 'static_pages#about',   via: :get
-  match '/contact', to: 'static_pages#contact', via: :get
+  match '/home',    to: 'main_pages#home',    via: :get
+  match '/about',   to: 'main_pages#about',   via: :get
+  match '/contact', to: 'main_pages#contact', via: :get
 #-- End of basic routes
 
 #-- User routes --
