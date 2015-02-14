@@ -6,10 +6,10 @@ class FriendRequestsController < ApplicationController
     @friend_request.receiver = receiver
     if @friend_request.save
       flash[:notice] = "Sent friend request!"
-      redirect_to "/users/#{@receiver.username}"
+      redirect_to user_path(username: @receiver.username)
     else
       flash[:alert] = "Unable to send friend request."
-      redirect_to "/users/#{@receiver.username}"
+      redirect_to user_path(username: @receiver.username)
     end
   end
 

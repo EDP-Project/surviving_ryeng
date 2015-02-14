@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(params[:course])
+    @course = Course.new(course_params)
     if @course.save
       flash[:success] = "Course created"
       redirect_to course_path(course_code: @course.course_code)
@@ -22,15 +22,21 @@ class CoursesController < ApplicationController
   end
 
   def index
+    @courses = Course.all
   end
 
   def show
     course
+    @guide = Guide.new
   end
 
 private
 
   def course
     @course = Course.find_by course_code: params[:course_code]
+  end
+
+  def course_params
+    params.required(:course).permit(:id, :course_code, :description)
   end
 end

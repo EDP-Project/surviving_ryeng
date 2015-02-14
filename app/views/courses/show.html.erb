@@ -1,2 +1,22 @@
-<h1>Courses#show</h1>
+<h1><%= @course.course_code %></h1>
 <p>Find me in app/views/courses/show.html.erb</p>
+
+<%= button_tag 'Write a guide for this course!', class: 'toggle-new-guide' %>
+<br>
+<div class="new-guide">
+  <%= simple_form_for @guide, url: guides_path(course_id: @course.id) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.submit %>
+  <% end %>
+</div>
+
+
+<% if @course.guides.any? %>
+    <h1>Current Guides for This Course</h1><hr>
+    <% @course.guides.each do |guide| %>
+      <%= link_to guide.title, guide_path(guide) %>
+      <p>Written by: <%= link_to "#{guide.user.username}", user_path(username: guide.user.username) %></p>  
+    <% end %>
+    
+<% end %>

@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'courses/index'
-
-  get 'courses/show'
-
 #-- Basic routes --
   root 'static_pages#home'
 
@@ -28,11 +24,11 @@ Rails.application.routes.draw do
   end
 
   #Route for allowing users to be viewed publicly
-  match '/user/:username', to: 'users#show', as: :show_profile, via: :get
+  match '/user/:username', to: 'users#show', as: :user, via: :get
   match '/users/:id', to: 'users#show', via: :get
   match '/users', to: 'users#index', via: :get
 
-    resources :users, only: [:show, :index] do
+    resources :users, only: [:index] do
       resources :friend_requests, only: [:create]
       #resources :likes, only: [:create]
       #resources :messages, only: [:new]
@@ -46,14 +42,17 @@ Rails.application.routes.draw do
 
 
 
-#-- Courses routes
-  resources :courses, only: [:new, :index, :show]
-  match '/course/:course_code', to: 'courses#show', via: :get 
+#-- Courses routes --
+  resources :courses, only: [:new, :index, :create]
+  match '/course/:course_code', as: :course, to: 'courses#show', via: :get 
 
 #-- End of courses routes --
 
 
+#-- Guides routes --
+  resources :guides, only: [:new, :edit, :show, :create, :update]
 
+#-- End of guides routes --
 
 
 

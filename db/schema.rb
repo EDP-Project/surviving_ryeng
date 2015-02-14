@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207033149) do
+ActiveRecord::Schema.define(version: 20150213160443) do
 
   create_table "courses", force: true do |t|
     t.integer  "user_id"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20150207033149) do
   end
 
   add_index "courses", ["user_id"], name: "index_courses_on_user_id"
+
+  create_table "enrollments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id"
 
   create_table "friend_requests", force: true do |t|
     t.integer  "user_id"
@@ -41,6 +51,21 @@ ActiveRecord::Schema.define(version: 20150207033149) do
 
   add_index "friendships", ["friend_id"], name: "index_friendships_on_friend_id"
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
+
+  create_table "guides", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content",    null: false
+    t.boolean  "approved"
+    t.integer  "likes"
+    t.integer  "dislikes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guides", ["course_id"], name: "index_guides_on_course_id"
+  add_index "guides", ["user_id"], name: "index_guides_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

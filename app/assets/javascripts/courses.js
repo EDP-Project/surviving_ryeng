@@ -1,2 +1,13 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+//Feel free to delete this afterwards
+//- Steve
+
+$(function(){
+
+  $(".new-guide").hide();
+  $(".toggle-new-guide").click(function() {
+    $(".new-guide").slideToggle(500);
+    
+  });
+
+});
+
