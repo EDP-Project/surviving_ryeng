@@ -217,7 +217,76 @@ namespace :db do
   add("CVL913", "Water Supply Engineering", "Water quality parameters; Drinking water sources, quantity and quality requirements; Water chemistry; Unit processes of water treatment: screening; solids separation; coagulation; flocculation; sedimentation; filtration; softening; disinfection. Treated water distribution: flow in looped pipe network systems; monitoring; applications of computer modelling. Experimental laboratory work involving water quality determination: solids, alkalinity, hardness, BOD, coliform and bacterial analyses.")
 
 #-- Computer Engineering
-  
+  add("COE318", "Software Systems", "The course introduces the software development cycle including requirements analysis and specifications, implementation, and testing, inspection and debugging techniques. An object-oriented programming language is used. Decomposition in to classes and modules is examined. The integration of independent modules is explored.")
+  add("COE328", "Digital Systems", "This course covers the basics digital logic circuits and emphasizes on good understanding of basic concepts in modern digital system design. The course introduces computer aided design (CAD) tools including the use of hardware description language (HDL) for design entry. It also discusses the use of the latest available implementation technologies including CPLDs and FPGAs for mapping the design to modern technology. This course covers basic logic circuits, Boolean algebra, and implementation technology (from transistor to CPLDs and FPGAs). It also introduces logic functions optimization and implementation, number representation and arithmetic circuits, combinational circuits, synchronous and asynchronous sequential circuits as well as introduction to control unit data path and CPU operations. The Laboratory work requires the uses of CAD tools to design and simulate basic digital circuits. Implementation and testing of simple digital systems in LSI and CPLD will also be considered. (Formerly ELE 328.)")
+  add("COE428", "Engineering Algorithms and Data Structures", "The main topics covered in this course include basic data structures (arrays, pointers), abstract data structures (trees, lists, heaps), searching, sorting, hashing, recursive algorithms, parsing, space-time complexity, NP-complete problems, software engineering and project management, object-oriented data structures. Case studies and lab exercises will be implemented using a high level programming language. (Formerly ELE 428.)")
+  add("COE518", "Operating Systems", "Topics include: Operating systems basic concepts. Hardware and software features required for operating systems. Process management; scheduling, inter-process communication and synchronization, process starvation, deadlocks. Memory management, virtual memory, and file systems. The major lab project will involve developing operating system modules.")
+  add("COE538", "Microprocessor Systems", "This course introduces students to small microprocessor-based systems, with an emphasis on embedded system hardware and software design. Topics will include microprocessor architecture and structure, with an overview of 8- 16- and 32-bit systems, assembly language programming and the use of high-level languages. Basic input/output including parallel communications with and without handshaking and serial protocols. Hardware and software timing. Using interrupts and exceptions. Overview of single-chip microprocessors and controllers with an emphasis on the Freescale HCS12. The internal structure and design of peripheral devices. Memory system design and analysis. The use and structure of development tools such as (cross) assemblers or compilers, monitor programs, simulators, emulators, etc.")
+  add("COE608", "Computer Organization and Architecture", "The main topics of the course include basic architecture of modern computers, interaction between computer hardware and software at various levels, and performance evaluation and metrics. Instruction set design, computer arithmetic is also discussed. Data path and control unit design for RISC Processors are covered in detail. The laboratory work includes the design and implementation of a 16-bit RISC CPU using an FPGA development system and VHDL.")
+  add("COE618", "Object Oriented Eng Analysis and Design", "This course deals with the analysis and design of complex engineering systems. In particular, students will be asked to create requirement specifications prior to the design and implementation of such engineering systems. Case studies from software development projects will be used to illustrate the design process. Development of expertise in analyzing, designing, implementing, and testing industrial-quality, reusable software systems. Project work include practice with an object-oriented programming language.")
+  add("COE700", "Engineering Design", "This one term course has two objectives. (1) The lectures provide students with advice on design, project management, reliability, practical advice on software, circuits and components and the documentation of their work. The lectures are organized as a seminar series presented by the faculty lab coordinators and practicing engineering professionals. The seminar series' goal is to provide students with knowledge that will assist them with project design and implementation. (2) The laboratory component of the course provides students with an opportunity to select a project to be completed in the Winter semester course ELE 800 Design Project. Students search information, design and source components in consultation with the faculty lab coordinators who will supervise their projects in the Winter term. Project topics are provided from which students select a topic. Students are also encouraged to submit their own topics for approval.")
+  add("COE718", "Embedded Systems Design", "This course will cover the basics of embedded system organization, system on programmable-chip technologies and real-time systems. It provides the advance knowledge required for embedded computer design and development as well as real-time operating systems. Students are introduced to software development concepts applicable to real-time and embedded systems. Particularly ARM Cortex M3 will be studied as a representative embedded processor and embedded software development is carried out for ARM Cortex CPUs. The students will be able to grasp the main principles of embedded system design and understand the concept of hardware-software codesign, system on programmable chip (SoPC), real-time operating systems and scheduling techniques. Embedded system co-specification and partitioning is also introduced in the course. SystemC or other languages (e.g. UML, C, etc.) can be employed to present a unified view of the embedded systems. SystemC is introduced as a representative Co-specification language. Embedded hardware-software design and development tools (such as Altera Quartus II and SOPC builder) will be introduced.")
+  add("COE758", "Digital Systems Engineering", "The emphasis of this course is an understanding of the system architecture around the processor. Course covers all types of modern semiconductor memory, cache and virtual memory organization, hard disk drives and video-output subsystem. Course gives classification of buses and description of concepts of bus organization, bus protocols, arbitration mechanisms and the concept of Direct Memory Access (DMA). The laboratory projects include design of Cache Controller and VGA-signal generator using VHDL in Xilinx CAD environment.")
+  add("COE768", "Computer Networks", "This is an introductory course in computer networks. In particular, it concentrates on the Internet technology. It first introduces the OSI and TCP/IP network architecture models. It then studies the implementation principles and design issues at each layer of these models. Lecture topics include: OSI and TCP/IP models, data transmission basics, data-link protocols, local area networks, wide-area networks, Internet structures, TCP/IP protocol suite, and application Layer protocols. Laboratory work focuses on the implementation of stop-and-wait protocol based on the BSD socket. In addition, students will gain practical experience by building and studying a physical network using network devices such as switches and routers.")
+  add("COE800", "Design Project", "This course provides the student with a significant experience in self-directed learning. Project topics are provided from which the students select a topic. The topic selection information search, designs and component sourcing are completed as part of the Fall term course COE 700 Engineering Design. The student individually or in a group, where the topic is a group project, will research the topic, design, implement and make operational a design of currency in the fields of Electrical and Computer Engineering. Professional guidance is provided by faculty on a weekly basis in the laboratory. The completed project must be demonstrated operational by the last week of the term. A final bound project report that conforms to professional guidelines is required. The students must demonstrate their working project at an Open House in May.")
+  add("COE808", "Programming Languages", "Topics include: programming languages, translation, compilation and linking. Memory models, direct and indirect pointers. Parameter passing methods, type checking, exception handling, templates, recursion and recursive data types. Abstract data type and functional programming languages.")
+  add("COE818", "Advanced Computer Architecture", "The main topics include: instruction set architecture for advanced processor, advanced pipelining, including branch predication, instruction level parallelism. It also covers advanced architecture including superscalar VLIW, speculative, vector processors, multithreading and multi-processors. It discusses the performance limitations and scalability issues and introduces real-world examples including MMX technology, and Pentium architectures. The laboratory work includes performance evaluation of advanced architectures.")
+  add("COE828", "Digital Sys Design Automation", "This course introduces students to fundamental algorithms in digital design automation. It starts with an overview of the digital design automation methodologies and tools. It then introduces students to graph theory followed by several fundamental algorithms in design automation, including branch-and-bound, dynamic programming, and simulated annealing. Finally, it explores several specific algorithms in placement, partitioning, routing and logic synthesis.")
+  add("COE838", "Systems-on-Chip Design", "This course will cover the basics of system-on-chip (SoC) design, hardware-software co- specification, co-synthesis and network-on-chip (NoC) systems. It provides the advance knowledge required for system-on-chip design, multi-core architectures and embedded systems on a chip. Students will also be introduced to the main principles of SoC modeling and design using SystemC. Various soft processor cores such as Nios-II and other IPs will be explored. Interconnection structures such as AMBA, Avalon and IBM Core-connect for SoC design will be covered in detail. Various SoC development tools will be utilized in the labs and projects.")
+  add("COE865", "Advanced Computer Networks", "This is an advanced level undergraduate course in computer networking. The course is designed to include materials relevant to the industry, for example IP QoS and TE necessary for VOIP and MPLS services. The course deals with the principles, architectures, algorithms, and protocols related to the internet, with emphasis on routing, transport protocol design, flow control and congestion control, IP Quality of Service and Traffic Engineering. It also introduces IP security. (Formerly ELE 865.)")
+  add("CPS883", "Compilers", "Topics include: Lexical analysis, deterministic and non-deterministic finite automata; hardware implementation of DFAs; Context-free grammars; parsing techniques; syntax directed translation, code generation; compiler generators.")
+  add("CPS888", "Software Engineering", "Topics include: Issues in software engineering; software specification; system modelling; requirements specification; validation and prototyping; formal specification; object-oriented design; function-oriented design; user-interface design; CASE; quality assurance.")
+
+#-- Electrical Engineering
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+  add("ELE", "", "")
+
+
+
+#-- Industrial Engineering
+
+
+
+#-- Mechanical Engineering
+
 
   end
 end
