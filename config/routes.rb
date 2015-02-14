@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   match '/home',    to: 'main_pages#home',    via: :get
   match '/about',   to: 'main_pages#about',   via: :get
   match '/contact', to: 'main_pages#contact', via: :get
+  match '/admin_feed', to: 'main_pages#admin_feed', via: :get
 #-- End of basic routes
 
 #-- User routes --

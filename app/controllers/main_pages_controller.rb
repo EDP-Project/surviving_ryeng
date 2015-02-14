@@ -1,4 +1,8 @@
 class MainPagesController < ApplicationController
+  
+  def admin_feed
+    
+  end
 
   def home
   	
@@ -9,5 +13,7 @@ class MainPagesController < ApplicationController
 
   def about
   end
+
+
 
 end
