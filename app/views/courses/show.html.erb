@@ -1,5 +1,5 @@
-<h1><%= @course.course_code %></h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<h1><%= @course.course_code %> | <%= @course.title %></h1>
+<p><%= @course.description %></p>
 
 <%= button_tag 'Write a guide for this course!', class: 'toggle-new-guide' %>
 <br>
