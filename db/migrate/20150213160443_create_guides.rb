@@ -6,8 +6,8 @@ class CreateGuides < ActiveRecord::Migration
       t.string :title, null: false, index: true
       t.text :content, null: false
       t.boolean :approved, default: false, index: true
-      t.integer :likes
-      t.integer :dislikes
+      t.integer :likes, default: 0
+      t.integer :dislikes, default: 0
       t.timestamps
     end
   end
