@@ -1,6 +1,6 @@
 <% @courses.each do |course| %>
   <p>
-    |<%= course.course_code %>|<br>
+    <%= course.course_code %> | <%= course.title %><br>
     <%= course.description %>
   </p>
   <br>

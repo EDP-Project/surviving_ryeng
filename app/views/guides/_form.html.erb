@@ -1,0 +1,20 @@
+<%= form_for(@guide, :html => { :multipart => true }) do |f| %> 
+  <%= f.label :title %>
+  <%= f.text_field :title %> <br>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :course_id, :value => params[:course_id] %>
+
+   <%= f.fields_for :attachments do |a| %>
+       <%= a.label :file %>
+       <%= a.file_field :contents, multiple: true, name: "attachments[contents][]" %>
+   <% end %>
+
+   <% if params[:controller] == "post" && params[:action] == "edit" %> 
+     <% @guide.attachments.each do |a| %>
+       <%= image_tag a.content, :size => "150x150" %>
+     <% end %>
+   <% end %>
+
+  <%= f.submit %>
+<% end %>

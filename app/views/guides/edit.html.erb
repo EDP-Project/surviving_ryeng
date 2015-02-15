@@ -1,0 +1,9 @@
+<h1>Editing: <%= @guide.title %></h1>
+
+<div class="edit-guide">
+  <%= simple_form_for @guide, method: :patch do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.submit %>
+  <% end %>
+</div>

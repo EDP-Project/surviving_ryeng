@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
 #-- Basic routes --
-  root 'static_pages#home'
+  root 'main_pages#home'
 
-  match '/home',    to: 'static_pages#home',    via: :get
-  match '/about',   to: 'static_pages#about',   via: :get
-  match '/contact', to: 'static_pages#contact', via: :get
+  match '/home',    to: 'main_pages#home',    via: :get
+  match '/about',   to: 'main_pages#about',   via: :get
+  match '/contact', to: 'main_pages#contact', via: :get
+  match '/admin_feed', to: 'main_pages#admin_feed', via: :get
 #-- End of basic routes
 
 #-- User routes --
@@ -24,11 +25,11 @@ Rails.application.routes.draw do
   end
 
   #Route for allowing users to be viewed publicly
-  match '/user/:username', to: 'users#show', as: :show_profile, via: :get
+  match '/user/:username', to: 'users#show', as: :user, via: :get
   match '/users/:id', to: 'users#show', via: :get
   match '/users', to: 'users#index', via: :get
 
-    resources :users, only: [:show, :index] do
+    resources :users, only: [:index] do
       resources :friend_requests, only: [:create]
       #resources :likes, only: [:create]
       #resources :messages, only: [:new]
@@ -41,15 +42,36 @@ Rails.application.routes.draw do
 #-- End of friendship routes --
 
 
+#-- Attachment routes --
+  concern :attachable do
+    resources :attachments, only: [:create, :destroy]
+  end
+  
+  resources :posts, concerns: [:attachable]
 
-#-- Courses routes
-  resources :courses, only: [:show, :index] do  
+#-- Course and Guide routes --
+  match '/course/:course_code', as: :course, to: 'courses#show', via: :get 
+
+  resources :courses, only: [:new, :index, :create], concerns: [:attachable] do
+    resources :enrollments, only: [:create]
   end
 
+  resources :guides, only: [:new, :create, :edit, :show, :update], concerns: [:attachable]
+
+
+  resources :enrollments, only: [:index, :destroy] 
+
+  #match '/enroll/:course_code', to: 'enrollments#create', as: :enroll, via: :post
 #-- End of courses routes --
 
 
+#-- Guide routes --
+  
 
+
+
+
+#-- End of guides routes --
 
 
 

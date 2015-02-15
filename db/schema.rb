@@ -11,17 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207033149) do
+ActiveRecord::Schema.define(version: 20150215010642) do
+
+  create_table "attachments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.string   "name",            default: "Related file"
+    t.string   "contents",                                 null: false
+    t.string   "content_type"
+    t.float    "file_size"
+    t.integer  "download_count",  default: 0
+    t.integer  "likes",           default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
+  add_index "attachments", ["user_id"], name: "index_attachments_on_user_id"
 
   create_table "courses", force: true do |t|
-    t.integer  "user_id"
     t.string   "course_code"
+    t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "courses", ["user_id"], name: "index_courses_on_user_id"
+  create_table "enrollments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id"
 
   create_table "friend_requests", force: true do |t|
     t.integer  "user_id"
@@ -42,13 +67,28 @@ ActiveRecord::Schema.define(version: 20150207033149) do
   add_index "friendships", ["friend_id"], name: "index_friendships_on_friend_id"
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
+  create_table "guides", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.string   "title",                      null: false
+    t.text     "content",                    null: false
+    t.boolean  "approved",   default: false
+    t.integer  "likes"
+    t.integer  "dislikes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guides", ["course_id"], name: "index_guides_on_course_id"
+  add_index "guides", ["user_id"], name: "index_guides_on_user_id"
+
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -59,7 +99,7 @@ ActiveRecord::Schema.define(version: 20150207033149) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin"
+    t.boolean  "admin",                  default: false
     t.string   "username"
     t.text     "about_me"
   end
