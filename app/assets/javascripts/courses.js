@@ -1,13 +1,13 @@
 //Feel free to delete this afterwards
 //- Steve
 
-$(function(){
+// $(function(){
 
-  $(".new-guide").hide();
-  $(".toggle-new-guide").click(function() {
-    $(".new-guide").slideToggle(500);
+//   //$(".new-guide").hide();
+//   $(".toggle-new-guide").click(function() {
+//     $(".new-guide").slideToggle(500);
     
-  });
+//   });
 
-});
+// });
 

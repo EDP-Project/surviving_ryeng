@@ -10,6 +10,10 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
+  def edit
+    course
+  end
+
   def create
     @course = Course.new(course_params)
     if @course.save
@@ -27,7 +31,7 @@ class CoursesController < ApplicationController
 
   def show
     course
-    @guide = Guide.new
+    @enrollment = Enrollment.new
   end
 
 private
@@ -37,6 +41,6 @@ private
   end
 
   def course_params
-    params.required(:course).permit(:id, :course_code, :title, :description)
+    params.require(:course).permit(:id, :course_code, :title, :description)
   end
 end

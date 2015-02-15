@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213160443) do
+ActiveRecord::Schema.define(version: 20150215010642) do
+
+  create_table "attachments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.string   "name",            default: "Related file"
+    t.string   "contents",                                 null: false
+    t.string   "content_type"
+    t.float    "file_size"
+    t.integer  "download_count",  default: 0
+    t.integer  "likes",           default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
+  add_index "attachments", ["user_id"], name: "index_attachments_on_user_id"
 
   create_table "courses", force: true do |t|
     t.string   "course_code"
+    t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

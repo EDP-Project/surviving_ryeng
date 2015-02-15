@@ -14,21 +14,17 @@
 	<!-- RENDER NAVIGATION -->
 	<%= render 'layouts/navigation' %>
 
-<!-- DEVISE NOTIFICATIONS -->
-	<% if notice %>
-		<p class="notice"><%= notice %></p>
-  <% elsif alert %>
-    <p class="alert"><%= alert %></p>
-	<% end %>
+	<div class="container">	
+		<!-- NOTIFICATIONS -->
+		<%= render partial: "shared/flash_messages", flash: flash %> 
+		
+		<!-- RENDER PAGE CONTENT -->
+		<%= yield %>
 
-	<div class="container">
-	<!-- RENDER PAGE CONTENT -->
-	<%= yield %>
-
-	<!-- SHOW PARAMETER/CONTROLLER DEBUG INFO IN DEVELOPMENT ENV -->
-	<% if Rails.env.development? %>
-		<%= debug(params) %>
-	<% end %>
+		<!-- SHOW PARAMETER/CONTROLLER DEBUG INFO IN DEVELOPMENT ENV -->
+		<% if Rails.env.development? %>
+			<%= debug(params) %>
+		<% end %>
 	</div>
 </body>
 </html>

@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   has_many :enrollments
   has_many :courses, through: :enrollments
 
+  #-- File attachments --
+  has_many :attachments
+
 
 #Used to allow users to login via username
   def login=(login)

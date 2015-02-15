@@ -1,0 +1,5 @@
+<h1>Courses you are currently taking</h1>
+
+<% @enrollments.each do |e| %>
+  <%= link_to e.course.course_code, course_path(course_code: e.course.course_code) %> <br>
+<% end %>

@@ -1,3 +1,13 @@
 <h1>Guide: <%= @guide.title %></h1>
 <p><%= @guide.content %></p>
+
+<% @attachments.each do |a| %>
+  Content type: <%= a.content_type %>,
+  <%= a.file_size %> bytes <br>
+  <% if a.content_type.include? "image" %>
+    <%= image_tag a.contents_url.to_s %>
+  <% end %>
+  <br>
+<% end %>
+
 <%= link_to 'Edit', edit_guide_path(@guide), class: 'btn' %>

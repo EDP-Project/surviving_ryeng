@@ -1,23 +1,19 @@
-<h1><%= @course.course_code %> | <%= @course.title %></h1>
+<h1>
+  <%= @course.course_code %> | <%= @course.title %>
+  <% if user_signed_in? %>
+    <%= button_to 'Enroll', course_enrollments_path(course_id: @course.id), class:'btn btn-material-lightgreen' unless current_user.courses.include? @course %>
+  <% end %>
+</h1>
+
 <p><%= @course.description %></p>
 
-<%= button_tag 'Write a guide for this course!', class: 'toggle-new-guide' %>
-<br>
-<div class="new-guide">
-  <%= simple_form_for @guide, url: guides_path(course_id: @course.id) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :content %>
-  <%= f.submit %>
-  <% end %>
-</div>
-
+<%= link_to 'Write a guide for this course!', new_guide_path(course_id: @course.id), class: 'toggle-new-guide' %>
 
 
 <% if @course.guides.any? %>
-    <h1>Current Guides for This Course</h1><hr>
-    <% @course.guides.each do |guide| %>
-      <%= link_to guide.title, guide_path(guide) %>
-      <p>Written by: <%= link_to "#{guide.user.username}", user_path(username: guide.user.username) %></p>  
-    <% end %>
-    
+  <h1>Current Guides for This Course</h1><hr>
+  <% @course.guides.each do |guide| %>
+    <%= link_to guide.title, guide_path(guide) %>
+    <p>Written by: <%= link_to "#{guide.user.username}", user_path(username: guide.user.username) %></p>  
+  <% end %>
 <% end %>

@@ -42,16 +42,34 @@ Rails.application.routes.draw do
 #-- End of friendship routes --
 
 
+#-- Attachment routes --
+  concern :attachable do
+    resources :attachments, only: [:create, :destroy]
+  end
+  
+  resources :posts, concerns: [:attachable]
 
-#-- Courses routes --
-  resources :courses, only: [:new, :index, :create]
+#-- Course and Guide routes --
   match '/course/:course_code', as: :course, to: 'courses#show', via: :get 
 
+  resources :courses, only: [:new, :index, :create], concerns: [:attachable] do
+    resources :enrollments, only: [:create]
+  end
+
+  resources :guides, only: [:new, :create, :edit, :show, :update], concerns: [:attachable]
+
+
+  resources :enrollments, only: [:index, :destroy] 
+
+  #match '/enroll/:course_code', to: 'enrollments#create', as: :enroll, via: :post
 #-- End of courses routes --
 
 
-#-- Guides routes --
-  resources :guides, only: [:new, :edit, :show, :create, :update]
+#-- Guide routes --
+  
+
+
+
 
 #-- End of guides routes --
 
