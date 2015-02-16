@@ -1,21 +1,29 @@
-<%= form_for(@guide, :html => { :multipart => true }) do |f| %> 
-  <%= f.label :title %>
-  <%= f.text_field :title %> <br>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.hidden_field :course_id, :value => params[:course_id] %>
+<%= form_for @guide, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, class: 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :content, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :content, class: 'text_area' %>
+    </div>
+    <%= f.hidden_field :course_id, :value => params[:course_id] %>
+  </div>
 
-   <%= f.fields_for :attachments do |a| %>
-       <%= a.label :file %>
-       <%= a.file_field :contents, multiple: true, name: "attachments[contents][]" %>
-       <%= a.hidden_field :contents_cache %>
-   <% end %>
+  <div class="control-group">
+    <%= f.label :attachments, :class => 'control-label' %>
+    <div class="controls">
+      <!-- GUIDE ATTACHMENTS UPLOAD -->
+      <%= file_field_tag "uploads[]", type: :file, multiple: true %>
+    </div>
+  </div>
 
-   <% if params[:controller] == "post" && params[:action] == "edit" %> 
-     <% @guide.attachments.each do |a| %>
-       <%= image_tag a.content, :size => "150x150" %>
-     <% end %>
-   <% end %>
-
-  <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                root_path, :class => 'btn btn-mini' %>
+  </div>
 <% end %>

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   #use_growlyflash
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  #before_action :save_previous_url
 
   protected
 
@@ -13,4 +14,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :email, :password, :password_confirmation, :current_password) }
   end
+
+  private
+
+  
 end

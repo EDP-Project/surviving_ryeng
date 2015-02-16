@@ -1,3 +1,9 @@
+#If guide was submitted with attachments, create them
+      # if params[:attachments].present?
+      #   params[:attachments]['contents'].each do |c|
+      #     @attachment = @guide.attachments.create!(contents: c, attachable_id: @guide.id, attachable_type: 'guide')
+      #   end
+      # end
 class GuidesController < ApplicationController
 
   before_action :authenticate_user!, except: [:show]
@@ -8,23 +14,33 @@ class GuidesController < ApplicationController
   end
 
   def create
-    @guide = Guide.new(new_guide_params)
-    @course = Course.find(params[:guide][:course_id] || params[:course_id])
-    @guide.user_id = current_user.id
-    @course_id = params[:guide][:course_id] || params[:course_id]
-    if @guide.save
-      #If guide was submitted with attachments, create them
-      if params[:attachments].present?
-        params[:attachments]['contents'].each do |c|
-          @attachment = @guide.attachments.create!(contents: c, attachable_id: @guide.id, attachable_type: 'guide')
-        end
-      end
-      flash[:notice] = "You've submitted a guide for #{@course.course_code}!"
-      redirect_to course_path(course_code: @course.course_code)
+
+    if session[:_course]
+      @course = Course.find(session[:_course])
+      session.delete :_course
     else
-      flash[:error] = "Sorry, could not submit guide for #{@guide.course.course_code}."
-      redirect_to new_guide_path(course_id: params[:guide][:course_id])
+      @course = Course.find(params[:guide][:course_id])
     end
+
+    @guide = Guide.new(new_guide_params)
+    @guide.user_id = current_user.id
+    @guide.course = @course
+
+
+
+      if @guide.save
+        
+        if params[:uploads]
+          params[:uploads].each { |u| @guide.attachments.create!(upload: u) }
+        end
+        flash[:notice] = "You've submitted a guide for #{@course.course_code}!"
+        redirect_to course_path(course_code: @course.course_code)
+      else
+        flash[:error] = "Sorry, could not submit guide for #{@guide.course.course_code}."
+        session[:_course] = @course.id
+        render 'new'
+      end
+    
   end
 
   def show
