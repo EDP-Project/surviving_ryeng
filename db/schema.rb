@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20150215010642) do
     t.string   "title",                      null: false
     t.text     "content",                    null: false
     t.boolean  "approved",   default: false
-    t.integer  "likes"
-    t.integer  "dislikes"
+    t.integer  "likes",      default: 0
+    t.integer  "dislikes",   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
