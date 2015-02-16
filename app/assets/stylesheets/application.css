@@ -19,4 +19,5 @@
  *= require_tree .
  *= require custom
  *= require_self
+ *= require static_pages
  */

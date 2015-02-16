@@ -23,7 +23,7 @@
 
 		<!-- SHOW PARAMETER/CONTROLLER DEBUG INFO IN DEVELOPMENT ENV -->
 		<% if Rails.env.development? %>
-			<%= debug(params) %>
+			<% debug(params) %>
 		<% end %>
 	</div>
 </body>
