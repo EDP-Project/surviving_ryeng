@@ -8,11 +8,11 @@ protected
 # end
 private
 def sign_up_params
-params.require(:user).permit(:first_name,:last_name,:username,
+params.require(:user).permit(:username,
 :email,:password,:password_confirmation, :about_me)
 end
 def account_update_params
-params.require(:user).permit(:first_name,:last_name,:email,:password,
+params.require(:user).permit(:email,:password,
 :password_confirmation,:current_password, :about_me)
 end
 end

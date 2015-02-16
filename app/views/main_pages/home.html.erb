@@ -1,19 +1,51 @@
 <!-- Provide page-specific title -->
 <% provide(:title, 'Home') %>
 
-<% unless user_signed_in? %>
+<div class = "container-full">
+ <div class = "jumbotron">
+   <div class = "CenterObjects">
+   <h2><div class = "text-center"> Welcome to, Surviving Ryeng!</div> </h2>
+   <p> Insert introduction and words and an image </p>
+   </div>
+   <% unless user_signed_in? %>
 
-<!-- WHEN USER IS NOT LOGGED IN -->
+   <!-- WHEN USER IS NOT LOGGED IN -->
+   <div class = "text-center">
+     <%= link_to 'Sign up!', new_user_registration_path, class: 'btn btn-material-lightgreen' %><br>
+     <p><h5>Already have an account?  <%= link_to 'Sign in', new_user_session_path %></h5></p>
+   </div>
 
-<%= link_to 'Sign up!', new_user_registration_path, class: 'btn btn-material-lightgreen' %><br>
-<p>Already have an account?  <%= link_to 'Sign in', new_user_session_path %></p>
 
+   <% else %>
 
-<% else %>
+   <!-- WHEN USER IS LOGGED IN -->
 
-<!-- WHEN USER IS LOGGED IN -->
+   Welcome to Surviving RyEng <%= ", #{current_user.username}" %> <br>
+   <%= button_to 'Sign out', log_out_path, method: :delete %>
 
-Welcome to Surviving RyEng <%= ", #{current_user.username}" %> <br>
-<%= button_to 'Sign out', log_out_path, method: :delete %>
+   <% end %>
 
-<% end %>
+ </div>
+
+</div>
+<div class = "container-full">
+
+ <div class="panel-footer">
+   <div class ="row">
+     <div class ="col-md-4">
+       <div class = "text-center">
+         Home
+       </div>
+     </div>
+     <div class ="col-md-4">
+       <div class = "text-center">     
+       About</div>
+     </div>
+     <div class ="col-md-4">
+       <div class = "text-center">Contact Us</div>
+     </div>
+   </div>
+   
+ </div>
+
+</div>
