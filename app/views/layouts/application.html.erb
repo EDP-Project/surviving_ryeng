@@ -21,6 +21,9 @@
 		<!-- RENDER PAGE CONTENT -->
 		<%= yield %>
 
+		<!-- RENDER FOOTER -->
+		<%= render 'layouts/footer' %>
+		
 		<!-- SHOW PARAMETER/CONTROLLER DEBUG INFO IN DEVELOPMENT ENV -->
 		<% if Rails.env.development? %>
 			<%= debug(params) if user_signed_in? && current_user.username == "Steve" %>
