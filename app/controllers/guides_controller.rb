@@ -19,7 +19,7 @@ class GuidesController < ApplicationController
       redirect_to course_path(course_code: @course.course_code)
     else
       flash[:error] = "Sorry, could not submit guide for #{@guide.course.course_code}."
-      redirect_to course_path(course_code: @course.course_code)
+      render 'new'
     end
   end
 

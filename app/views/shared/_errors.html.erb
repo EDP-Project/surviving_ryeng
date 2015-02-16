@@ -1,5 +1,5 @@
 <% if record.errors.any? %>
-  <div id="alert <%= bootstrap_class_for(type) %> fade in">
+  <div class="alert alert-warning fade in">
     <h2><%= pluralize(record.errors.count, "error") %> prohibited this article from being saved:</h2>
     <ul>
     <% record.errors.full_messages.each do |msg| %>

@@ -8,6 +8,6 @@ class Guide < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
 
   #-- Validations
-  validates :title, presence: true, length: { minimum: 5 }, message: 'Please provide a meaningful title of at least 5 characters'
-  validates :content, presence: true, length: { minimum: 100 }, message: 'Your guide is not long enough.'
+  validates :title, presence: true, length: { minimum: 5 }
+  validates :content, presence: true, length: { minimum: 100 }
 end
