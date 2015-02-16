@@ -31,7 +31,7 @@ class GuidesController < ApplicationController
       if @guide.save
         
         if params[:uploads]
-          params[:uploads].each { |u| @guide.attachments.create!(upload: u) }
+          params[:uploads].each { |u| @guide.attachments.create!(upload: u, user: current_user) }
         end
         flash[:notice] = "You've submitted a guide for #{@course.course_code}!"
         redirect_to course_path(course_code: @course.course_code)
@@ -57,10 +57,8 @@ class GuidesController < ApplicationController
     if guide.update_attributes(guide_update_params)
 
       #If more attachments are added
-      if params[:attachments].present?
-        params[:attachments]['contents'].each do |c|
-          @attachment = @guide.attachments.create!(contents: c, attachable_id: @guide.id, attachable_type: 'guide')
-        end
+      if params[:uploads]
+          params[:uploads].each { |u| @guide.attachments.create!(upload: u, user: current_user) }
       end
 
       flash[:success] = "Guide updated successfully!"
@@ -89,10 +87,10 @@ private
   end
 
   def new_guide_params
-    params.required(:guide).permit(:id, :title, :content, :user_id, :course_id, attachments_attributes: [:id, :guide_id, :content])
+    params.required(:guide).permit(:id, :title, :content, :user_id, :course_id, attachments_attributes: [:id, :guide_id, :upload])
   end
 
   def guide_update_params
-    params.required(:guide).permit(:id, :title, :content, :user_id, attachments_attributes: [:id, :guide_id, :content])
+    params.required(:guide).permit(:id, :title, :content, :user_id, attachments_attributes: [:id, :guide_id, :content, :upload])
   end
 end

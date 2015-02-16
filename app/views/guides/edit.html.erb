@@ -2,11 +2,4 @@
 
 <%= render 'form' %>
 
-<% @attachments.each do |a| %>
-  Content type: <%= a.content_type %>,
-  <%= a.file_size %> bytes  <%= link_to 'Remove attachment', guide_attachment_path(guide_id: @guide.id, id: a.id), method: :delete %> <br>
-  <% if a.content_type.include? "image" %>
-    <%= image_tag a.contents_url.to_s %>
-  <% end %>
-  <br>
-<% end %>
+<%= render 'attachments', attachments: @attachments %>
