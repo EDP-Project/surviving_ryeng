@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150215010642) do
     t.string   "name",            default: "Related file"
     t.string   "contents",                                 null: false
     t.string   "content_type"
-    t.float    "file_size"
+    t.string   "file_size",       default: "0 Bytes"
     t.integer  "download_count",  default: 0
     t.integer  "likes",           default: 0
     t.datetime "created_at"

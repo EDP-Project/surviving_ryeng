@@ -1,2 +1,10 @@
 <%= render 'shared/errors', record: @guide %>
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <p>
+    Please make sure that: <br>
+    - Your guides contain at least a 5 character title <br>
+    - Guides are sufficiently long(guides under 100 characters will not be submitted)
+  </p>
+</div>
 <%= render 'form' %>

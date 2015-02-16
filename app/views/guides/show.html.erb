@@ -11,3 +11,4 @@
 <% end %>
 
 <%= link_to 'Edit', edit_guide_path(@guide), class: 'btn' %>
+<%= link_to 'Delete', guide_path(@guide), method: :delete if @guide.user == current_user || current_user.admin? %>

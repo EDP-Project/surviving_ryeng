@@ -8,6 +8,7 @@
    <%= f.fields_for :attachments do |a| %>
        <%= a.label :file %>
        <%= a.file_field :contents, multiple: true, name: "attachments[contents][]" %>
+       <%= a.hidden_field :contents_cache %>
    <% end %>
 
    <% if params[:controller] == "post" && params[:action] == "edit" %> 

@@ -7,7 +7,8 @@ class Attachment < ActiveRecord::Base
   before_save :update_attachment_attributes
 
   #-- Validations
-  validates_presence_of :contents
+  #validates_presence_of :contents
+
 
   #-- Mount uploader for the content field
   mount_uploader :contents, AttachmentUploader

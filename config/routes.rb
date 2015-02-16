@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     resources :enrollments, only: [:create]
   end
 
-  resources :guides, only: [:new, :create, :edit, :show, :update], concerns: [:attachable]
+  resources :guides, only: [:new, :create, :edit, :show, :update, :destroy], concerns: [:attachable]
 
 
   resources :enrollments, only: [:index, :destroy] 
