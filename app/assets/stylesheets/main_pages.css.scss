@@ -1,9 +1,59 @@
-.container-full {
-   margin: 0 auto;
-   width: 100%;
-   height : 100%;
-}
+	body{
+		background-color:  #284766 ;
+		height:100%;
+	}
 
-.container-full .jumbotron{
-    height: 600px;
-   }
+	h2{
+		Text-Transform:uppercase;
+		color:#EEB30D;
+	}
+
+	.panel-footer{
+		position: fixed;
+		bottom: 0;
+		padding: 0;
+		left : 0;
+		width : 100%;
+	}
+
+	.container-full {
+		margin: 0 auto;
+		
+		
+		.jumbotron{
+			margin: 0 auto;			
+			background-color: #4477aa;
+			height: 600px;
+
+		}
+		.shadow-z-5{
+			margin: 0 auto;
+			width:60%;
+			height: 100%;
+		}
+		.push-to-bottom {
+			margin-bottom : 5px;
+
+			left: 35%;
+/*			margin-left: -50px;*/
+		}
+	}
+
+
+
+	#logo_image{
+		background-image:url(image_path('logo.png'));
+		background-size:100%;		
+		display:block;
+		height:120px;
+		width: 200px;
+		overflow:hidden;
+		text-indent:100%;
+		margin-left:auto;
+		margin-right:auto;
+		
+		white-space:nowrap;
+	}
+
+	
+	
