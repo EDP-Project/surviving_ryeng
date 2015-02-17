@@ -6,5 +6,4 @@ class Attachment < ActiveRecord::Base
   #-- Paperclip attachment
   has_attached_file :upload
   do_not_validate_attachment_file_type :upload
-
 end

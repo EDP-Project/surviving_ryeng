@@ -2,6 +2,24 @@ class AttachmentsController < ApplicationController
 
   before_action :authenticate_user!
 
+  def new
+    @attachment = Attachment.new
+    @attachments = Attachment.all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @attachment }
+    end
+  end
+
+  def create
+    @attachment = Attachment.new(params[:upload])
+
+    if @attachment.save
+      render json: { message: "success", fileID: @attachment.id }, status: 200
+    else
+      render json: { error: @attachment.errors.full_messages.join(',') }, status: 400
+    end
+  end
 
   def destroy
     find_attachable
@@ -29,7 +47,7 @@ class AttachmentsController < ApplicationController
 private
   
   def attachment_params
-    params.require(:attachment).permit(:attachment)
+    params.require(:attachment).permit(:upload)
   end
 
   def user_permitted?

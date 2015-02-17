@@ -46,8 +46,8 @@ Rails.application.routes.draw do
   concern :attachable do
     resources :attachments, only: [:create, :destroy]
   end
-  
-  resources :posts, concerns: [:attachable]
+
+  resources :attachments, only: [:new, :create, :destroy]
 
 #-- Course and Guide routes --
   match '/course/:course_code', as: :course, to: 'courses#show', via: :get 
@@ -57,7 +57,6 @@ Rails.application.routes.draw do
   end
 
   resources :guides, only: [:new, :create, :edit, :show, :update, :destroy], concerns: [:attachable]
-
 
   resources :enrollments, only: [:index, :destroy] 
 

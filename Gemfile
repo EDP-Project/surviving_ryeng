@@ -57,7 +57,7 @@ gem 'mailboxer'
 gem 'paperclip'
 
 #Couple paperclip with JQuery File Upload
-gem 'jquery-fileupload-rails'
+gem 'dropzonejs-rails'
 
 #Use MiniMagick for image processing
 gem "mini_magick"
@@ -67,7 +67,7 @@ gem 'unicorn'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+#gem 'therubyracer'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

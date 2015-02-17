@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!
 
   def new
     unless current_user.admin?
@@ -32,6 +32,13 @@ class CoursesController < ApplicationController
   def show
     course
     @enrollment = Enrollment.new
+    @guide = @course.guides.build
+    @guides = Guide.where(course_id: @course.id)
+
+    respond_to do |format| 
+      format.html 
+      format.js
+    end
   end
 
 private

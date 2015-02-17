@@ -17,6 +17,7 @@
 //= require jquery.turbolinks
 
 
+
 //= require gnmenu
 //= require turbolinks
 //= require_tree .
