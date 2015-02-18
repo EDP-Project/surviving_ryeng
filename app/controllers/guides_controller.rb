@@ -7,6 +7,7 @@
 class GuidesController < ApplicationController
 
   before_action :authenticate_user!, except: [:show]
+  skip_before_filter :verify_authenticity_token, only: [:create]
 
   def new
     @guide = Guide.new
@@ -27,18 +28,29 @@ class GuidesController < ApplicationController
     @guide.course = @course
 
 
-
       if @guide.save
         
         if params[:uploads]
           params[:uploads].each { |u| @guide.attachments.create!(upload: u, user: current_user) }
         end
+
         flash[:notice] = "You've submitted a guide for #{@course.course_code}!"
-        redirect_to course_path(course_code: @course.course_code)
+
+        # Successful redirects
+        respond_to do |format|
+          format.html { redirect_to course_path(course_code: @course.course_code) }
+          format.js 
+        end
+
       else
         flash[:error] = "Sorry, could not submit guide for #{@guide.course.course_code}."
         session[:_course] = @course.id
-        render 'new'
+
+        # Render errors via AJAX into modal
+        respond_to do |format| 
+          format.html { redirect_to course_path(course_code: @course.course_code) }
+          format.js
+        end
       end
     
   end

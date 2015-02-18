@@ -5,6 +5,6 @@
 
 <!-- DISPLAY EDIT/DELETE LINKS FOR AUTHORIZED USERS -->
 <% if user_permitted? @guide %>
-<%= link_to 'Edit', edit_guide_path(@guide), class: 'btn' %>
+<%= link_to 'Edit', edit_guide_path(@guide, course_code: @guide.course.course_code), class: 'btn' %>
 <%= link_to 'Delete', guide_path(@guide), method: :delete %>
 <% end %>

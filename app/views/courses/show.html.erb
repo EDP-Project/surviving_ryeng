@@ -7,16 +7,45 @@
 
 <p><%= @course.description %></p>
 
-<%= link_to 'Write a guide for this course!', course_path(course_id: @course.id), class: 'toggle-new-guide', remote: true %>
+<button type="button" class="btn btn-primary btn-lg" id="new-guide-trigger">
+  New Guide
+</button>
 
-<div id="new-guide"></div>
+<!-- RENDER NEW GUIDE MODAL HERE -->
+<div id="new-guide-container">
+  <%= render 'new_guide', guide: @guide, course: @course %>
+</div>
+      
+
+<h1>Current Guides for This Course</h1><hr>
+
+<div id="current-course-guides">
+  <% @guides.each do |guide| %>
+  <%= link_to guide.title, "/guides/#{guide.id}" %>
+  <p>Written by: <%= link_to "#{guide.user.username}", user_path(username: guide.user.username) %></p>  
+  <% end %>
+</div>
 
 
-  <h1>Current Guides for This Course</h1><hr>
-
-    <% @guides.each do |guide| %>
-      <%= link_to guide.title, "/guides/#{guide.id}" %>
-      <p>Written by: <%= link_to "#{guide.user.username}", user_path(username: guide.user.username) %></p>  
-    <% end %>
 
 
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
+  </div>
+
+</div>

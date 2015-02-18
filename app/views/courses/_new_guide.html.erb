@@ -1,2 +1,42 @@
-<%= render 'shared/errors', record: guide %>
-<%= render 'guides/form', guide: guide %>
+<div class="modal fade" id="new-guide-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%= "New Guide for #{course.course_code}" %></h4>
+      </div>
+      <div class="modal-body">
+        <div id="error-container">
+          <%= render 'shared/errors', record: guide %>  
+        </div>
+        <%= form_for guide, remote: true, html: { multipart: true } do |f| %>
+        <div class="control-group">
+          <%= f.label :title, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :title, class: 'text_field' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :content, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_area :content, class: 'text_area' %>
+          </div>
+          <%= f.hidden_field :course_id, value: course.id %>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :attachments, :class => 'control-label' %>
+          <div class="controls">
+            <!-- GUIDE ATTACHMENTS UPLOAD -->
+            <%= file_field_tag "uploads[]", type: :file, multiple: true %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit 'Submit Guide', class: 'btn btn-primary', id: 'guide-submit' %>
+      </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+        

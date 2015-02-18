@@ -29,4 +29,8 @@ module ApplicationHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}&r=x&default=identicon"
     image_tag(gravatar_url, alt: user.last_name, class: "gravatar")
   end
+
+  def user_permitted?(resource)
+    resource.user == current_user || current_user.admin? 
+  end
 end

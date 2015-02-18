@@ -16,7 +16,10 @@
 
 	<div class="container">	
 		<!-- NOTIFICATIONS -->
-		<%= render partial: "shared/flash_messages", flash: flash %> 
+		<div id="flash-messages">
+			<%= render partial: "shared/flash_messages", flash: flash %> 	
+		</div>
+		
 		
 		<!-- RENDER PAGE CONTENT -->
 		<%= yield %>
@@ -25,8 +28,8 @@
 		<%= render 'layouts/footer' %>
 		
 		<!-- SHOW PARAMETER/CONTROLLER DEBUG INFO IN DEVELOPMENT ENV -->
-		<% if Rails.env.development? %>
-			<%= debug(params) if user_signed_in? && current_user.username == "Steve" %>
+		<% if Rails.env.development? && user_signed_in? && current_user.username == "Steve" %>
+			<%= debug(params) %>
 		<% end %>
 	</div>
 </body>

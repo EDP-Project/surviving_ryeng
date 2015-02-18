@@ -1,0 +1,10 @@
+$(function(){
+  <% if @guide.valid? %>
+    $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
+    <% flash[:notice] = nil %>
+    $('#new-guide-modal').modal('hide');
+  <% else %>
+    $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
+    $('#error-container').html("<%= j render 'shared/errors', record: @guide %>");
+  <% end %>
+});

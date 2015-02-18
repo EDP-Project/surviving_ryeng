@@ -11,13 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-material-design
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require jquery.turbolinks
-
-
-
+//= require rails.validations
 //= require gnmenu
+//= require courses
+//= require jquery.leanModal.min
+
 //= require turbolinks
-//= require_tree .

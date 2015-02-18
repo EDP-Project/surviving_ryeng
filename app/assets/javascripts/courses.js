@@ -1,13 +1,7 @@
-//Feel free to delete this afterwards
-//- Steve
+$(function(){
 
-// $(function(){
+  $('#new-guide-trigger').on('click', function(){
+    $('#new-guide-modal').modal('show');
+  })
 
-//   //$(".new-guide").hide();
-//   $(".toggle-new-guide").click(function() {
-//     $(".new-guide").slideToggle(500);
-    
-//   });
-
-// });
-
+});

@@ -5,7 +5,7 @@ ruby '2.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -40,6 +40,9 @@ gem 'simple_form'
 
 #Authentication
 gem 'devise', '~> 3.2.4'
+
+#Client-side validations
+gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "master"
 
 #Font-Awesome
 gem "font-awesome-rails"
