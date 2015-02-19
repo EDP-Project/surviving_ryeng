@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
     course
     @enrollment = Enrollment.new
     @guide = @course.guides.build
-    @guides = Guide.where(course_id: @course.id)
+    @guides = Guide.where(course_id: @course.id, approved: true)
 
     respond_to do |format| 
       format.html 

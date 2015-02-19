@@ -17,6 +17,5 @@
 //= require rails.validations
 //= require gnmenu
 //= require courses
-//= require jquery.leanModal.min
 
 //= require turbolinks

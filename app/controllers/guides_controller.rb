@@ -38,8 +38,8 @@ class GuidesController < ApplicationController
 
         # Successful redirects
         respond_to do |format|
-          format.html { redirect_to course_path(course_code: @course.course_code) }
           format.js 
+          format.html { redirect_to course_path(course_code: @course.course_code) }
         end
 
       else

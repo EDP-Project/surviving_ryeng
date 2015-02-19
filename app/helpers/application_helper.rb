@@ -30,7 +30,7 @@ module ApplicationHelper
     image_tag(gravatar_url, alt: user.last_name, class: "gravatar")
   end
 
-  def user_permitted?(resource)
+  def permitted_to_modify?(resource)
     resource.user == current_user || current_user.admin? 
   end
 end

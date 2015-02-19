@@ -1,25 +1,21 @@
 <% if @user.nil? %>
   <p>Sorry, this user does not exist.</p>
 <% else %>
-<h1>Profile for <%= @user.username %></h1> <hr>
- <%unless @user == current_user %>
-<!-- ADD FRIEND LOGIC HERE -->
-  <% if Friendship.friendship_exists?(@user, current_user) %>
-    This person is your friend!
+  <!-- SHOW USER PROFILE -->
+  <h1>Profile for <%= @user.username %></h1> <hr>
+  <%unless @user == current_user %>
+    <!-- ADD FRIEND LOGIC HERE -->
+    <% if Friendship.friendship_exists?(@user, current_user) %>
+      This person is your friend!
     <% else %>
-    <%= button_to user_friend_requests_path(user_id: @user.id), class: 'btn btn-block btn-add-friend' do %>
-      <span class="fa fa-plus-circle"></span>
-      Add As Friend
+      <%= button_to user_friend_requests_path(user_id: @user.id), class: 'btn btn-block btn-add-friend' do %>
+        <span class="fa fa-plus-circle"></span>
+        Add As Friend
+      <% end %>
     <% end %>
   <% end %>
+  
+  <!-- Rest of profile -->
 
-
-<% else %>
 
 <% end %>
-
-<% end %>
-
-<div class="well">
-  <div class="breadcrumb">shieeet loldadwdakdjwadkadkjakjda</div>
-</div>

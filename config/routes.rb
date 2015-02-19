@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   match '/admin_feed', to: 'main_pages#admin_feed', via: :get
 #-- End of basic routes
 
+#-- Cumulative searches --
+
+  match '/search', to: 'searches#search', via: :get 
+
 #-- User routes --
   #Devise user routes
   devise_for :users, :skip => [:sessions], controllers: {registrations: 'registrations'}

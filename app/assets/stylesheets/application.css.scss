@@ -12,14 +12,12 @@
  *
  *= require bootstrap_and_overrides
  *= require bootstrap-material-design
- *= require nav_1
- *= require nav_2
- *= require nav_3
+ *= require nav
  *= require forms
+ *= require font-awesome
 
 
  *= require_tree .
  *= require custom
  *= require_self
- *= require main_pages
  */
