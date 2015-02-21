@@ -1,21 +1,74 @@
-<% if @user.nil? %>
-  <p>Sorry, this user does not exist.</p>
-<% else %>
-  <!-- SHOW USER PROFILE -->
-  <h1>Profile for <%= @user.username %></h1> <hr>
-  <%unless @user == current_user %>
-    <!-- ADD FRIEND LOGIC HERE -->
-    <% if Friendship.friendship_exists?(@user, current_user) %>
-      This person is your friend!
-    <% else %>
-      <%= button_to user_friend_requests_path(user_id: @user.id), class: 'btn btn-block btn-add-friend' do %>
-        <span class="fa fa-plus-circle"></span>
-        Add As Friend
-      <% end %>
-    <% end %>
-  <% end %>
-  
-  <!-- Rest of profile -->
 
+<div class = "container">
+	<div id = "UserPagesContainer">
+	<div class = "panel">
+		<% if @user.nil? %>
+			<div class ="panel-heading"><p>Sorry, this user does not exist.</p></div>
+		<% else %>
+		  <!-- SHOW USER PROFILE -->
+		  <div class ="panel-heading"><h1>Profile: <%= @user.username %></h1></div>
+			<div class = "panel-body">
+			<!-- This is the user-image for the profile -->
+				<div class="col-xs-6 col-md-4"></div>
+				<div class="row">
+				  <div class="col-xs-6 col-md-4">
+					
+    					<a href="#" class="thumbnail">
+						<img src="image_path('index.jpeg')" alt="Personal Image">
+					</a>
+					</br>
+				   </div>
+				
+				</div>
+			<!-- Bio section, pills are used if we want aditional information along with bio -->
+			<ul class="nav nav-pills">
+			  <li role="presentation" class="active"><a href="#">Bio</a></li>
+			  <li role="presentation"><a href="#">School/Other Information</a></li>
+			  <li role="presentation"><a href="#">Example of tab</a></li>
+			</ul>
+			<div class = "well">
+				<!-- Text area here -->
+				Information about bio/what ever tab
+			</div>
+			
+			<!-- Courses sections, and friends...we can have one if you want -->
+			</br></br>
+			<ul class="nav nav-pills">
+			  <li role="presentation" class="active"><a href="#">Courses</a></li>
+			  <li role="presentation"><a href="#">Friends</a></li>
+			</ul>
+			<div class = "well">
+				<!-- Text area here -->
+				Could list the courses taken or what ever, as such:
+				<ul class="list-group">
+				  <li class="list-group-item">Cras justo odio</li>
+				  <li class="list-group-item">Dapibus ac facilisis in</li>
+				  <li class="list-group-item">Morbi leo risus</li>
+				  <li class="list-group-item">Porta ac consectetur ac</li>
+				  <li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+			</div>
+		
 
-<% end %>
+			<!-- Additional portions can be added here -->
+			</div>
+		 <%unless @user == current_user %>
+
+					
+			    <!-- ADD FRIEND LOGIC HERE -->
+			    <% if Friendship.friendship_exists?(@user, current_user) %>
+			      This person is your friend!
+			    <% else %>
+			      <%= button_to user_friend_requests_path(user_id: @user.id), class: 'btn btn-block btn-add-friend' do %>
+				<span class="fa fa-plus-circle"></span>
+				Add As Friend
+			      <% end %>
+			    <% end %>
+			  <% end %>
+			  
+			  <!-- Rest of profile -->
+
+		<% end %>
+	</div>
+	</div>
+</div>
