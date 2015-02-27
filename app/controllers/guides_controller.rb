@@ -58,6 +58,7 @@ class GuidesController < ApplicationController
   def show
     guide
     @attachments = guide.attachments
+    @report = @guide.reports.build
   end
 
   def edit

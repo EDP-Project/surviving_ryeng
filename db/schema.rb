@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216191543) do
+ActiveRecord::Schema.define(version: 20150220191813) do
 
   create_table "attachments", force: true do |t|
     t.integer  "user_id"
     t.integer  "attachable_id"
     t.string   "attachable_type"
     t.integer  "download_count",      default: 0
+    t.text     "description"
     t.integer  "likes",               default: 0
+    t.boolean  "approved",            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "upload_file_name"
@@ -82,6 +84,18 @@ ActiveRecord::Schema.define(version: 20150216191543) do
   add_index "guides", ["course_id"], name: "index_guides_on_course_id"
   add_index "guides", ["user_id"], name: "index_guides_on_user_id"
 
+  create_table "reports", force: true do |t|
+    t.integer  "reporter_id"
+    t.integer  "reportable_id"
+    t.string   "reportable_type"
+    t.string   "title"
+    t.text     "reason",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reports", ["reportable_id", "reportable_type"], name: "index_reports_on_reportable_id_and_reportable_type"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -102,6 +116,7 @@ ActiveRecord::Schema.define(version: 20150216191543) do
     t.boolean  "admin",                  default: false
     t.string   "username"
     t.text     "about_me"
+    t.boolean  "banned",                 default: false
   end
 
   add_index "users", ["admin"], name: "index_users_on_admin"

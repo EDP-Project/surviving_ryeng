@@ -1,6 +1,7 @@
 class AttachmentsController < ApplicationController
 
   before_action :authenticate_user!
+  skip_before_filter :verify_authenticity_token, only: [:create]
 
   def new
     @attachment = Attachment.new
@@ -12,20 +13,25 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    @attachment = Attachment.new(params[:upload])
+    find_attachable
+    params[:uploads].each do |u| 
+      @attachment = Attachment.new(attachment_create_params)
+      @attachment.user = current_user;
+      @attachment.upload = u
 
-    if @attachment.save
-      render json: { message: "success", fileID: @attachment.id }, status: 200
-    else
-      render json: { error: @attachment.errors.full_messages.join(',') }, status: 400
+      if @attachment.save
+        flash[:success] = "Attachment(s) submitted for approval"
+      else
+        flash[:error] = "Unable to submit attachment(s)"
+      end
     end
+    redirect_to course_path(course_code: @attachable.course_code)
   end
 
   def destroy
     find_attachable
     if user_permitted?
       if @attachment.destroy 
-
         if @attachment.attachable_type == "Guide"
           flash[:success] = "Attachment successfully removed from guide"
           redirect_to edit_guide_path(id: params[:guide_id])
@@ -46,8 +52,8 @@ class AttachmentsController < ApplicationController
 
 private
   
-  def attachment_params
-    params.require(:attachment).permit(:upload)
+  def attachment_create_params
+    params.require(:attachment).permit(:id, :course_id, :description, :attachable_type, :attachable_id)
   end
 
   def user_permitted?
@@ -56,8 +62,10 @@ private
   end
 
   def find_attachable
-    params.each do |name, value|
-      return @attachable = $1.classify.constantize.find(value) if name =~ /(.+)_id$/
+    if params[:attachment][:attachable_type] == "Course"
+      return @attachable = Course.find(params[:attachment][:attachable_id])
+    elsif params[:attachment][:attachable_type] == "Guide"
+      return @attachable = Guide.find(params[:attachment][:attachable_id])
     end
   end
 

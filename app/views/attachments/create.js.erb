@@ -1,0 +1,8 @@
+<% if @attachment.valid? %>
+  $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
+  <% flash[:success] = nil %>
+  $('#new-attachment-modal').modal('hide');
+<% else %>
+  $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
+  $('#error-container').html("<%= j render 'shared/errors', record: @attachment %>");
+<% end %>

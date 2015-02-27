@@ -17,5 +17,6 @@
 //= require rails.validations
 //= require gnmenu
 //= require courses
+//= require reports
 
 //= require turbolinks

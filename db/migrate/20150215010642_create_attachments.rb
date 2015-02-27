@@ -4,8 +4,10 @@ class CreateAttachments < ActiveRecord::Migration
       t.references :user, index: true
       t.references :attachable, polymorphic: true, index: true
       t.integer :download_count, default: 0
+      t.text :description
       t.integer :likes, default: 0
       t.integer :likes, default: 0
+      t.boolean :approved, default: false
       t.timestamps
     end
   end

@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   #-- File attachments --
   has_many :attachments
 
+  #-- Reports --
+  has_many :reports, as: :reportable, dependent: :destroy
+  has_many :reports_sent, class_name: "Report", foreign_key: "reporter_id"
+
 
 #Used to allow users to login via username
   def login=(login)

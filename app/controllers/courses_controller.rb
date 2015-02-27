@@ -33,8 +33,9 @@ class CoursesController < ApplicationController
     course
     @enrollment = Enrollment.new
     @guide = @course.guides.build
+    @attachment = @course.attachments.build
     @guides = Guide.where(course_id: @course.id, approved: true)
-
+    @attachments = Attachment.where(attachable_type: "Course", attachable_id: @course.id)
     respond_to do |format| 
       format.html 
       format.js

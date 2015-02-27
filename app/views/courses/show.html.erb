@@ -11,9 +11,17 @@
   New Guide
 </button>
 
+<button type="button" class="btn btn-primary btn-lg" id="new-attachment-trigger">
+  New attachment
+</button>
+
 <!-- RENDER NEW GUIDE MODAL HERE -->
 <div id="new-guide-container">
   <%= render 'new_guide', guide: @guide, course: @course %>
+</div>
+
+<div id="new-attachment-container">
+  <%= render 'new_attachment', attachment: @attachment, course: @course %>
 </div>
       
 
@@ -23,8 +31,8 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"><a href="#approved-guides" data-toggle="tab">Guides</a></li>
-    <li role="presentation"><a href="#profile" data-toggle="tab">Attachments</a></li>
+    <li role="presentation" class="active"><a href="#approved-guides" data-toggle="tab">Guides</a></li>
+    <li role="presentation"><a href="#approved-attachments" data-toggle="tab">Attachments</a></li>
     <li role="presentation"><a href="#messages"  data-toggle="tab">Messages</a></li>
     <li role="presentation"><a href="#settings"  data-toggle="tab">Settings</a></li>
   </ul>
@@ -44,7 +52,19 @@
           <p>There are no approved guides for <%= @course.course_code %> yet. </p>
         <% end %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane fade" id="approved-attachments">
+      <% if @attachments.any? %>
+        <div id="approved-course-attachments">
+          <% @attachments.each do |a| %>
+          <%= link_to a.upload_file_name, a %> 
+          <p>Uploaded by: <%= link_to "#{a.user.username}", user_path(username: a.user.username) %></p>  
+          <% end %>
+        </div>
+
+        <% else %>
+          <p>There are no approved attachments for <%= @course.course_code %> yet. </p>
+        <% end %>
+    </div>
     <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
     <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
   </div>
