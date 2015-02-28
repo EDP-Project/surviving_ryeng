@@ -1,5 +1,5 @@
 <h1>Guide: <%= @guide.title %></h1>
-<p><%= @guide.content %></p>
+<p><%= @guide.content.html_safe %></p>
 
 <%= render 'attachments', attachments: @attachments %>
 

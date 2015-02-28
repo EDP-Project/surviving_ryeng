@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
 #-- Basic routes --
   root 'main_pages#home'
 

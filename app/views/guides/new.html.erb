@@ -1,0 +1,24 @@
+<div class="main-card">
+<%= link_to 'Begin editing guide', "/editor/guides/new?course_id=#{params[:course_id]}", class: 'btn' %>
+  <div id="error-container">
+    <%= render 'shared/errors', record: @guide %>  
+  </div>
+  <%= form_for @guide, html: { multipart: true } do |f| %>
+    <h2 data-mercury="simple" id="title"> <%= @guide.title || "Title" %></h2>
+    <div class="mercury-textarea" data-mercury="full">
+      <%= @guide.content || "Guide content" %>
+    </div>
+    
+
+      <%= f.hidden_field :course_id, value: params[:course_id] %>
+
+
+    <div class="control-group">
+      <%= f.label :attachments, :class => 'control-label' %>
+        <!-- GUIDE ATTACHMENTS UPLOAD -->
+      <%= file_field_tag "uploads[]", type: :file, multiple: true %>
+      </div>
+    
+    <%= f.submit 'Submit Guide', class: 'btn btn-primary', id: 'guide-submit' %>
+  <% end %>
+</div>

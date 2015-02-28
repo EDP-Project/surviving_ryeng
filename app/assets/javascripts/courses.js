@@ -8,4 +8,6 @@ $(function(){
     $('#new-attachment-modal').modal('show');
   })
 
+  $('#guide-content').editable({inlineMode: false});
+
 });

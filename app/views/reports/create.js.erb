@@ -1,4 +1,5 @@
-<% if @report.valid? %>
+$(function(){
+  <% if @report.valid? %>
   $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
   <% flash[:notice] = nil %>
   $('#new-report-modal').modal('hide');
@@ -7,3 +8,4 @@
   $('#error-container').html("<%= j render 'shared/errors', record: @attachment %>");
   <% flash[:error] = nil %>
 <% end %>
+});
