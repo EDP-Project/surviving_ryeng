@@ -63,7 +63,7 @@ class GuidesController < ApplicationController
 
   def edit
     guide
-    @attachments = guide.attachments
+    @attachments = @guide.attachments
   end
 
   def update
@@ -75,7 +75,12 @@ class GuidesController < ApplicationController
       end
 
       flash[:success] = "Guide updated successfully!"
-      redirect_to guide_path(guide)
+      
+
+      respond_to do |format|
+        format.js 
+        format.html { redirect_to guide_path(@guide) }
+      end
     else
       flash[:error] = "Sorry, could not update the guide."
       redirect_to guide_path(guide)

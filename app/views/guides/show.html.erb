@@ -1,4 +1,5 @@
-<h1>Guide: <%= @guide.title %></h1>
+<div class="main-card">
+  <h1>Guide: <%= @guide.title %></h1>
 <p><%= @guide.content.html_safe %></p>
 
 <%= render 'attachments', attachments: @attachments %>
@@ -18,3 +19,4 @@
   <%= render 'shared/new_report', report: @report, type: "Guide", reportable: @guide %>
 </div>
 <% end %>
+</div>
