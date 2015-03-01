@@ -8,6 +8,6 @@ $(function(){
     $('#new-attachment-modal').modal('show');
   })
 
-  $('#guide-content').editable({inlineMode: false});
+  $('.froala-textarea').editable({inlineMode: false});
 
 });

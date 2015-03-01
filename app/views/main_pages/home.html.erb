@@ -3,20 +3,19 @@
 
 
 <div class="main-card">
- <h2> Surviving Ryeng</h2> <hr>
+ <h2> Surviving RyEng</h2> <hr>
  <p> Surviving Ryeng is an application designed for Ryerson Engineering students, by Ryerson Engineering students. With the aim of improving student performance and grades, Surviving RyEng provides an environment where students can share their knowledge and resources for past and current courses and receive feedback. It also has some interactive features which allow you communicate with fellow students. Click below to try it out now!</p>
 
 <hr>
 
- <% unless user_signed_in? %>
-  </br></br><div id = "logo_image">Image1</div>
-  <!-- WHEN USER IS NOT LOGGED IN -->
-  <div class = "push-to-bottom">
-   <div class = "text-center">
-    <%= link_to 'Sign up!', new_user_registration_path, class: 'btn btn-material-lightgreen' %><br>
-    <p><h5>Already have an account?  <%= link_to 'Sign in', new_user_session_path %></h5></p>
-   </div>
-
+  <% unless user_signed_in? %>
+    </br></br><div id = "logo_image">Image1</div>
+    <!-- WHEN USER IS NOT LOGGED IN -->
+    <div class = "push-to-bottom">
+    <div class = "text-center">
+      <%= link_to 'Sign up!', new_user_registration_path, class: 'btn btn-material-lightgreen' %><br>
+      <p><h5>Already have an account?  <%= link_to 'Sign in', new_user_session_path %></h5></p>
+    </div>
 
   <% else %>
 

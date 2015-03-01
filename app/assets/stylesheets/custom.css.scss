@@ -7,13 +7,16 @@ body{
 	margin-left: 70px;
 }
 
+
+//-- Main card styling 
+
 .main-card {
 	padding: 10px;
 	margin: 0 auto;
 	border-radius: 3px;
 	width: 80%;
 	background-color: #4477aa;
-
+	padding-bottom: 40px;
 	-webkit-box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);
 	-moz-box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);
 	box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);
@@ -33,6 +36,14 @@ hr {
 	}
 }
 
+//-- End of main card styling
+
+//-- Devise forms
+
+.devise-container {
+  background: white;
+  form { max-width: 50%; margin: 0 auto; }
+}
 
 //-- Loader
 

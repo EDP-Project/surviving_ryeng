@@ -16,6 +16,7 @@
 //= require twitter/bootstrap
 //= require gnmenu
 //= require courses
+//= require forms
 //= require reports
 //= require froala_editor.min.js
 //= require plugins/block_styles.min.js
