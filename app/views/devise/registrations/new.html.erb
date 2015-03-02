@@ -1,12 +1,11 @@
-
 <% provide(:title, 'Sign Up') %>
 
-<div class="main-card devise-container">
+<div class="main-card" id="devise-container">
 
-<h2>Sign up</h2> <hr>
-<% unless resource.errors.empty? %>
-	<%= devise_error_messages! %>
-<% end %>
+	<h2>Sign up</h2> <hr>
+	<% unless resource.errors.empty? %>
+		<%= devise_error_messages! %>
+	<% end %>
 
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>  
@@ -14,25 +13,27 @@
 	<div class="input">
 		<%= f.text_field :username, placeholder: 'Enter a username', id: 'uname', required: true, autofocus: true %>
 		<label for="uname">Username</label>
+		<span class="help-block">Must be at least 3 characters long</span>
 	</div>
 
 		<!-- Devise default User fields -->
 	
 	<div class="input">
-		<input id="email" name="user[email]" placeholder="Enter your email address" required type="email"/>
+		<!-- <input id="email" name="user[email]" placeholder="Enter your email address" required type="email"/> -->
+		<%= f.email_field :email, placeholder: "Enter your email address", id: 'email', required: true, value: nil %>
 		<label for="email">Email</label>
 		<span class="help-block">Please use a valid email format</span>
 	</div>		
 
 
 	<div class="input">
-		<%= f.password_field :password, placeholder: 'Enter a password', id: 'pass1', required: true %>
+		<%= f.password_field :password, placeholder: 'Enter a password', id: 'pass1', required: true, autocomplete: "off" %>
 		<label for="pass1">Password</label>
 		<span class="help-block">Must be 8 characters or more</span>
 	</div>
 
 	<div class="input">
-		<%= f.password_field :password, placeholder: 'Enter a password', id: 'pass2', required: true %>
+		<%= f.password_field :password, placeholder: 'Re-enter the password', id: 'pass2', required: true, autocomplete: "off" %>
 		<label for="pass2">Password confirmation</label>
 		<span class="help-block">Must match the password entered above</span>
 	</div>

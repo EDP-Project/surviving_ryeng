@@ -12,6 +12,11 @@
   $(document).on('change', ".input input[type='text'], .input input[type='email'], .input input[type='password']", setInputValue);
   $(document).on('change', ".input textarea", setTextareaValue);
 
+  $(window).on('load', function(){
+    $(".field_with_errors").next("label").css("color", "red");
+  });
+
+
   $.fn.refresh = setInputValue;
 
   $(window).on('load', function() {
