@@ -1,7 +1,247 @@
-<h1>Courses you are currently taking</h1>
 
-<% @enrollments.each do |e| %>
-  <%= link_to e.course.course_code, course_path(course_code: e.course.course_code) %> 
-  <%= link_to 'Remove', enrollment_path(e), method: :delete, class: 'btn' %>
-  <br>
-<% end %>
+<div id = "enrollment_encapsulation">
+	<div class = "main-card">
+		<h2>Courses you are currently taking</h2><hr>
+
+
+		
+		<div class="row">
+	
+
+		<!-- Start of #1 -->
+			<div class="col-md-3">
+			    <div class="well well-sm">
+				<div class="row">
+
+				    <div class="col-xs-9 col-md-9 section-box">
+				        <h2>
+				             <a href="http://bootsnipp.com/" target="_blank">AAA000</a>
+				        </h2>
+				        <p>
+				            Description</p>
+				        <hr />
+				        <div class="row rating-desc">
+				            <div class="col-md-14">
+				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			    </div>
+			</div>
+		<!-- End of #1 -->
+		<!-- Start of #2 -->
+			<div class="col-md-3">
+			    <div class="well well-sm">
+				<div class="row">
+
+				    <div class="col-xs-9 col-md-9 section-box">
+				        <h2>
+				             <a href="http://www.jquery2dotnet.com/" target="_blank">BBB000</a>
+				        </h2>
+				        <p>
+				            Description</p>
+				        <hr />
+				        <div class="row rating-desc">
+				            <div class="col-md-14">
+				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			    </div>
+		   </div>
+
+		<div class="row">
+
+		<!-- End of #2 -->
+		<!-- Start of #3 -->
+
+			<div class="col-md-3">
+			    <div class="well well-sm">
+				<div class="row">
+
+				    <div class="col-xs-9 col-md-9 section-box">
+				        <h2>
+				             <a href="http://bootsnipp.com/" target="_blank">CCC000</a>
+				        </h2>
+				        <p>
+				            Description</p>
+				        <hr />
+				        <div class="row rating-desc">
+				            <div class="col-md-14">
+				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			    </div>
+			</div>
+		<!-- End of #3 -->
+		<!-- Start of #4 -->
+
+			<div class="col-md-3">
+			    <div class="well well-sm">
+				<div class="row">
+
+				    <div class="col-xs-9 col-md-9 section-box">
+				        <h2>
+				             <a href="http://www.jquery2dotnet.com/" target="_blank">DDD000</a>
+				        </h2>
+				        <p>
+				            Description</p>
+				        <hr />
+				        <div class="row rating-desc">
+				            <div class="col-md-14">
+				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			    </div>
+		   </div>
+
+
+<div class="row">
+	
+
+		<!-- Start of #1 -->
+			<div class="col-md-3">
+			    <div class="well well-sm">
+				<div class="row">
+
+				    <div class="col-xs-9 col-md-9 section-box">
+				        <h2>
+				            <a href="http://bootsnipp.com/" target="_blank">AAA000</a>
+				        </h2>
+				        <p>
+				            Description</p>
+				        <hr />
+				        <div class="row rating-desc">
+				            <div class="col-md-14">
+				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			    </div>
+			</div>
+		<!-- End of #1 -->
+		<!-- Start of #2 -->
+			<div class="col-md-3">
+			    <div class="well well-sm">
+				<div class="row">
+
+				    <div class="col-xs-9 col-md-9 section-box">
+				        <h2>
+				            <a href="http://www.jquery2dotnet.com/" target="_blank">BBB000</a>
+				        </h2>
+				        <p>
+				            Description</p>
+				        <hr />
+				        <div class="row rating-desc">
+				            <div class="col-md-14">
+				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			    </div>
+		   </div>
+
+		<div class="row">
+
+		<!-- End of #2 -->
+		<!-- Start of #3 -->
+
+			<div class="col-md-3">
+			    <div class="well well-sm">
+				<div class="row">
+
+				    <div class="col-xs-9 col-md-9 section-box">
+				        <h2>
+				            <a href="http://bootsnipp.com/" target="_blank">CCC000</a>
+				        </h2>
+				        <p>
+				            Description</p>
+				        <hr />
+				        <div class="row rating-desc">
+				            <div class="col-md-14">
+				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			    </div>
+			</div>
+		<!-- End of #3 -->
+		<!-- Start of #4 -->
+
+			<div class="col-md-3">
+			    <div class="well well-sm">
+				<div class="row">
+
+				    <div class="col-xs-9 col-md-9 section-box">
+				        <h2>
+				            <a href="http://www.jquery2dotnet.com/" target="_blank">DDD000 </a>
+				        </h2>
+				        <p>
+				            Description</p>
+				        <hr />
+				        <div class="row rating-desc">
+				            <div class="col-md-14">
+				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
+				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			    </div>
+		   </div>
+
+
+
+	</div>
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<ul class="pagination">
+		    <li><a href="#">&laquo;</a></li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li><a href="#">&raquo;</a></li>
+		</ul>
+	</div>
+	<div class="col-md-4"></div>
+	
+	<% @enrollments.each do |e| %>
+	  <%= link_to e.course.course_code, course_path(course_code: e.course.course_code) %> 
+	  <%= link_to 'Remove', enrollment_path(e), method: :delete, class: 'btn' %>
+	  <br>
+	<% end %>
+</div>
