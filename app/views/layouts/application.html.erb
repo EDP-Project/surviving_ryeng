@@ -12,7 +12,9 @@
 <body>
 
 	<!-- RENDER NAVIGATION -->
-	<%= render 'layouts/navigation' %>
+	<div id="nav-container">
+		<%= render 'layouts/navigation' %>
+	</div>
 
 	<div class="container">	
 		<!-- NOTIFICATIONS -->
@@ -29,7 +31,7 @@
 		
 		<!-- SHOW PARAMETER/CONTROLLER DEBUG INFO IN DEVELOPMENT ENV -->
 		<% if Rails.env.development? && user_signed_in? && current_user.username == "Steve" %>
-			<%= debug(params) %>
+			 
 		<% end %>
 	</div>
 </body>

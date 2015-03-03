@@ -9,17 +9,16 @@
         <div id="error-container">
           <%= render 'shared/errors', record: guide %>  
         </div>
+
         <%= form_for guide, remote: true, html: { multipart: true } do |f| %>
-        <div class="control-group">
-          <%= f.label :title, :class => 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :title, class: 'text_field' %>
-          </div>
+        <div class="input">
+          <%= f.text_field :title, placeholder: "Enter the guide's title", id: 'title', class: 'text_field' %>
+          <label for="title">Title</label>
         </div>
         <div class="control-group">
           <%= f.label :content, :class => 'control-label' %>
           <div class="controls">
-            <%= f.text_area :content, class: 'text_area' %>
+            <%= f.text_area :content, class: 'froala-textarea', id: 'guide-content' %>
           </div>
           <%= f.hidden_field :course_id, value: course.id %>
         </div>
@@ -35,6 +34,9 @@
       <div class="modal-footer">
         <%= f.submit 'Submit Guide', class: 'btn btn-primary', id: 'guide-submit' %>
       </div>
+
+
+
       <% end %>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

@@ -42,7 +42,7 @@ gem 'simple_form'
 gem 'devise', '~> 3.2.4'
 
 #Client-side validations
-gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "master"
+#gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "master"
 
 #Font-Awesome
 gem "font-awesome-rails"
@@ -55,6 +55,9 @@ gem 'kaminari'
 
 #Mailboxer to handle message sending between users
 gem 'mailboxer'
+
+#Froala editor
+gem "wysiwyg-rails"
 
 #Use Paperclip for file uploads
 gem 'paperclip'

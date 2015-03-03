@@ -2,6 +2,12 @@
     <ul>
       <li><a id="btn-menu"><i class="fa fa-bars"></i></a></li>
       <li><%= link_to 'Surviving RyEng', root_path, class: 'top-nav-link' %></li>
+      <li class="pull-right" id="top-right-gravatar">
+        <% if user_signed_in? %>
+          <%= link_to gravatar_for(current_user, size: 100), user_path(username: current_user.username) %>
+          </li>
+          <li class="pull-right" id="top-right-username"><p><%= current_user.username %></p></li>
+        <% end %>
     </ul>
   </nav>
 

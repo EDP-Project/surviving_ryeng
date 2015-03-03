@@ -3,30 +3,29 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><%= "Add attachment for #{course.course_code}" %></h4>
+        <h4 class="modal-title"><%= "Add attachments for #{course.course_code}" %></h4>
       </div>
       <div class="modal-body">
         <div id="error-container">
           <%= render 'shared/errors', record: attachment %>  
         </div>
         <%= form_for attachment, remote: true, html: { multipart: true } do |f| %>
+        
+        <div class="input">
+          <%= f.text_area :description, placeholder: 'Describe the attachment(s)', id: 'desc', rows: 4, required: true %>
+          <label for="desc">Description</label>
+        </div>
+
         <div class="control-group">
-          <%= f.label :attachments, :class => 'control-label' %>
+          <%= f.label :attachments, 'Attachment(s)', class: 'control-label' %>
           <div class="controls">
             <!-- ATTACHMENTS UPLOAD -->
             <%= file_field_tag "uploads[]", type: :file, multiple: true %>
           </div>
         </div>
 
-        <div class="control-group">
-          <%= f.label :description, :class => 'control-label' %>
-          <div class="controls">
-            <%= f.text_area :description, class: 'text_area' %>
-          </div>
-          <%= f.hidden_field :attachable_type, value: "Course" %>
-          <%= f.hidden_field :attachable_id, value: course.id %>
-        </div>
-
+        <%= f.hidden_field :attachable_type, value: "Course" %>
+        <%= f.hidden_field :attachable_id, value: course.id %>
         
       </div>
       <div class="modal-footer">

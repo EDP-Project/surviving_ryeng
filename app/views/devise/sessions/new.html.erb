@@ -1,29 +1,28 @@
+<div class="main-card" id="devise-container">
+	<h2>Sign in</h2> <hr>
 
-<div class = "container" >
-	<div id = "SignInUpContainer">
-	<div class="panel">
-	<div class = "panel-heading"><h2>Sign in</h2></div>
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+		
+			<div class="input">
+				<%= f.text_field :login, placeholder: 'Enter your login', id: 'login', required: true, autofocus: true, value:nil %>
+				<label for="login">Login</label>
+				<span class="help-block">Your email or username</span>
+			</div>
 
-	<div class="panel-body">
+			<div class="input">
+				<%= f.password_field :password, placeholder: 'Enter your password', id:'pass', required: true, autocomplete: "off" %>
+				<label for="pass">Password</label>
+			</div>
 
-	<h5>
-		<div id = "logtextfields">
-			<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-			  <div class="form-inputs">
-			    <%= f.input :login, required: false, autofocus: true %>
-			    <%= f.input :password, required: false %>
-			    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-			  </div>
+		  <% if devise_mapping.rememberable? -%>
+		    <div class="input">
+		    	<%= f.check_box :remember_me, id: 'remember' %> 
+					<label for="remember">Remember me</label>
+		    </div>
+		  <% end -%>
 
-			  <div class="form-actions">
-			    <%= f.button :submit, "Sign in" %>
-			  </div>
-			<% end %>
-		</div>
+		  <div><%= f.submit "Sign in", class: 'btn btn-custom' %></div>
+		<% end %>
 
 		<%= render "devise/shared/links" %>
-	</h5>
-	</div>
-	</div>
-	</div>
 </div>

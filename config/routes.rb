@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
 #-- Basic routes --
   root 'main_pages#home'
 
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     resources :attachments, only: [:create, :destroy]
   end
 
-  resources :attachments, only: [:new, :show, :create, :destroy] do
+  resources :attachments, only: [:index, :new, :show, :create, :destroy] do
     resources :reports, only: [:new]
   end
 
@@ -68,7 +68,7 @@ Rails.application.routes.draw do
 
 
 #-- Guide routes --
-  resources :guides, only: [:new, :create, :edit, :show, :update, :destroy], concerns: [:attachable] do
+  resources :guides, only: [:new, :index, :create, :edit, :show, :update, :destroy], concerns: [:attachable] do
     resources :reports, only: [:new]
   end
 

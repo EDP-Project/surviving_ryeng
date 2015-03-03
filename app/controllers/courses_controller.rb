@@ -31,11 +31,19 @@ class CoursesController < ApplicationController
 
   def show
     course
-    @enrollment = Enrollment.new
     @guide = @course.guides.build
     @attachment = @course.attachments.build
-    @guides = Guide.where(course_id: @course.id, approved: true)
-    @attachments = Attachment.where(attachable_type: "Course", attachable_id: @course.id)
+    @guides = @course.guides.where(approved: true).limit(3)
+    @attachments = @course.attachments.order('updated_at DESC').limit(4)
+    @enrollment = @course.enrollments.where(user_id: current_user.id)
+    # Find last few enrolled users for display
+    @recently_enrolled_users = []
+    @last_enrollments = @course.enrollments.order('updated_at DESC').limit(4)
+    
+    @last_enrollments.each do |e|
+      @recently_enrolled_users << e.user 
+    end
+
     respond_to do |format| 
       format.html 
       format.js

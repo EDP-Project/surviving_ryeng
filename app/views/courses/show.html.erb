@@ -1,72 +1,177 @@
-<h1>
-  <%= @course.course_code %> | <%= @course.title %>
-  <% if user_signed_in? %>
-    <%= button_to 'Enroll', course_enrollments_path(course_id: @course.id), class:'btn btn-material-lightgreen' unless current_user.courses.include? @course %>
-  <% end %>
-</h1>
+<div class="main-card" id="course-container">
+ <hr>
 
-<p><%= @course.description %></p>
-
-<button type="button" class="btn btn-primary btn-lg" id="new-guide-trigger">
-  New Guide
-</button>
-
-<button type="button" class="btn btn-primary btn-lg" id="new-attachment-trigger">
-  New attachment
-</button>
-
-<!-- RENDER NEW GUIDE MODAL HERE -->
-<div id="new-guide-container">
-  <%= render 'new_guide', guide: @guide, course: @course %>
-</div>
-
-<div id="new-attachment-container">
-  <%= render 'new_attachment', attachment: @attachment, course: @course %>
-</div>
-      
-
-
-
-<div role="tabpanel">
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#approved-guides" data-toggle="tab">Guides</a></li>
-    <li role="presentation"><a href="#approved-attachments" data-toggle="tab">Attachments</a></li>
-    <li role="presentation"><a href="#messages"  data-toggle="tab">Messages</a></li>
-    <li role="presentation"><a href="#settings"  data-toggle="tab">Settings</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade active" id="approved-guides">
-      <% if @guides.any? %>
-        <div id="approved-course-guides">
-          <% @guides.each do |guide| %>
-          <%= link_to guide.title, "/guides/#{guide.id}" %>
-          <p>Written by: <%= link_to "#{guide.user.username}", user_path(username: guide.user.username) %></p>  
-          <% end %>
-        </div>
-
-        <% else %>
-          <p>There are no approved guides for <%= @course.course_code %> yet. </p>
-        <% end %>
-    </div>
-    <div role="tabpanel" class="tab-pane fade" id="approved-attachments">
-      <% if @attachments.any? %>
-        <div id="approved-course-attachments">
-          <% @attachments.each do |a| %>
-          <%= link_to a.upload_file_name, a %> 
-          <p>Uploaded by: <%= link_to "#{a.user.username}", user_path(username: a.user.username) %></p>  
-          <% end %>
-        </div>
-
-        <% else %>
-          <p>There are no approved attachments for <%= @course.course_code %> yet. </p>
-        <% end %>
-    </div>
-    <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
+  <div id="new-attachment-container">
+    <%= render 'new_attachment', attachment: @attachment, course: @course %>
   </div>
 
+
+<div class="row user-menu-container square">
+        <div class="col-md-7 user-details">
+            <div class="row bluebg">
+                <div class="col-md-6 no-pad">
+                    <div class="user-pad">
+                        <h3><%= @course.course_code %> | <%= @course.title %></h3>
+                        <br>
+                      
+                        <!-- NEW GUIDE BUTTON  -->
+                        <button type="button" class="btn btn-labeled btn-success" id="new-guide-trigger">
+                          <span class="btn-label"><i class="fa fa-pencil"></i></span>
+                          New Guide
+                        </button>
+                      
+                    </div>
+                </div>
+                <div class="col-md-6 no-pad">
+                    <div class="course-image">
+                        <img src="http://www.ryerson.ca/content/dam/feas/images/About/varibuilding.jpg" class="img-responsive thumbnail">
+                    </div>
+                </div>
+            </div>
+            <div class="row overview">
+                <div class="col-md-4 user-pad text-center">
+                    <h3>ENROLLMENTS</h3>
+                    <h4><%= @course.enrollments.count %></h4>
+                </div>
+                <div class="col-md-4 user-pad text-center">
+                    <h3>GUIDES</h3>
+                    <h4 id="guide-count"><%= @course.guides.count %></h4>
+                </div>
+                <div class="col-md-4 user-pad text-center">
+                    <h3>ATTACHMENTS</h3>
+                    <h4 id="attachment-count"><%= @course.attachments.count %></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 user-menu-btns">
+            <div class="btn-group-vertical square" id="responsive">
+                <a href="#" class="btn btn-block btn-default active">
+                  <i class="fa fa-graduation-cap fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-default">
+                  <i class="fa fa-file-text-o fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-default">
+                  <i class="fa fa-paperclip fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-default">
+                  <i class="fa fa-cloud-upload fa-3x"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4 user-menu user-pad">
+            <div class="user-menu-content active">
+                <h3>
+                    Recently Enrolled Users
+                </h3>
+                <ul class="user-menu-list">
+
+                  <% @recently_enrolled_users.each do |u| %>
+                    <li>
+                      <h4>
+                        <%= link_to u.username, user_path(username: u.username) %>
+                      </h4>
+                    </li>
+                  <% end %>
+
+                    <li>
+                    <% if user_signed_in? && !(current_user.courses.include? @course) %>
+                      <%= link_to course_enrollments_path(course_id: @course.id), class: 'btn btn-labeled btn-success',method: :post do %>
+                        <span class="btn-label"><i class="fa fa-plus"></i></span>
+                        Enroll
+                      <% end %>
+                   
+                    <% else %>
+                      <%= link_to enrollment_path(id: @enrollment[0].id, from_course: @course.course_code), class: 'btn btn-labeled btn-danger',method: :delete do %>
+                        <span class="btn-label"><i class="fa fa-times"></i></span>
+                        Un-enroll
+                      <% end %>
+                    <% end %>
+                    </li>
+                </ul>
+            </div>
+            <div class="user-menu-content">
+                <h3>
+                  Recent Guides for <%= @course.course_code %>
+                </h3>
+                <ul class="user-menu-list">
+                  <% if @guides.any? %>
+                    <% @guides.each do |g| %>
+                      <li>
+                        <h4><%= link_to truncate(g.title, length: 40), g %></h4>
+                        <% unless g.user.nil? %>
+                          by: <%= link_to truncate("#{g.user.username}", length: 40), user_path(username: g.user.username) %>
+                        <% end %>  
+                      </li>
+                    <% end %>  
+                    <li>
+                      <%= link_to guides_path(for_course: @course.course_code), class: 'btn btn-labeled btn-success' do %>
+                        <span class="btn-label"><i class="fa fa-external-link"></i></span>
+                        View all
+                      <% end %>  
+                    </li>
+                  <% else %>
+                    <p>No guides have been written and/or approved yet. </p>
+                  <% end %>  
+                    <li>
+                        
+                      
+                    </li>
+                </ul>
+            </div>
+            <div class="user-menu-content">
+                <h3>
+                  Recently approved attachments 
+                  <%= link_to attachments_path(for_course: @course.id) do %>
+                    <i class="fa fa-external-link" data-toggle="tooltip" data-placement="top" title="View all"></i>
+                  <% end %>
+                </h3>
+                <div class="row">
+                  <% @attachments.each do |a| %>
+                    <div class="col-md-6">
+                        
+                        <div class="info">
+                          
+                            <p>
+                              <%= attachment_icon_for a %>
+                              <%= a.upload_file_name %>
+                            </p>
+                           
+                        </div>
+                        <div class="stats turqbg">
+                            <span class="fa fa-heart-o"> <strong><%= a.likes %></strong></span>
+                            <span class="fa fa-download pull-right"> <strong><%= a.download_count %></strong></span>
+                        </div>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+            <div class="user-menu-content">
+                <h2 class="text-center">
+                    START SHARING
+                </h2>
+                <center><i class="fa fa-cloud-upload fa-4x"></i></center>
+                <div class="share-links">
+                  <center>
+                    <button type="button" class="btn btn-lg btn-labeled btn-success" id="new-attachment-trigger" style="margin-bottom: 15px;">
+                      <span class="btn-label"><i class="fa fa-upload"></i></span>
+                      ADD ATTACHMENT
+                    </button>
+                  </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <p><%= @course.description %></p>
+
+
+
+<hr>
+
+</div>  
+
+  <!-- RENDER NEW GUIDE MODAL HERE -->
+<div id="new-guide-container">
+    <%= render 'new_guide', guide: @guide, course: @course %>
 </div>

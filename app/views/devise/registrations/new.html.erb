@@ -1,34 +1,50 @@
-
 <% provide(:title, 'Sign Up') %>
-<div class = "container" >
-	<div id = "SignInUpContainer">
-	<div class="panel">
-	<div class = "panel-heading"><h2>Sign up</h2></div>
 
-	<div class="panel-body">
+<div class="main-card" id="devise-container">
 
-	<h5>
-		<div id = "logtextfields">
+	<h2>Sign up</h2> <hr>
+	<% unless resource.errors.empty? %>
+		<%= devise_error_messages! %>
+	<% end %>
 
-		<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-		  <%= f.error_notification %>
 
-		  <div class="form-inputs">
-		    <%= f.input :username, required: true, autofocus: true %>
-		    <%= f.input :email, required: true %>
-		    <%= f.input :password, required: true %>
-		    <%= f.input :password_confirmation, required: true %>
-		    <%= f.input :about_me, as: :text %>
-		  </div>
-
-		  <div class="form-actions">
-		    <%= f.button :submit, "Sign up" %>
-		  </div>
-		<% end %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>  
+	
+	<div class="input">
+		<%= f.text_field :username, placeholder: 'Enter a username', id: 'uname', required: true, autofocus: true %>
+		<label for="uname">Username</label>
+		<span class="help-block">Must be at least 3 characters long</span>
 	</div>
-		<%= render "devise/shared/links" %>
-	</h5>
+
+		<!-- Devise default User fields -->
+	
+	<div class="input">
+		<!-- <input id="email" name="user[email]" placeholder="Enter your email address" required type="email"/> -->
+		<%= f.email_field :email, placeholder: "Enter your email address", id: 'email', required: true, value: nil %>
+		<label for="email">Email</label>
+		<span class="help-block">Please use a valid email format</span>
+	</div>		
+
+
+	<div class="input">
+		<%= f.password_field :password, placeholder: 'Enter a password', id: 'pass1', required: true, autocomplete: "off" %>
+		<label for="pass1">Password</label>
+		<span class="help-block">Must be 8 characters or more</span>
 	</div>
+
+	<div class="input">
+		<%= f.password_field :password, placeholder: 'Re-enter the password', id: 'pass2', required: true, autocomplete: "off" %>
+		<label for="pass2">Password confirmation</label>
+		<span class="help-block">Must match the password entered above</span>
 	</div>
+
+	<div class="input">
+		<%= f.text_area :about_me, id: 'aboutme' %>
+		<label for="aboutme">Describe yourself (optional)</label>
 	</div>
+
+	<%= f.submit "Sign up!", class: 'btn btn-lg btn-custom' %>
+
+<% end %>
+
 </div>

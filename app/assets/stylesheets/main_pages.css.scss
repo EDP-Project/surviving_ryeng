@@ -1,11 +1,6 @@
-	body{
-		background-color:  #07619F ;
-		height:100%;
-	}
-
 	h2{
-		Text-Transform:uppercase;
-		color:#EEB30D;
+		// Text-Transform:uppercase;
+		color: rgba(250,210,18,1.0);
 	}
 
 	.panel-footer{
@@ -16,37 +11,7 @@
 		width : 100%;
 	}
 
-	.container-full {
-		margin: 0 auto;
-		
-		
-		.jumbotron{
-			margin: 0 auto;			
-			background-color: #4477aa;
-			height: 600px;
-
-		}
-
-		.jumbotron-wrap{
-			margin: 0 auto;
-			margin-bottom: 20px;
-			padding: 10px;			
-			background-color: #4477aa;
-
-		}
-
-		.shadow-z-5{
-			margin: 0 auto;
-			width:60%;
-			height: 100%;
-		}
-		.push-to-bottom {
-			margin-bottom : 5px;
-
-			left: 35%;
-/*			margin-left: -50px;*/
-		}
-	}
+	
 
 
 

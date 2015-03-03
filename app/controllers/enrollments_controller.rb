@@ -23,11 +23,19 @@ class EnrollmentsController < ApplicationController
     @enrollment = Enrollment.find(params[:id])
     if @enrollment.destroy
       flash[:success] = "Removed you from #{@enrollment.course.course_code}"
-      redirect_to enrollments_path
     else
       flash[:error] = "Could not remove you from the course."
+    end
+    redirect
+  end
+
+private
+
+  def redirect
+    if params[:from_course]
+      redirect_to course_path(course_code: params[:from_course])
+    else
       redirect_to enrollments_path
     end
   end
-
 end

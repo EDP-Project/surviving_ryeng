@@ -30,6 +30,17 @@ module ApplicationHelper
     image_tag(gravatar_url, alt: user.username, class: "gravatar")
   end
 
+  def attachment_icon_for(attachment)
+    
+    case attachment.upload_content_type
+    when nil
+
+    else
+      "<i class='fa fa-file-o fa-2x'></i>".html_safe
+    end  
+
+  end
+
   def permitted_to_modify?(resource)
     resource.user == current_user || current_user.admin? 
   end
