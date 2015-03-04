@@ -9,6 +9,7 @@
 	
 
 		<!-- Start of #1 -->
+			
 			<div class="col-md-3">
 			    <div class="well well-sm">
 				<div class="row">
@@ -17,14 +18,15 @@
 				        <h2>
 				             <a href="http://bootsnipp.com/" target="_blank">AAA000</a>
 				        </h2>
-				        <p>
+					<p>
 				            Description</p>
-				        <hr />
+					<div class = "col-md-4"></div><hr />
 				        <div class="row rating-desc">
+					    <div class = "col-md-4"></div>
 				            <div class="col-md-14">
 				                <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
 				                </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
-				                </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
+				                </span><span class="glyphicon glyphicon-heart"></span></br><div class = "col-md-4"></div>(36)<span class="separator">|</span>
 				                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
 				            </div>
 				        </div>
@@ -222,9 +224,6 @@
 			    </div>
 		   </div>
 
-
-
-	</div>
 	<div class="col-md-4"></div>
 	<div class="col-md-4">
 		<ul class="pagination">
@@ -238,6 +237,9 @@
 		</ul>
 	</div>
 	<div class="col-md-4"></div>
+
+	</div>
+
 	
 	<% @enrollments.each do |e| %>
 	  <%= link_to e.course.course_code, course_path(course_code: e.course.course_code) %> 
