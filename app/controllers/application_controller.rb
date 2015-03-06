@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   #use_growlyflash
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :ban_check
   #before_action :save_previous_url
 
   protected
@@ -17,5 +18,22 @@ class ApplicationController < ActionController::Base
 
   private
 
-  
+  def redirect_standard_users
+    unless current_user.admin?
+      redirect_to root_path, notice: "You tried to access a restricted area."
+    end
+  end
+
+  def check_authorization
+    redirect_to root_path, notice: "You tried accessing a restricted area." unless current_user.admin?
+  end
+
+  def ban_check
+    if (user_signed_in? && current_user.banned?)
+      r = current_user.ban_reason
+      sign_out current_user
+      redirect_to root_path(banned: true), notice: r
+    end
+  end
+
 end

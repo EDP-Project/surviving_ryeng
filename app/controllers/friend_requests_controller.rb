@@ -8,7 +8,7 @@ class FriendRequestsController < ApplicationController
       flash[:notice] = "Sent friend request!"
       redirect_to user_path(username: @receiver.username)
     else
-      flash[:alert] = "Unable to send friend request."
+      flash[:error] = "Unable to send friend request. You may have already sent one to this user."
       redirect_to user_path(username: @receiver.username)
     end
   end

@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20150220191813) do
     t.string   "username"
     t.text     "about_me"
     t.boolean  "banned",                 default: false
+    t.text     "ban_reason"
   end
 
   add_index "users", ["admin"], name: "index_users_on_admin"

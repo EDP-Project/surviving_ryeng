@@ -19,7 +19,14 @@
 	<div class="container">	
 		<!-- NOTIFICATIONS -->
 		<div id="flash-messages">
-			<%= render partial: "shared/flash_messages", flash: flash %> 	
+			<% if params[:banned] %>
+				<div class="alert alert-warning alert-dismissible" role="alert">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <strong>Your account has been banned for the following reason: </strong> <%= flash[:notice] %>
+				</div>
+			<% else %>
+				<%= render partial: "shared/flash_messages", flash: flash %>
+			<% end %>
 		</div>
 		
 		

@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
 
+
+
   def create
     find_reportable
     @report = Report.new(report_create_params)
@@ -19,8 +21,26 @@ class ReportsController < ApplicationController
     end
   end
 
+  def show
+    report
+  end
+
+  def destroy
+    report
+    if @report.destroy
+      redirect_to admin_feed_path, notice: "Report destroyed."
+    else
+      falsh[:error] = "Unable to remove report"
+      redirect_to report_path(@report)
+    end
+  end
+
 
 private
+  
+  def report
+    @report = Report.find(params[:id])
+  end
 
   def report_create_params
     params.require(:report).permit(:id, :title, :reason, :reportable_type, :reportable_id)

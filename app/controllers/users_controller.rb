@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :banned]
+  before_action :check_authorization, only: [:ban, :unban]
   def index
     @users = User.all
 
@@ -20,5 +21,38 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "Unable to find user"
     end
+
+    @friends = @user.friendships.order('created_at DESC').limit(4)
   end
+
+  def ban
+    user
+    @user.banned = true
+    @user.ban_reason = params[:ban_reason]
+    if @user.save
+      flash[:success] = "Successfully banned user."
+    else
+      flash[:error] = "Unable to ban user."
+    end
+    redirect_to user_path(username: @user.username)
+  end
+
+  def unban
+    user
+    @user.banned = false
+    @user.ban_reason = nil
+    if @user.save 
+      flash[:success] = "Successfully un-banned user."
+    else
+      flash[:error] = "Unable to un-ban user."
+    end
+    redirect_to user_path(username: @user.username)
+  end
+
+private
+  
+  def user
+    @user = User.find(params[:id])  
+  end
+
 end

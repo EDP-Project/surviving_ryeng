@@ -1,0 +1,30 @@
+<div class="main-card">
+  <hr>
+
+  <% if @attachments.size > 1 %>
+    <h2>Attachment Set</h2>
+    <% @attachments.each do |a| %>
+    <%= link_to a.upload_file_name, download_path(id: a.id) %> 
+    <% end %>
+
+    <% else %>
+     <h2>Attachment #<%= @attachment.id %></h2> 
+     <%= link_to @attachment.upload_file_name, download_path(id: @attachment.id) %>
+  <% end %>
+
+  <strong><h4>Description</h4></strong><hr>
+    <p><%= @attachment.description %></p>
+    
+  <br>
+
+<button type="button" class="btn btn-primary btn-lg" id="new-report-trigger">
+ <i class="fa fa-flag"></i>
+</button>
+
+
+</div>
+
+<div id="new-report-container">
+  <%= render 'shared/new_report', report: @report, type: "Attachment", reportable: @attachment %>
+</div>
+

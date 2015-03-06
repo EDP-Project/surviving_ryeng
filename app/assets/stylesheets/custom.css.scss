@@ -1,10 +1,11 @@
 body{
+  padding-top: 60px; 
   background-color:  #07619F ;
   position: relative;
   z-index: 1;
 }
 
-a.btn.btn-labeled { 
+a.btn{ 
   color: #ddd; 
   &:hover {
     color: white;
@@ -26,12 +27,14 @@ a.btn.btn-labeled {
 
 .main-card {
 
+  position: relative;
   padding: 10px;
   margin: 0 auto;
   border-radius: 3px;
   width: 80%;
+  height: 100%;
   background-color: #fff;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
   -webkit-box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);
   box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);

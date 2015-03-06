@@ -48,7 +48,7 @@
 
 <h1>Friends</h1><hr>
 <% @friendships.each do |f| %>
-  <%= link_to f.friend.username, show_profile_path(username: f.friend.username) %> 
+  <%= link_to f.friend.username, user_path(username: f.friend.username) %> 
   &nbsp;<%= link_to 'Remove', friendship_path(f), method: :delete %>
   <br>
 <% end %>

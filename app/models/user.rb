@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   #-- Validations --
-  VALID_USERNAME_REGEX = /\A[a-z0-9][-a-z0-9]{1,19}\z/i
+  VALID_USERNAME_REGEX = /\A(?=.{3,32}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])\z/
 
   # Users must sign up with a 3-32 character username with valid format
   validates :username, presence: true, length: { minimum: 3, maximum: 32 },

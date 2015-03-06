@@ -18,6 +18,7 @@
 //= require courses
 //= require forms
 //= require reports
+//= require users
 //= require froala_editor.min.js
 //= require plugins/block_styles.min.js
 //= require plugins/colors.min.js
@@ -32,5 +33,6 @@
 //= require plugins/fullscreen.min.js
 //= require plugins/urls.min.js
 //= require plugins/inline_styles.min.js
+
 
 //= require turbolinks

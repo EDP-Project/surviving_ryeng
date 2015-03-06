@@ -6,8 +6,9 @@ class MainPagesController < ApplicationController
     if current_user.admin?
       @reports = Report.all
       @unapproved_guides = Guide.where(approved: false)
+      @unapproved_attachments = Attachment.where(approved: false)
     else
-      redirect_to root_path
+      redirect_to root_path, notice: "You tried to access a restricted area."
     end
   end
 

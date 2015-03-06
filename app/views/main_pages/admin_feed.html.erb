@@ -1,14 +1,15 @@
-
-  <h2>Hello, <%= current_user.username %>. Welcome to the Administrator's feed</h2>
+<div class="main-card">
+  
+    <h2>Hello, <%= current_user.username %>. Welcome to the Administrator's feed</h2><hr>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8 col-md-offset-2">
         <div class="panel with-nav-tabs panel-primary">
             <div class="panel-heading">
               <ul class="nav nav-tabs">
                   <li class="active"><a href="#reports-tab" data-toggle="tab">Reports</a></li>
                   <li><a href="#tab2primary" data-toggle="tab">Guides</a></li>
-                  <li><a href="#tab3primary" data-toggle="tab">Primary 3</a></li>
+                  <li><a href="#tab3primary" data-toggle="tab">Course Attachments</a></li>
               </ul>
             </div>
             <div class="panel-body">
@@ -16,7 +17,7 @@
                   <div class="tab-pane fade in active" id="reports-tab">
 
                   <%= render 'reports', reports: @reports %>
-
+                    
                   </div>
                   <div class="tab-pane fade" id="tab2primary">
                   
@@ -25,11 +26,14 @@
                   </div>
                   <div class="tab-pane fade" id="tab3primary">
                   
-                    Misc.
+                  <%= render 'unapproved_attachments', attachments: @unapproved_attachments %>
 
                   </div>
               </div>
             </div>
         </div>
     </div>
+</div>
+
+
 </div>

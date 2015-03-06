@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   match '/about',   to: 'main_pages#about',   via: :get
   match '/contact', to: 'main_pages#contact', via: :get
   match '/admin_feed', to: 'main_pages#admin_feed', via: :get
+  match '/user/ban/:id', to: 'users#ban', as: :ban, via: :post
+  match '/unban/:id', to: 'users#unban', as: :unban, via: :get
+  match '/attachments/download/:id', to: 'attachments#download', via: :get, as: 'download'
 #-- End of basic routes
 
 #-- Cumulative searches --
@@ -32,6 +35,7 @@ Rails.application.routes.draw do
   match '/user/:username', to: 'users#show', as: :user, via: :get
   match '/users/:id', to: 'users#show', via: :get
   match '/users', to: 'users#index', via: :get
+
 
     resources :users, only: [:index] do
       resources :friend_requests, only: [:create]

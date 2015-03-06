@@ -14,6 +14,13 @@ class AttachmentsController < ApplicationController
     end
   end
 
+  def show
+    attachment
+    @report = @attachment.reports.build
+    @attachments = Attachment.where(description: @attachment.description)
+
+    
+  end
   def new
     @attachment = Attachment.new
     @attachments = Attachment.all
@@ -61,7 +68,20 @@ class AttachmentsController < ApplicationController
     end
   end
 
+  def download
+    attachment
+    @attachment.download_count += 1
+    @attachment.save
+    send_file @attachment.upload.path,
+              filename: @attachment.upload_file_name,
+              disposition: 'attachment'
+  end
+
 private
+
+def attachment
+  @attachment = Attachment.find(params[:id])
+end
   
   def attachment_create_params
     params.require(:attachment).permit(:id, :course_id, :description, :attachable_type, :attachable_id)

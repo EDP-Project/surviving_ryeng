@@ -1,0 +1,24 @@
+<div class="main-card">
+  <hr>
+    <h2>Report: <span title="<%= @report.title%>"><%= @report.title %></span></h2>
+  
+    <p>        
+      <i class="fa fa-quote-left fa-3x fa-border"></i>
+      <p><%= @report.reason %>
+    </p>
+
+    <h4>Reporter:</h4> 
+    <%= link_to @report.reporter.username, user_path(username: @report.reporter.username) %>
+    
+    <div class="report-links">
+      <!-- DELETE REPORT LINK -->
+      <%= link_to report_path(@report), class: 'btn btn-danger', method: :delete do %>
+        <i class="fa fa-trash-o fa-lg"></i>
+        Delete
+      <% end %>
+
+      <!-- VIEW (REPORTABLE) LINK -->
+      <%= reportable_link @report %>
+    </div>
+  <hr>
+</div>

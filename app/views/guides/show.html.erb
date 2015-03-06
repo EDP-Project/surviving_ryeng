@@ -7,16 +7,16 @@
 <% if user_signed_in? %>
   <!-- DISPLAY EDIT/DELETE LINKS FOR AUTHORIZED USERS -->
   <% if permitted_to_modify? @guide %>
-    <%= link_to 'Edit', edit_guide_path(@guide, course_code: @guide.course.course_code), class: 'btn' %>
-    <%= link_to 'Delete', guide_path(@guide), method: :delete %>
+    <%= link_to 'Edit', edit_guide_path(@guide, course_code: @guide.course.course_code), class: 'btn btn-info' %>
+    <%= link_to 'Delete', guide_path(@guide), class: 'btn btn-danger', method: :delete %>
   <% end %>
+<% end %>
 
-<button type="button" class="btn btn-primary btn-lg" id="new-report-trigger">
+  <button type="button" class="btn btn-primary btn-lg" id="new-report-trigger">
  <i class="fa fa-flag"></i>
 </button>
 
 <div id="new-report-container">
   <%= render 'shared/new_report', report: @report, type: "Guide", reportable: @guide %>
 </div>
-<% end %>
 </div>

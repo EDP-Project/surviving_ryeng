@@ -3,6 +3,14 @@
   max-width: 100%;
 }
 
+#recent-course-attachments {
+  .info {
+    max-height: 75px;
+  }
+
+}
+
+
 
 .square{
   border-radius: 0px!important;
@@ -12,18 +20,6 @@
 .bluebg {
   background-color: #4477aa;
 } 
-
-.coral {
-  color: #FA396f;
-}
-
-.turqbg {
-  background-color: #46D8D2;
-}
-
-.turq {
-  color: #46D8D2;
-}
 
 .white {
   color: #fff!important;
