@@ -28,6 +28,15 @@
       
       <% if user_signed_in? %>
         <!-- SIDE NAV LINKS (USER SIGNED IN) -->
+        <% if current_user.admin? %>
+          <li>
+            <%= link_to admin_feed_path do %>
+              <i class="nav-icon fa fa-user-secret" ></i>
+              <div class="nav-text">Admin Feed</div>
+            <% end %>
+          </li>
+        <% end %>
+
         <li>
           <%= link_to enrollments_path do %>
             <i class="nav-icon fa fa-graduation-cap" ></i>

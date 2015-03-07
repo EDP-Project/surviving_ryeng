@@ -9,6 +9,8 @@ module MainPagesHelper
       return content_tag(:i, nil, class: 'fa fa-paperclip')
     when "Guide"
       return content_tag(:i, nil, class: 'fa fa-newspaper-o')
+    when "User"
+      return content_tag(:i, nil, class: 'fa fa-user')
     end
   end
 
@@ -27,7 +29,7 @@ module MainPagesHelper
     when "User"
       user = User.find(report.reportable_id)
       return  link_to user_path(username: user.username), class: 'btn btn-info' do
-                content_tag(:i, nil, class: 'fa fa-rocket') + " View Attachment"
+                content_tag(:i, nil, class: 'fa fa-rocket') + " View User"
               end
     
     else

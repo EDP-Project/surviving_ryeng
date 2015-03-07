@@ -96,14 +96,14 @@
     background-color: rgb(200, 200, 200);
   }
   .facebook a,
-  .twitter a,
+  .approve a,
   .google-plus a {
     display: block;
     width: 100%;
     color: rgb(75, 110, 168) !important;
   }
-  .twitter a {
-    color: rgb(79, 213, 248) !important;
+  .approve a {
+    color: rgb(0, 160, 48) !important;
   }
   .google-plus a {
     color: rgb(221, 75, 57) !important;
@@ -112,9 +112,9 @@
     color: rgb(255, 255, 255) !important;
     background-color: rgb(75, 110, 168) !important;
   }
-  .twitter:hover a {
+  .approve:hover a {
     color: rgb(255, 255, 255) !important;
-    background-color: rgb(79, 213, 248) !important;
+    background-color: rgb(0, 160, 48) !important;
   }
   .google-plus:hover a {
     color: rgb(255, 255, 255) !important;

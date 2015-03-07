@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   match '/home',    to: 'main_pages#home',    via: :get
   match '/about',   to: 'main_pages#about',   via: :get
   match '/contact', to: 'main_pages#contact', via: :get
-  match '/admin_feed', to: 'main_pages#admin_feed', via: :get
-  match '/user/ban/:id', to: 'users#ban', as: :ban, via: :post
-  match '/unban/:id', to: 'users#unban', as: :unban, via: :get
   match '/attachments/download/:id', to: 'attachments#download', via: :get, as: 'download'
 #-- End of basic routes
 
+#-- Administrator routes 
+  match '/admin_feed', to: 'main_pages#admin_feed', via: :get
+  match '/user/ban/:id', to: 'users#ban', as: :ban, via: :post
+  match '/unban/:id', to: 'users#unban', as: :unban, via: :get
+  match 'approve/:resource/:id', to: 'application#approve', as: :approve, via: :patch
 #-- Cumulative searches --
 
   match '/search', to: 'searches#search', via: :get 

@@ -34,7 +34,7 @@ class CoursesController < ApplicationController
     @guide = @course.guides.build
     @attachment = @course.attachments.build
     @guides = @course.guides.where(approved: true).limit(3)
-    @attachments = @course.attachments.order('updated_at DESC').limit(4)
+    @attachments = @course.attachments.where(approved: true).order('updated_at DESC').limit(4)
     @enrollment = @course.enrollments.where(user_id: current_user.id)
     # Find last few enrolled users for display
     @recently_enrolled_users = []

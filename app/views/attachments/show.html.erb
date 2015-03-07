@@ -21,6 +21,13 @@
  <i class="fa fa-flag"></i>
 </button>
 
+<% if current_user.admin? && !@attachment.approved? %>
+  <%= button_to approve_path(resource: 'attachment', id: @attachment.id), class: 'btn btn-labeled btn-success', method: :patch do %>
+    <span class="btn-label"><i class="fa fa-check-circle"></i></span>
+    Approve this attachment
+  <% end %> 
+<% end %>
+           
 
 </div>
 

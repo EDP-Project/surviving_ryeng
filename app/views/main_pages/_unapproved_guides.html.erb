@@ -24,6 +24,11 @@
                   <i class="fa fa-times"></i>
                 <% end %> 
               </li>
+              <li class="approve" style="width:33%;">
+                <%= link_to approve_path(resource: 'guide', id: g.id), method: :patch do %>
+                  <i class="fa fa-check-circle"></i>
+                <% end %> 
+              </li>
             </ul>
           </div>
         </li>

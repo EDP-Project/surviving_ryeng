@@ -3,7 +3,6 @@ class AttachmentsController < ApplicationController
   before_action :authenticate_user!
   skip_before_filter :verify_authenticity_token, only: [:create]
 
-
   def index
     if params[:for_course]
       @attachments = Attachment.where(attachable_type: 'Course', attachable_id: params[:for_course])

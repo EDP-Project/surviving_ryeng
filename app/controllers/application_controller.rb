@@ -6,7 +6,23 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :ban_check
+  before_action :check_authorization, only: [:approve]
   #before_action :save_previous_url
+
+
+  def approve
+    case params[:resource]
+    when "attachment"
+      @attachment = Attachment.find(params[:id])
+      @attachment.approved = true
+      @attachment.save
+    when "guide"
+      @guide = Guide.find(params[:id])
+      @guide.approved = true
+      @guide.save
+    end
+    redirect_to admin_feed_path, notice: "You have successfully approved the #{params[:resource]}."
+  end
 
   protected
 

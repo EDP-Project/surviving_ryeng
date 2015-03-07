@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "Unable to find user"
     end
-
+    @report = @user.reports.build
     @friends = @user.friendships.order('created_at DESC').limit(4)
   end
 

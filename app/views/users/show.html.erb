@@ -22,15 +22,14 @@
 					<div class="box-inner">
 						<h3 class="name"><%= @user.username %></h3>
 						<h4 class="occupation"><%= @user.about_me %></h4>
-						<p class="location">RyEng Student</p>
-						<h3 class="followers-title"><%= @friends.any? ? "#{@user.username}'s recent friends:" : "0 Friends" %></h3>
+						<p class="location"><%= current_user.admin? ? "Surviving RyEng Admin" : "RyEng Student" %></p>
+						<h4 class="followers-title"><%= @friends.any? ? "#{@user.username}'s recent friends:" : "0 Friends" %></h4>
 						<ul class="followers-list">
 						  <% @friends.each do |f| %>
                 <li>
                   <%= link_to display_friend_gravatar(f, @user), friend_link(f, @user) %>
                 </li>
 							<% end %>
-							
 						</ul>
 					</div>
 					<ul class="social-list">
@@ -44,14 +43,14 @@
 						<li><a href="#" class="fa fa-comments-o"></a></li>
 						<li><a href="#" class="fa fa-dribbble"></a></li>
 						<li><a href="#" class="fa fa-twitter"></a></li>
-
-						<li><a href="#" class="fa fa-pinterest"></a></li>
+              
+						<li>
+              <%= link_to '#', id: 'new-report-trigger' do %>
+                <i class="fa fa-flag"></i>
+              <% end %>
+            </li>
 						<% if current_user.admin? && @user != current_user %>
-							<li>
-								<%= link_to '#ban-modal', id: 'ban-trigger' do %>
-									<i class="fa fa-user-times"></i>
-								<% end %>
-							</li>
+							<li><a href='#' id="ban-trigger"><id="#" class="fa fa-user-times"></a></li>
 						<% end %>
 					</ul>
 				</div>
@@ -91,7 +90,10 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-        
+
+<div id="new-report-container">
+  <%= render 'shared/new_report', report: @report, type: "User", reportable: @user %>
+</div>
 
 
 

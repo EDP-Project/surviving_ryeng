@@ -9,5 +9,9 @@ TODO:
 
 * Implement ban/delete user functionality
 
+* Implement messaging system 
+
+* Implement likes system
+
 
 ---

@@ -12,8 +12,6 @@ $(function(){
 
   $('[data-toggle="tooltip"]').tooltip();
 
-
-
     var $btnSets = $('#responsive'),
     $btnLinks = $btnSets.find('a');
  
