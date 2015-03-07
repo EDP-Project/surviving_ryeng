@@ -4,6 +4,16 @@ class Attachment < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
   has_many :reports, as: :reportable, dependent: :destroy
   
+  #-- Scopes (mainly used for searching/sorting)
+  scope :newest,          -> { order("updated_at DESC") }
+  scope :approved,        -> { where(approved: true) }
+  scope :most_downloaded, -> { order("download_count DESC") }
+  scope :most_popular,    -> { order("likes DESC") }
+
+  scope :search,          -> (q) do
+                              where("description LIKE ? OR upload_file_name LIKE ?", "%#{q}%", "%#{q}%") 
+                             end
+
   #-- Paperclip attachment
   has_attached_file :upload
 

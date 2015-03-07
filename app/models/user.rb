@@ -12,6 +12,13 @@ class User < ActiveRecord::Base
 
   before_save { self.email.downcase! }
 
+  #-- Scopes
+  scope :newest,          -> { order("created_at DESC") }
+  scope :most_popular,    -> { order("likes DESC") }
+  scope :search,          -> (q) do
+                              where("about_me LIKE ? OR username LIKE ?", "%#{q}%", "%#{q}%") 
+                             end
+
   #-- Friendships --
   has_many :friendships
   has_many :friends, through: :friendships

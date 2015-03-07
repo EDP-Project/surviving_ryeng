@@ -13,5 +13,7 @@ TODO:
 
 * Implement likes system
 
+* Implement search features and pagination
+
 
 ---

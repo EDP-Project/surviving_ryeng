@@ -26,7 +26,11 @@ class CoursesController < ApplicationController
   end
 
   def index
-    @courses = Course.all
+    if params[:q] 
+      @courses = Course.search(params[:q])
+    else
+      @courses = Course.all
+    end
   end
 
   def show

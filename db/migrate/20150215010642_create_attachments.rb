@@ -6,7 +6,7 @@ class CreateAttachments < ActiveRecord::Migration
       t.integer :download_count, default: 0
       t.text :description
       t.integer :likes, default: 0
-      t.integer :likes, default: 0
+      t.integer :dislikes, default: 0
       t.boolean :approved, default: false
       t.timestamps
     end
