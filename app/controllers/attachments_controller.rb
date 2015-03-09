@@ -5,11 +5,12 @@ class AttachmentsController < ApplicationController
 
   def index
     if params[:for_course]
-      @attachments = Attachment.where(attachable_type: 'Course', attachable_id: params[:for_course]).page(params[:page]).per(10)
+      @course = Course.find_by course_code: params[:for_course]
+      @attachments = @course.attachments.approved.page(params[:apage]).per(6)
     elsif params[:q]
-      @attachments = Attachment.search(params[:q]).page(params[:page]).per(10)
+      @attachments = Attachment.search(params[:q]).approved.page(params[:apage]).per(6)
     else
-      @attachments = Attachment.all.page(params[:page]).per(10)
+      @attachments = Attachment.all.approved.page(params[:apage]).per(6)
     end
   end
 

@@ -27,9 +27,14 @@ class CoursesController < ApplicationController
 
   def index
     if params[:q] 
-      @courses = Course.search(params[:q]).page(params[:page]).per(10)
+      @courses = Course.search(params[:q]).page(params[:cpage]).per(10)
     else
-      @courses = Course.all.page(params[:page]).per(10)
+      @courses = Course.all.page(params[:cpage]).per(10)
+    end
+
+    respond_to do |format|
+      format.js
+      format.html
     end
   end
 
@@ -38,7 +43,7 @@ class CoursesController < ApplicationController
     @guide = @course.guides.build
     @attachment = @course.attachments.build
     @guides = @course.guides.where(approved: true).limit(3)
-    @attachments = @course.attachments.where(approved: true).order('updated_at DESC').limit(4)
+    @attachments = @course.attachments.approved.limit(6)
     @enrollment = @course.enrollments.where(user_id: current_user.id)
     # Find last few enrolled users for display
     @recently_enrolled_users = []

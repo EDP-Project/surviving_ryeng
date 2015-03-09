@@ -1,0 +1,7 @@
+$(function(){
+//-- Course AJAX pagination
+<% if @courses.any? %>
+  $('.c-pag').html("<center><%= j paginate @courses, remote: true, param_name: 'cpage' %></center>");
+  $('#search-courses').html("<%= j render 'shared/courses', courses: @courses %>");
+<% end %>
+});

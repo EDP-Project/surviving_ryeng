@@ -1,16 +1,10 @@
-#course-container{
-  background-color: white;
-  max-width: 100%;
-}
-
-#recent-course-attachments {
-  .info {
-    max-height: 75px;
+.attachment-info {
+  max-height: 65px;
+  p {
+    position: relative;
+    bottom:20px;
   }
-
 }
-
-
 
 .square{
   border-radius: 0px!important;

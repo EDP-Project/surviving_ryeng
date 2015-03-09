@@ -30,13 +30,48 @@ module ApplicationHelper
     image_tag(gravatar_url, alt: user.username, class: "gravatar")
   end
 
-  def attachment_icon_for(attachment)
-    
-    case attachment.upload_content_type
-    when nil
+  def attachment_icon_for(a)
+    ext = a.upload_file_name.last(6)
+    type = a.upload_content_type
+    file_icon = {
+      code:     "<i class='fa fa-file-code-o fa-2x'></i>".html_safe,
+      img:      "<i class='fa fa-file-photo-o fa-2x'></i>".html_safe,
+      video:    "<i class='fa fa-file-video-o fa-2x'></i>".html_safe,
+      audio:    "<i class='fa fa-file-audio-o fa-2x'></i>".html_safe,
+      archive:  "<i class='fa fa-file-archive-o fa-2x'></i>".html_safe,
+      text:     "<i class='fa fa-file-text-o fa-2x'></i>".html_safe,
+      excel:    "<i class='fa fa-file-excel-o fa-2x'></i>".html_safe,
+      msword:   "<i class='fa fa-file-word-o fa-2x'></i>".html_safe,
+      ppt:      "<i class='fa fa-file-powerpoint-o fa-2x'></i>".html_safe,
+      pdf:      "<i class='fa fa-file-pdf-o fa-2x'></i>".html_safe,
+      default:  "<i class='fa fa-file-o fa-2x'></i>".html_safe
+    }
 
+    code_e = [".c", ".cpp", ".js", ".rb", ".py", ".m", ".vb", ".cs", ".class"]
+    archive_e = [".zip", ".rar", ".7z"]
+
+    if type.include? "image"
+      file_icon[:img]
+    elsif type.include? "video"
+      file_icon[:video]
+    elsif type.include? "audio"
+      file_icon[:audio]
+    elsif archive_e.any? { |e| ext.include?(e) }
+      file_icon[:archive]
+    elsif ext.include? ".txt"
+      file_icon[:text]
+    elsif ext.include? ".xls"
+      file_icon[:excel]
+    elsif (ext.include? ".doc") || (ext.include? ".docx")
+      file_icon[:msword]
+    elsif ext.include? ".ppt"
+      file_icon[:ppt]
+    elsif ext.include? ".pdf"
+      file_icon[:pdf]
+    elsif code_e.any? { |e| ext.include?(e) }
+      file_icon[:code]
     else
-      "<i class='fa fa-file-o fa-2x'></i>".html_safe
+      file_icon[:default]
     end  
 
   end

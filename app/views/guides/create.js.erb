@@ -9,6 +9,6 @@ $(function(){
   <% else %>
     $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
     <% flash[:error] = nil %>
-    $('#error-container').html("<%= j render 'shared/errors', record: @guide %>");
+    $('#guide-error-container').html("<%= j render 'shared/errors', record: @guide %>");
   <% end %>
 });

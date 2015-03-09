@@ -3,7 +3,8 @@
   <div class="search-wrapper">
     <% if @courses.any? %>
     <!-- COURSE RESULTS HERE -->
-    <h4>Course results (<%= @c_size %>)</h4> <hr>
+    <h4>Course results (<%= @c_size %>) &nbsp; <%= link_to '', courses_path(q: params[:q]), class: 'fa fa-external-link' %></h4>
+    <hr>
     <div id="search-courses">
       <%= render 'shared/courses', courses: @courses %>
     </div>
@@ -14,7 +15,8 @@
 
   <% if @users.any? %>
     <!-- USER RESULTS HERE -->
-    <h4>User results (<%= @u_size %>)</h4> <hr>
+    <h4>User results (<%= @u_size %>) &nbsp; <%= link_to '', users_path(q: params[:q]), class: 'fa fa-external-link' %></h4> 
+    <hr>
     <div id="search-users">
       <div class="row">
         <%= render 'shared/users', users: @users %>
@@ -27,7 +29,8 @@
 
   <% if @guides.any? %>
     <!-- GUIDE RESULTS HERE -->
-    <h4>Guide results (<%= @g_size %>)</h4> <hr>
+    <h4>Guide results (<%= @g_size %>) &nbsp; <%= link_to '', guides_path(q: params[:q]), class: 'fa fa-external-link' %></h4> 
+    <hr>
     <div id="search-guides">
       <%= render 'shared/guides', guides: @guides %>
     </div>
@@ -38,7 +41,8 @@
 
   <% if @attachments.any? %>
     <!-- ATTACHMENT RESULTS HERE -->
-  <h4>Attachment results (<%= @a_size %>)</h4> <hr>
+  <h4>Attachment results (<%= @a_size %>) &nbsp; <%= link_to '', attachments_path(q: params[:q]), class: 'fa fa-external-link' %></h4>
+  <hr>
     <div id="search-attachments">
       <%= render 'shared/attachments', attachments: @attachments %>
     </div>

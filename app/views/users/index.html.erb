@@ -1,7 +1,21 @@
-<h1>Users</h1><hr>
+<div class="main-card">
+  <h2>Users</h2>
+  <div class="search-wrapper">
+    <% if @users.any? %>
+    <!-- COURSE RESULTS HERE -->
+    <hr>
+    <div class="u-pag">
+      <center><%= paginate @users, param_name: 'upage', remote: true %></center>
+    </div>
+    <div id="search-users">
+      <%= render 'shared/users', users: @users %>
+    </div>
+    <div class="u-pag">
+      <center><%= paginate @users, param_name: 'upage', remote: true %></center>
+    </div>
+    <% else %> 
+    <h4>No users found.</h4>
+  <% end %>
 
-<% @users.each do |u| %>
-  <%= link_to "#{u.username}", user_path(id: u.id) %>
-  &nbsp; Member since <%= time_ago_in_words(u.created_at) %> 
-  <br>
-<% end %>
+  </div>
+</div>

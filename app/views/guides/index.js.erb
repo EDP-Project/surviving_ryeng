@@ -1,0 +1,7 @@
+$(function(){
+//-- Guide AJAX pagination
+<% if @guides.any? %>
+  $('.g-pag').html("<center><%= j paginate @guides, remote: true, param_name: 'gpage' %></center>");
+  $('#search-guides').html("<%= j render 'shared/guides', guides: @guides %>");
+<% end %>
+});

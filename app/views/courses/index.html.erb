@@ -1,9 +1,19 @@
 <div class="main-card">
-  <hr>
-  <%= paginate @courses %>
+  <h2>Courses</h2>
+  <div class="search-wrapper">
+    <% if @courses.any? %>
+    <!-- COURSE RESULTS HERE -->
+    <hr>
+    <div class="c-pag">
+      <center><%= paginate @courses, param_name: 'cpage', remote: true %></center>
+    </div>
+    <div id="search-courses">
+      <%= render 'shared/courses', courses: @courses %>
+    </div>
+    <div class="c-pag">
+      <center><%= paginate @courses, param_name: 'cpage', remote: true %></center>
+    </div>
+  <% end %>
 
-  <%= render 'courses', courses: @courses %>
-  
-  <%= paginate @courses %>
-  <hr>
+  </div>
 </div>

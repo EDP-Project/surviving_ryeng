@@ -21,5 +21,6 @@ class Attachment < ActiveRecord::Base
   #validates_attachment_size :upload, less_than: 26.megabyte
   #validates_attachment_content_type :upload, content_type: 
   do_not_validate_attachment_file_type :upload
+  
   validates_presence_of :upload
 end

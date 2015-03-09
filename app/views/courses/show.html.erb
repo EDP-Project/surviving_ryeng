@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md-4 user-pad text-center">
                     <h3>ATTACHMENTS</h3>
-                    <h4 id="attachment-count"><%= @course.attachments.count %></h4>
+                    <h4 id="attachment-count"><%= @course.attachments.approved.count %></h4>
                 </div>
             </div>
         </div>
@@ -122,16 +122,14 @@
             <div class="user-menu-content">
                 <h3>
                   Recently approved attachments 
-                  <%= link_to attachments_path(for_course: @course.id) do %>
-                    <i class="fa fa-external-link" data-toggle="tooltip" title="View all"></i>
-                  <% end %>
                 </h3>
-                <div class="row">
-                  <% @attachments.each do |a| %>
-                    <div class="col-md-4 course-attachments">
+                
+                <ul class="user-menu-list">
+                  <% if @attachments.any? %>
+                    <% @attachments.each do |a| %>
+                      <li class="col-xs-4">
                         
-                      <div id="recent-course-attachments">
-                        <div class="info">
+                        <div class="info attachment-info">
                           
                             <p>
                               <%= attachment_icon_for a %>
@@ -143,11 +141,25 @@
                           <span class="fa fa-heart-o"> <strong><%= a.likes %></strong></span>
                           <span class="fa fa-download pull-right"> <strong><%= a.download_count %></strong></span>
                         </div>
-                      </div>
+                  
+                      </li>
+                    <% end %>  
+                    <li>
+                      <%= link_to attachments_path(for_course: @course.course_code), class: 'btn btn-labeled btn-success' do %>
+                        <span class="btn-label"><i class="fa fa-external-link"></i></span>
+                        View all
+                      <% end %>  
+                    </li>
+                  <% else %>
+                    <p>No attachments for <%= @course.course_code %> have been approved yet. </p>
+                  <% end %>  
+                    <li>
                         
-                    </div>
-                  <% end %>
-                </div>
+                      
+                    </li>
+                </ul>
+
+                
             </div>
             <div class="user-menu-content">
                 <h2 class="text-center">

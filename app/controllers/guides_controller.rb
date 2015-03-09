@@ -12,11 +12,11 @@ class GuidesController < ApplicationController
 
   def index
     if params[:for_course]
-      @guides = Guide.where(course_code: params[:for_course])
+      @guides = Guide.where(course_code: params[:for_course]).page(params[:gpage]).per(6)
     elsif params[:q]
-      #Find guides based on search query
+      @guides = Guide.search(params[:q]).approved.page(params[:gpage]).per(6)
     else
-      @guides = Guide.all
+      @guides = Guide.all.page(params[:gpage]).per(6)
     end
   end
 
@@ -69,6 +69,11 @@ class GuidesController < ApplicationController
 
   def show
     guide
+    unless @guide.approved
+      unless (@guide.user == current_user || current_user.admin?)  
+        redirect_to root_path, notice: "You may not view this guide; it has not been approved by an administrator."
+      end
+    end
     @attachments = guide.attachments
     @report = @guide.reports.build
   end

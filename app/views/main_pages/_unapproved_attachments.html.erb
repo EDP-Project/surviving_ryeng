@@ -8,7 +8,9 @@
           <div class="info">
             <h2 class="title"><%= truncate a.upload_file_name, length: 25 %></h2>
             <p class="desc">
-              Attachment for <%= a.attachable.course_code %> <br>
+              Attachment for <%= a.attachable.course_code if a.attachable_type == "Course" %> 
+                             <%= a.attachable.title if a.attachable_type == "Guide" %>
+              <br>
               Uploader: <%= link_to a.user.username, user_path(username: a.user.username) %>
             </p>
           </div>

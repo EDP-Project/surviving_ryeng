@@ -3,14 +3,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :banned]
   before_action :check_authorization, only: [:ban, :unban]
   def index
-    @users = User.all
-
-    #Uncomment when using kaminari + search
-    # if params[:query].present? 
-    #   @users = User.search(params[:query]).page(params[:page]).per(12)
-    # else
-    #   @users = User.all.page(params[:page]).per(12)
-    # end
+    if params[:q].present? 
+      @users = User.search(params[:q]).page(params[:upage]).per(6)
+    else
+      @users = User.all.page(params[:upage]).per(6)
+    end
   end
 
   def show

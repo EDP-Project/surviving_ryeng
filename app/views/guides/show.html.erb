@@ -9,6 +9,9 @@
   <% if permitted_to_modify? @guide %>
     <%= link_to 'Edit', edit_guide_path(@guide, course_code: @guide.course.course_code), class: 'btn btn-info' %>
     <%= link_to 'Delete', guide_path(@guide), class: 'btn btn-danger', method: :delete %>
+    <% if !@guide.approved? && current_user.admin? %>
+      <%= link_to 'Approve', approve_path(resource: 'guide', id: @guide.id), method: :patch, class: 'btn btn-success'%>
+    <% end %>
   <% end %>
 <% end %>
 

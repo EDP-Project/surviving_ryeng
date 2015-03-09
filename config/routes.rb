@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 #-- User routes --
   #Devise user routes
   devise_for :users, :skip => [:sessions], controllers: {registrations: 'registrations'}
-
+  resources :users, only: [:index]
   as :user do
     #custom routes for logging in and out
     get '/signin' => 'devise/sessions#new', :as => :new_user_session
@@ -35,15 +35,14 @@ Rails.application.routes.draw do
 
   #Route for allowing users to be viewed publicly
   match '/user/:username', to: 'users#show', as: :user, via: :get
-  match '/users/:id', to: 'users#show', via: :get
-  match '/users', to: 'users#index', via: :get
+  
 
+  resources :users, only: [:index] do
+    resources :friend_requests, only: [:create]
+    #resources :likes, only: [:create]
+    #resources :messages, only: [:new]
+  end
 
-    resources :users, only: [:index] do
-      resources :friend_requests, only: [:create]
-      #resources :likes, only: [:create]
-      #resources :messages, only: [:new]
-    end
 #-- End of User routes --
 
 #-- Friendship routes --

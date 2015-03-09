@@ -1,9 +1,19 @@
 <div class="main-card">
-  <hr>
-  <%= paginate @attachments %>
+  <h2>Attachments <%= "for #{@course.course_code}" if @course %></h2>
+  <div class="search-wrapper">
+    <% if @attachments.any? %>
+    <!-- COURSE RESULTS HERE -->
+    <hr>
+    <div class="a-pag">
+      <center><%= paginate @attachments, param_name: 'apage', remote: true %></center>
+    </div>
+    <div id="search-attachments">
+      <%= render 'shared/attachments', attachments: @attachments %>
+    </div>
+    <div class="a-pag">
+      <center><%= paginate @attachments, param_name: 'apage', remote: true %></center>
+    </div>
+  <% end %>
 
-  <%= render 'attachments', attachments: @attachments %>
-  
-  <%= paginate @attachments %>
-  <hr>
+  </div>
 </div>

@@ -1,0 +1,7 @@
+$(function(){
+//-- User AJAX pagination
+<% if @users.any? %>
+  $('.u-pag').html("<center><%= j paginate @users, remote: true, param_name: 'upage' %></center>");
+  $('#search-users').html("<%= j render 'shared/users', users: @users %>");
+<% end %>
+});

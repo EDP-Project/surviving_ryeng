@@ -1,0 +1,21 @@
+<div class="main-card">
+  <h2>Guides</h2>
+  <div class="search-wrapper">
+    <% if @guides.any? %>
+    <!-- COURSE RESULTS HERE -->
+    <hr>
+    <div class="g-pag">
+      <center><%= paginate @guides, param_name: 'gpage', remote: true %></center>
+    </div>
+    <div id="search-guides">
+      <%= render 'shared/guides', guides: @guides %>
+    </div>
+    <div class="g-pag">
+      <center><%= paginate @guides, param_name: 'gpage', remote: true %></center>
+    </div>
+    <% else %> 
+    <h4>No guides found.</h4>
+  <% end %>
+
+  </div>
+</div>

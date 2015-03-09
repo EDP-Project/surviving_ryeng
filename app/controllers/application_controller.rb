@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
     when "guide"
       @guide = Guide.find(params[:id])
       @guide.approved = true
+      if @guide.attachments.any? 
+        @guide.attachments.each { |a| a.approved = true; a.save; }
+      end
       @guide.save
     end
     redirect_to admin_feed_path, notice: "You have successfully approved the #{params[:resource]}."

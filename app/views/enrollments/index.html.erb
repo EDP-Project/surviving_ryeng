@@ -1,53 +1,38 @@
 
 <div id = "enrollment_encapsulation">
 	<div class = "main-card">
-		<h2>Courses you are currently taking</h2><hr>
-
-
+		<h2>My Courses</h2><hr>
 		
 		<div class="row">
 		
-		<% @enrollments.each do |e| %>
-
-		<!-- Start of #1 -->
-			<div class="col-md-3">
-			  <div class="well well-sm">
-					<div class="row">
-				    <div class="col-xs-12 col-md-12 section-box">
-				      <center><%= link_to e.course.course_code, course_path(course_code: e.course.course_code) %></center>
-				        <p><%= truncate e.course.description, length: 70 %></p>
-				        <hr />
-				        <div class="row rating-desc">
-			            <div class="col-md-12">
-			              <i class="fa fa-file-text-o"></i> &nbsp; <%= e.course.guides.count %>
-			              <span class="separator">|</span>
-			              <i class="fa fa-paperclip"></i> &nbsp; <%= e.course.attachments.where(approved: true).count %>
-			            </div>
-				        </div>
-				    </div>
-					</div>
-			  </div>
-			</div>
-		<!-- End of #1 -->
-
+		<% if @enrollments.any? %>
+			<% @enrollments.each do |e| %>
+				<div class="col-md-3">
+				  <div class="well well-sm">
+						<div class="row">
+					    <div class="col-xs-12 col-md-12 section-box">
+					      <center><%= link_to e.course.course_code, course_path(course_code: e.course.course_code) %></center>
+					        <p><%= truncate e.course.description, length: 70 %></p>
+					        <hr />
+					        <div class="row rating-desc">
+				            <div class="col-md-12">
+				              <i class="fa fa-file-text-o"></i> &nbsp; <%= e.course.guides.count %>
+				              <span class="separator">|</span>
+				              <i class="fa fa-paperclip"></i> &nbsp; <%= e.course.attachments.where(approved: true).count %>
+				            </div>
+					        </div>
+					    </div>
+						</div>
+				  </div>
+				</div>
+			<% end %>
+		<% else %>
+			<p>
+				You are not enrolled in any courses. <%= link_to 'View all courses', courses_path %> or find one using the
+				search feature (side navigation).
+			</p>
 		<% end %>
+
+		</div>
 	</div>
-
-
-
-	<div class="col-md-4"></div>
-	<div class="col-md-4">
-		<ul class="pagination">
-		    <li><a href="#">&laquo;</a></li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li><a href="#">&raquo;</a></li>
-		</ul>
-	</div>
-	<div class="col-md-4"></div>
-
-</div>
 </div>
