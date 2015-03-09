@@ -9,7 +9,7 @@
         <div class="card-info">
           
           <div class="name">
-            <p><%= link_to a.upload_file_name, a %></p> 
+            <p><%= link_to truncate(a.upload_file_name, length: 25), a %></p> 
           </div>
           
           <hr>
