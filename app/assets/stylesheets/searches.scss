@@ -1,3 +1,214 @@
-// Place all the styles related to the Searches controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.search-wrapper {
+  max-width: 95%;
+  margin: auto;
+}
+
+/* Card */
+.card{
+  box-shadow: (0 3px 10px rgba(0,0,0,0.5));
+  margin: 6px;
+  display:block;
+  position:relative;
+  padding:20px;
+}
+
+.card{
+  .card-modal{
+    transition: all .3s cubic-bezier(.19, 1, .22, 1);
+    border-radius: 10px;
+    background-color:#bdc3c7;
+    color:white;
+
+    display:none;
+    position:absolute;
+    top:40px;
+    left:130px;
+    z-index:2;
+    padding:20px;
+    
+    &.active{      
+      left:140px;
+    }
+   
+    
+    &:before{
+      
+      content: "";
+            
+      border-style: solid;
+      border-width: 15px 15px 15px 0;
+      border-color: transparent #bdc3c7 transparent transparent;
+      
+      width: 0;
+      height: 0;
+      display:block;
+      
+      position:absolute;
+      top:20%;
+      left:-15px;
+    }
+  }
+}
+
+
+.card{
+  .card-image{
+    position:absolute;
+    top:20px;
+    left:20px;           
+  }
+  
+  .card-image{
+    img {
+      border-radius: 50px;
+
+      background-position: -45px 0;
+      background-repeat:no-repeat;
+      background-size:cover;
+      border:0;    
+      cursor:pointer;
+
+      width:100px;
+      height:100px;
+      overflow:hidden;
+      position:absolute;
+      padding:0;      
+    
+    
+    }
+    i {
+      font-size: 6em;
+      color: black;
+    }
+  }
+}
+
+
+.card{
+  .card-info{    
+    margin-left:120px;    
+  }
+}
+
+
+.card{
+  .card-info{
+    .name{
+      
+      font-size:28px;
+      font-weight:100;        
+
+      display:inline-block;
+      vertical-align:top;
+      position:relative;            
+    }    
+  }
+}
+
+
+.card{
+  .card-info{
+
+    .social-network{
+      font-size:0;
+      
+      display:inline-block;
+      vertical-align:top;  
+      overflow:hidden;
+      margin-bottom:15px;
+        
+      @media(min-width:639px){
+        float:right;        
+        margin:5px 0 0;
+        }
+      
+      .icon{    
+        background-color:#bdc3c7;
+        border:0;
+        border-radius: 50%;
+        
+        width:32px;
+        height:32px;
+        display:inline-block;
+        vertical-align:top;  
+        overflow:hidden;
+        position:relative;
+        
+        margin-left:10px;
+        
+        &:first-child{
+          margin:0;
+        }
+        
+        &:before{
+          transition: all .500s cubic-bezier(.19, 1, .22, 1); 
+          border-radius: 16px;
+          
+          content: "";
+          width:32px;
+          height:32px;
+          display:block;
+          position:absolute;
+          top:0;
+          left:0;
+          z-index:1;
+        }
+
+        &.facebook{
+          &:before{
+            border:rgba(59,89,152, 0.7) 0 solid;
+          }
+          &:hover{
+            &:before{                            
+              border-width:30px;
+            }
+          }
+        }
+        
+        &.twitter{
+          &:before{
+            border:rgba(15,191,242, 0.7) 0 solid;
+          }
+          &:hover{
+            &:before{                            
+              border-width:30px;
+            }
+          }
+        }
+        
+        &.youtube{
+          &:before{                            
+            border:rgba(179,18,23, 0.7) 0 solid;
+          }
+          &:hover{
+            &:before{                            
+              border-width:30px;
+            }
+          }
+        }
+
+        i{          
+          color:white;
+          font-size:16px;
+          text-align:center;
+
+          width:100%;
+          height:100%;
+          position:absolute;    
+          top:50%;  
+          z-index:1;
+          margin-top:-7px;
+        }        
+      }
+    }
+  }
+}
+
+
+.card{
+  .card-info{
+    hr{
+      margin:0 0 15px;
+    }
+  }
+}

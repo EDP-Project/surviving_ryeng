@@ -27,9 +27,9 @@ class CoursesController < ApplicationController
 
   def index
     if params[:q] 
-      @courses = Course.search(params[:q])
+      @courses = Course.search(params[:q]).page(params[:page]).per(10)
     else
-      @courses = Course.all
+      @courses = Course.all.page(params[:page]).per(10)
     end
   end
 

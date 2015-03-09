@@ -1,5 +1,9 @@
 <div class="main-card">
-  
-  <%= render 'courses', courses: @courses %>
+  <hr>
+  <%= paginate @courses %>
 
+  <%= render 'courses', courses: @courses %>
+  
+  <%= paginate @courses %>
+  <hr>
 </div>

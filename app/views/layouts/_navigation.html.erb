@@ -16,11 +16,12 @@
     <ul>
 
       <li class="searchForm">
-        <a href="#" class="nav-icon fa fa-search">
+        <a class="nav-icon fa fa-search">
           <span>
-        
-              <%= text_field_tag 'site-wide-search', nil, placeholder: 'Search...', class: 'search' %>
-           
+            <%= form_tag search_path, method: :get do %>
+              <%= text_field_tag :q, params[:q], placeholder: 'Search...', class: 'search', id: 'site-wide-search' %>
+              <% button_tag type: 'submit', hidden: 'true', name: nil %>
+            <% end %>
           </span>
         </a>
       </li>

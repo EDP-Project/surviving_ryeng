@@ -5,11 +5,11 @@ class AttachmentsController < ApplicationController
 
   def index
     if params[:for_course]
-      @attachments = Attachment.where(attachable_type: 'Course', attachable_id: params[:for_course])
+      @attachments = Attachment.where(attachable_type: 'Course', attachable_id: params[:for_course]).page(params[:page]).per(10)
     elsif params[:q]
-      #Find guides based on search query
+      @attachments = Attachment.search(params[:q]).page(params[:page]).per(10)
     else
-      @attachments = Attachment.all
+      @attachments = Attachment.all.page(params[:page]).per(10)
     end
   end
 
@@ -17,9 +17,8 @@ class AttachmentsController < ApplicationController
     attachment
     @report = @attachment.reports.build
     @attachments = Attachment.where(description: @attachment.description)
-
-    
   end
+  
   def new
     @attachment = Attachment.new
     @attachments = Attachment.all
@@ -46,15 +45,18 @@ class AttachmentsController < ApplicationController
   end
 
   def destroy
-    find_attachable
+    attachment
+    find_attachable if params[:attachment]
     if user_permitted?
       if @attachment.destroy 
-        if @attachment.attachable_type == "Guide"
+        if !@attachable.nil? && @attachment.attachable_type == "Guide"
           flash[:success] = "Attachment successfully removed from guide"
           redirect_to edit_guide_path(id: params[:guide_id])
-        else
+        elsif !@attachable.nil? && @attachment.attachable_type == "Course"
           flash[:success] = "Attachment successfully removed from course"
           redirect_to @attachable
+        elsif current_user.admin?
+          redirect_to admin_feed_path, notice: "Attachment removed."
         end
        
       else
@@ -87,7 +89,6 @@ end
   end
 
   def user_permitted?
-    @attachment = Attachment.find(params[:id])
     @attachment.user == current_user || current_user.admin?
   end
 

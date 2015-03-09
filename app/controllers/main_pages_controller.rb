@@ -4,9 +4,9 @@ class MainPagesController < ApplicationController
 
   def admin_feed
     check_authorization
-    @reports = Report.all
-    @unapproved_guides = Guide.where(approved: false)
-    @unapproved_attachments = Attachment.where(approved: false)
+    @reports = Report.all.page(params[:rp]).per(6)
+    @unapproved_guides = Guide.where(approved: false).page(params[:gp]).per(6)
+    @unapproved_attachments = Attachment.where(approved: false).page(params[:ap]).per(6)
   end
 
 

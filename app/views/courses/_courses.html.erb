@@ -1,0 +1,7 @@
+<% @courses.each do |course| %>
+  <h5><%= course.course_code %> | <%= course.title %><br></h5>
+  <p>
+    <%= course.description %>
+  </p>
+  <br>
+<% end %>

@@ -1,0 +1,33 @@
+<div class="row">
+  <% users.each do |u| %>
+    <div class="col-xs-6">
+      <div class="card">                
+        <div class="card-image"> 
+          <%= link_to gravatar_for(u, size: 100), user_path(username: u.username) %>
+        </div>
+        
+        <div class="card-info">
+          
+          <div class="name">
+            <p><%= link_to u.username, user_path(username: u.username) %></p> 
+          </div>
+          
+          <hr>
+          
+          <div class="content">
+            <p>
+              <b>About <%= u.username %>:</b> 
+              <% if u.about_me.blank? %>
+                N/A
+              <% else %>
+                <%= truncate u.about_me, length: 200 %>
+              <% end %> 
+
+            </p>
+            <p><b>Contributions:</b> <%= u.guides.size + u.attachments.size %></p>
+          </div>
+        </div>
+      </div>    
+    </div>
+  <% end %>
+</div>

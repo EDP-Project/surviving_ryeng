@@ -16,17 +16,20 @@
               <div class="tab-content">
                   <div class="tab-pane fade in active" id="reports-tab">
 
-                  <%= render 'reports', reports: @reports %>
-                    
+                    <%= render 'reports', reports: @reports %>
+                    <%= paginate @reports, param_name: :rp %>
+                  
                   </div>
                   <div class="tab-pane fade" id="tab2primary">
                   
-                  <%= render 'unapproved_guides', unapproved_guides: @unapproved_guides %>
-
+                    <%= render 'unapproved_guides', unapproved_guides: @unapproved_guides %>
+                    <%= paginate @unapproved_guides, param_name: :gp %>
+                  
                   </div>
                   <div class="tab-pane fade" id="tab3primary">
                   
-                  <%= render 'unapproved_attachments', attachments: @unapproved_attachments %>
+                    <%= render 'unapproved_attachments', attachments: @unapproved_attachments %>
+                    <%= paginate @unapproved_attachments, param_name: :ap %>
 
                   </div>
               </div>

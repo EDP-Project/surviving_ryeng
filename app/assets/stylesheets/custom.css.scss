@@ -23,6 +23,12 @@ a.btn{
 	margin-left: 70px;
 }
 
+//-- Pagination styling
+
+.pagination {
+  //margin-left: 33%;
+}
+
 //-- Main card styling 
 
 .main-card {
@@ -34,14 +40,14 @@ a.btn{
   width: 80%;
   height: 100%;
   background-color: #fff;
-  padding-bottom: 80px;
+  margin-bottom: 80px;
   -webkit-box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);
   box-shadow: 3px 6px 36px 3px rgba(0,0,0,0.75);
 
 h2, p{
     padding: 20px;
-    text-align: center;
+  
   }
   p{
     color: #191919;

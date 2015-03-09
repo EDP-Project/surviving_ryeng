@@ -191,7 +191,10 @@ nav {
       outline:0;
       font-weight:300;
       background:transparent;
-      color:#5b6064;      
+      color:#5b6064; 
+      position: fixed;
+      top: 78px;  
+      &:hover { color: #fff }
     }
 
         
@@ -219,7 +222,9 @@ nav {
     
     #sideNav li.searchForm:hover input.search::-moz-placeholder {
       color:#fff;   
-    }       
+    }  
+   
+
 
 
 /************************************************************************************
@@ -227,10 +232,7 @@ nav {
 * Menu Icons
 *
 /************************************************************************************/    
-   
-  #site-wide-search {
-    margin-left: 30px;
-  } 
+
   .nav-icon::before {
     margin-left: -52px;
     font-size: 1.8em;

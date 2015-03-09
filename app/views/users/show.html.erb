@@ -27,13 +27,13 @@
 						<ul class="followers-list">
 						  <% @friends.each do |f| %>
                 <li>
-                  <%= link_to display_friend_gravatar(f, @user), friend_link(f, @user) %>
+                  <%= link_to gravatar_for(f, size: 300), user_path(username: f.username) %>
                 </li>
 							<% end %>
 						</ul>
 					</div>
 					<ul class="social-list">
-            <% unless (Friendship.friendship_exists?(@user, current_user) || @user == current_user)  %>
+            <% unless @friends.include? current_user || @user == current_user  %>
               <li>
                 <%= link_to user_friend_requests_path(user_id: @user.id), method: :post do %>
                   <i class="fa fa-user-plus"></i>

@@ -68,8 +68,11 @@ gem 'dropzonejs-rails'
 #Use MiniMagick for image processing
 gem "mini_magick"
 
-#Use Unicorn as the web server (WEBrick is too slow)
-gem 'unicorn'
+#Use Puma as the web server (WEBrick is too slow)
+gem 'puma'
+
+#Use Rack Time-out to stop working on timed out requests
+gem 'rack-timeout'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

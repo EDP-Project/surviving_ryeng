@@ -1,0 +1,30 @@
+<% courses.each do |c| %>
+  <div class="row">    
+    <div class="col-xs-12">
+
+      <div class="card">                
+
+        <div class="card-image"> 
+          <%= link_to (course_image c), course_path(course_code: c.course_code) %>
+        </div>
+        
+        <div class="card-info">
+          
+          <div class="name">
+            <p><%= link_to "#{c.course_code} | #{c.title}", course_path(course_code: c.course_code) %></p> 
+          </div>
+          
+          <hr>
+          
+          <div class="content">
+            <p>
+              <b>Description:</b> 
+              <%= c.description %>
+            </p>
+            <p><b>Enrollments:</b> <%= c.enrollments.count %></p>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+<% end %>

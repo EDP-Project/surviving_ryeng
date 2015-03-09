@@ -1,0 +1,9 @@
+<div class="main-card">
+  <hr>
+  <%= paginate @attachments %>
+
+  <%= render 'attachments', attachments: @attachments %>
+  
+  <%= paginate @attachments %>
+  <hr>
+</div>

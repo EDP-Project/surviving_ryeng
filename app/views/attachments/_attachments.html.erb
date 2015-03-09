@@ -1,0 +1,7 @@
+<% @attachments.each do |a| %>
+  <h5><%= a.upload_file_name %> | <%= "#{a.attachable.course_code} resource" %></h5>
+  <h4>
+    <%= a.description %>
+  </h4>
+  <br>
+<% end %>

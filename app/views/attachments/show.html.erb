@@ -8,8 +8,8 @@
     <% end %>
 
     <% else %>
-     <h2>Attachment #<%= @attachment.id %></h2> 
-     <%= link_to @attachment.upload_file_name, download_path(id: @attachment.id) %>
+     <h2><%= @attachment.upload_file_name %></h2> 
+     <%= link_to 'Download', download_path(id: @attachment.id) %>
   <% end %>
 
   <strong><h4>Description</h4></strong><hr>

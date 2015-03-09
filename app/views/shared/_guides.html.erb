@@ -1,0 +1,31 @@
+<div class="row"> 
+  <% guides.each do |g| %>
+   
+    <div class="col-xs-12">
+
+      <div class="card">                
+
+        <div class="card-image"> 
+          <%= link_to (course_image g.course), course_path(course_code: g.course.course_code) %>
+        </div>
+        
+        <div class="card-info">
+          
+          <div class="name">
+            <p><%= link_to truncate(g.title,length: 100), g %></p> 
+          </div>
+          
+          <hr>
+          
+          <div class="content">
+            <p>
+              <b>Guide for:</b> 
+              <%= g.course.course_code %>
+            </p>
+            <p><b>Attachments:</b> <%= g.attachments.count %></p>
+          </div>
+        </div>
+      </div>    
+    </div>
+  <% end %>  
+</div>
