@@ -6,7 +6,7 @@
         <h4 class="modal-title"><%= "Create new report against this #{type.downcase}" %></h4>
       </div>
       <div class="modal-body">
-        <div id="error-container">
+        <div id="report-error-container">
           <%= render 'shared/errors', record: report %>  
         </div>
         <%= form_for report, remote: true do |f| %>

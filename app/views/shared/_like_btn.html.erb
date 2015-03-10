@@ -1,0 +1,6 @@
+
+  <%= link_to like_path(resource: resource.class.to_s.downcase, id: resource.id), 
+              class: 'btn btn-labeled btn-success', id: 'like-btn', method: :post, remote: true do %>
+    <span class="btn-label"><i class="fa fa-thumbs-o-up"></i></span>
+    Like
+  <% end %>

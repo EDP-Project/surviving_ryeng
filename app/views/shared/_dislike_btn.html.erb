@@ -1,0 +1,6 @@
+
+  <%= link_to dislike_path(resource: resource.class.to_s.downcase, id: resource.id), 
+              class: 'btn btn-labeled btn-danger', id: 'dislike-btn', method: :delete, remote: true do %>
+    <span class="btn-label"><i class="fa fa-thumbs-o-down"></i></span>
+    Disike
+  <% end %>

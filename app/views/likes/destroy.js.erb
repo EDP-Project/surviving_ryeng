@@ -1,0 +1,7 @@
+$(function(){
+  $('#dislike-btn').hide();
+    $('#liking-button-container').html("<%= j render 'shared/like_btn', resource: @resource %>");
+    $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
+    <%= flash[:success] = nil %>
+    <%= flash[:error] = nil %>
+});

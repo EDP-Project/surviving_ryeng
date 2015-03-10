@@ -13,11 +13,12 @@ class User < ActiveRecord::Base
   before_save { self.email.downcase! }
 
   #-- Scopes
-  scope :newest,          -> { order("created_at DESC") }
-  scope :most_popular,    -> { order("likes DESC") }
-  scope :search,          -> (q) do
-                              where("about_me LIKE ? OR username LIKE ?", "%#{q}%", "%#{q}%") 
-                             end
+  scope :newest,       -> { order("created_at DESC") }
+  scope :most_popular, -> { order("likes DESC") }
+  scope :search,       -> (q) do
+                                where("about_me LIKE ? OR username LIKE ?", "%#{q}%", "%#{q}%") 
+                              end
+  
 
   #-- Friendships --
   has_many :friendships
@@ -31,8 +32,12 @@ class User < ActiveRecord::Base
   #-- Guides --
   has_many :guides
 
+  #-- Likes --
+  has_many :likes, foreign_key: "liker_id"
+
   #-- File attachments --
   has_many :attachments
+  has_many :liked_attachments, class_name: "Attachment"
 
   #-- Reports --
   has_many :reports, as: :reportable, dependent: :destroy

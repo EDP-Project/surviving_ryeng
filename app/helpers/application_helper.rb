@@ -80,6 +80,10 @@ module ApplicationHelper
     resource.user == current_user || current_user.admin? 
   end
 
+  def liked?(resource)
+    Like.where(likeable: resource, liker_id: current_user.id).present?
+  end
+
   def course_image(course)
 
     case course.course_code[0..2]

@@ -3,6 +3,7 @@ class Attachment < ActiveRecord::Base
   belongs_to :user
   belongs_to :attachable, polymorphic: true
   has_many :reports, as: :reportable, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
   
   #-- Scopes (mainly used for searching/sorting)
   default_scope           -> { order("updated_at DESC") }
@@ -23,4 +24,15 @@ class Attachment < ActiveRecord::Base
   do_not_validate_attachment_file_type :upload
   
   validates_presence_of :upload
+
+
+  def like
+    self.likes += 1
+    current_user.liked_attachments << self unless current_user.liked_attachments.include? self
+  end
+
+  def dislike
+    self.dislikes += 1
+    current_user.liked_attachments.delete(self) if current_user.liked_attachments.include? self
+  end
 end

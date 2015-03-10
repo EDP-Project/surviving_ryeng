@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220191813) do
+ActiveRecord::Schema.define(version: 20150310010552) do
 
   create_table "attachments", force: true do |t|
     t.integer  "user_id"
@@ -83,6 +83,17 @@ ActiveRecord::Schema.define(version: 20150220191813) do
 
   add_index "guides", ["course_id"], name: "index_guides_on_course_id"
   add_index "guides", ["user_id"], name: "index_guides_on_user_id"
+
+  create_table "likes", force: true do |t|
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.integer  "liker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type"
+  add_index "likes", ["liker_id"], name: "index_likes_on_liker_id"
 
   create_table "reports", force: true do |t|
     t.integer  "reporter_id"

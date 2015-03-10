@@ -15,11 +15,19 @@
   <% end %>
 <% end %>
 
+<div id="liking-button-container">
+  <% if liked?(@guide) %>
+    <%= render 'shared/dislike_btn', resource: @guide %>
+  <% else %>
+    <%= render 'shared/like_btn', resource: @guide %>
+  <% end %>
+</div>
+
   <button type="button" class="btn btn-primary btn-lg" id="new-report-trigger">
- <i class="fa fa-flag"></i>
-</button>
+    <i class="fa fa-flag"></i>
+  </button>
+</div>
 
 <div id="new-report-container">
   <%= render 'shared/new_report', report: @report, type: "Guide", reportable: @guide %>
-</div>
 </div>

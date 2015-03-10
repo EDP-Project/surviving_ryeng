@@ -5,7 +5,7 @@ $(function(){
   $('#new-report-modal').modal('hide');
 <% else %>
   $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
-  $('#error-container').html("<%= j render 'shared/errors', record: @attachment %>");
+  $('#report-error-container').html("<%= j render 'shared/errors', record: @attachment %>");
   <% flash[:error] = nil %>
 <% end %>
 });

@@ -115,6 +115,22 @@ class GuidesController < ApplicationController
     end
   end
 
+  def like
+    guide.like
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @guide }
+    end
+  end
+
+  def dislike
+    guide.dislike
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @guide }
+    end
+  end
+
 private
 
   def guide

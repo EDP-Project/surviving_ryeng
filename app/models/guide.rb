@@ -4,6 +4,7 @@ class Guide < ActiveRecord::Base
   belongs_to :user
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :reports, as: :reportable, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
 
   #-- Attachment attributes
   accepts_nested_attributes_for :attachments, allow_destroy: true, reject_if: proc { |attributes| attributes[:attachment].nil? }

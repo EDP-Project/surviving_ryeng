@@ -77,16 +77,13 @@ Rails.application.routes.draw do
     resources :reports, only: [:new]
   end
 
-#-- End of guides routes --
-
 #-- Report routes --
-
   resources :reports, only: [:new, :show, :create, :destroy]
 
-#-- End of report routes --
-
-
-
+#-- Like/Dislike routes --
+  match '/like/:resource/:id', to: "likes#create", as: :like, via: :post
+  match '/dislike/:resource/:id', to: "likes#destroy", as: :dislike, via: :delete
+  match '/favourites', to: "likes#index", as: :favourites, via: :get
 
 
 
