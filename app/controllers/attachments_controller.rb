@@ -12,12 +12,14 @@ class AttachmentsController < ApplicationController
     else
       @attachments = Attachment.all.approved.page(params[:apage]).per(6)
     end
+    @type = "favourite"
   end
 
   def show
     attachment
     @report = @attachment.reports.build
-    @attachments = Attachment.where(description: @attachment.description)
+    @attachments = Attachment.where(description: @attachment.description).page(params[:apage]).per(6)
+    @type = "favourite"
   end
   
   def new

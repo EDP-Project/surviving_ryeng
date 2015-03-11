@@ -3,17 +3,17 @@
 
   <% if @attachments.size > 1 %>
     <h2>Attachment Set</h2>
-    <% @attachments.each do |a| %>
-    <%= link_to a.upload_file_name, download_path(id: a.id) %> 
-    <% end %>
-
+    <div id="a-pag">
+      <center><%= paginate @attachments, param_name: 'apage', remote: true %></center>
+    </div>
     <% else %>
      <h2><%= @attachment.upload_file_name %></h2> 
-     <%= link_to 'Download', download_path(id: @attachment.id) %>
   <% end %>
+  <p><strong>Description:</strong>
+    <%= @attachment.description %></p>
 
-  <strong><h4>Description</h4></strong><hr>
-    <p><%= @attachment.description %></p>
+    <%= render 'shared/attachments', attachments: @attachments %>
+  
     
   <br>
 

@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
                                 where("about_me LIKE ? OR username LIKE ?", "%#{q}%", "%#{q}%") 
                               end
   
+  #Mailboxer requirement
+  acts_as_messageable
 
   #-- Friendships --
   has_many :friendships
@@ -43,6 +45,10 @@ class User < ActiveRecord::Base
   has_many :reports, as: :reportable, dependent: :destroy
   has_many :reports_sent, class_name: "Report", foreign_key: "reporter_id"
 
+#Mailboxer name
+  def name
+    username
+  end
 
 #Used to allow users to login via username
   def login=(login)

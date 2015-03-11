@@ -1,0 +1,111 @@
+<div class="main-card">
+  <div class="row">
+  <div class="custom-box" id= "conversations-box">
+  <h2 id="nav-tabs">Conversations</h2>
+    <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+      <li class="active custom-tab"><a href="#incoming" data-toggle="tab">Active</a></li>
+      <li class="custom-tab"><a href="#trash" data-toggle="tab">Trash</a></li>
+      <li class="custom-tab"><a href="#compose" data-toggle="tab">New</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade active in" id="incoming">
+        <% if mailbox.inbox.any? %>
+          <div class="qa-message-list" id="wallmessages">
+          <% mailbox.inbox.each do |conversation| %>
+            <div class="message-item" id="m16">
+              <div class="message-inner">
+                <div id="trash-link">
+                  <%= link_to trash_conversation_path(conversation), method: :post do %>
+                    <span class="fa fa-trash-o"></span> 
+                  <% end %>                  
+                </div>
+                <div class="message-head clearfix">
+                  <div class="avatar pull-left">
+                    <%= gravatar_for conversation.messages.last.sender, size: 60 %>
+                  </div>
+                  <div class="user-detail"> 
+                    <h5 class="handle"><%= link_to conversation.messages.last.subject, conversation_path(conversation) %></h5>
+                    <div class="post-meta">
+                      <div class="asker-meta">
+                        <span class="qa-message-what"></span>
+                        <span class="qa-message-when">
+                          <span class="qa-message-when-data"><strong class="info-header">Sent: </strong><%= conversation.updated_at %></span>
+                        </span>
+                        <span class="qa-message-who">
+                          <span class="qa-message-who-pad">, by </span>
+                          <span class="qa-message-who-data">
+                          <%= link_to "#{conversation.messages.last.sender.first_name} #{conversation.messages.last.sender.last_name}", conversation.messages.last.sender %>
+                          </span>
+                        </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="qa-message-content">
+                    <p><%= conversation.messages.last.body %></p>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+          </div>
+        <% else %>
+        No conversations active. Conversations become <em>active</em> when you receive a reply. 
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="trash">
+        <% if mailbox.trash.any? %>
+          <div class="qa-message-list" id="wallmessages">
+          <% mailbox.trash.each do |conversation| %>
+            <div class="message-item" id="m16"> 
+              <div class="message-inner">
+                <div class="message-head clearfix">
+                  <div class="avatar pull-left">
+                    <%= gravatar_for conversation.originator, size: 60 %>
+                  </div>
+                  <div class="user-detail">
+                    <h5 class="handle"><%= link_to conversation.subject, conversation_path(conversation) %></h5>
+                    <div class="post-meta">
+                      <div class="asker-meta">
+                        <span class="qa-message-what"></span>
+                        <span class="qa-message-when">
+                          <span class="qa-message-when-data"><strong class="info-header">Sent: </strong><%= conversation.updated_at %></span>
+                        </span>
+                        <span class="qa-message-who">
+                          <span class="qa-message-who-pad">, Started by: </span>
+                          <span class="qa-message-who-data">
+                          <%= link_to "#{conversation.originator.first_name} #{conversation.originator.last_name}", conversation.originator %>
+                          </span>
+                          <div id="untrash-delete-link">
+                            <%= link_to untrash_conversation_path(conversation), id: 'untrash', method: :post do %>
+                              <span class="fa fa-reply-all"></span> 
+                            <% end %> 
+                            <%= link_to conversation_path(conversation), method: :delete do %>
+                              <span class="fa fa-times"></span> 
+                            <% end %> 
+                          </div> 
+                        </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="qa-message-content">
+                    <p><%= conversation.messages.last.body %></p>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+          </div>
+        <% else %>
+        Empty 
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="compose">
+        <%= render 'form' %>
+      </div>  
+    </div>
+  </div>
+</div>
+</div>

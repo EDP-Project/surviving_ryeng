@@ -1,6 +1,3 @@
-
-  <%= link_to dislike_path(resource: resource.class.to_s.downcase, id: resource.id), 
-              class: 'btn btn-labeled btn-danger', id: 'dislike-btn', method: :delete, remote: true do %>
-    <span class="btn-label"><i class="fa fa-thumbs-o-down"></i></span>
-    Disike
+  <%= link_to dislike_path(resource: resource.class.to_s.downcase, id: resource.id), class: 'dislike-btn', method: :delete, remote: true do %>
+    <i class="fa fa-times" data-toggle="tooltip" title="Remove from favourites"></i>
   <% end %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
 #-- Basic routes --
-  root 'main_pages#home'
+  root 'main_pages#home' #Root path
 
   match '/home',    to: 'main_pages#home',    via: :get
   match '/about',   to: 'main_pages#about',   via: :get
@@ -50,6 +50,12 @@ Rails.application.routes.draw do
   resources :friendships, only: [:index, :create, :destroy]
 #-- End of friendship routes --
 
+#-- Like/Dislike routes --
+  match '/like/:resource/:id', to: "likes#create", as: :like, via: :post
+  match '/dislike/:resource/:id', to: "likes#destroy", as: :dislike, via: :delete
+  match '/favourites', to: "likes#index", as: :favourites, via: :get
+
+
 
 #-- Attachment routes --
   concern :attachable do
@@ -80,13 +86,15 @@ Rails.application.routes.draw do
 #-- Report routes --
   resources :reports, only: [:new, :show, :create, :destroy]
 
-#-- Like/Dislike routes --
-  match '/like/:resource/:id', to: "likes#create", as: :like, via: :post
-  match '/dislike/:resource/:id', to: "likes#destroy", as: :dislike, via: :delete
-  match '/favourites', to: "likes#index", as: :favourites, via: :get
-
-
-
+#-- Message routes --
+  resources :conversations, only: [:index, :show, :new, :create, :destroy] do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+      #delete :remove
+    end
+  end
 
 
 

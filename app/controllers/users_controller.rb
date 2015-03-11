@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     end
     @report = @user.reports.build
     @friends = @user.friends.order('created_at DESC').limit(4)
+    @conversation = current_user.mailbox.conversations.build
   end
 
   def ban

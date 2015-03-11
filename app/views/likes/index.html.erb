@@ -1,0 +1,38 @@
+<div class="main-card">
+  <h2>Favourites</h2>
+
+
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel with-nav-tabs panel-primary">
+            <div class="panel-heading">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#guides-tab" data-toggle="tab">Guides</a></li>
+                <li><a href="#guides-tab" data-toggle="tab">Attachments</a></li>
+              </ul>
+            </div>
+            <div class="panel-body">
+              <div class="tab-content">
+                  <div class="tab-pane fade in active" id="guides-tab">
+
+                    <%= render 'shared/guides', guides: @guides %>
+                    <div class="a-pag">
+                      <center><%= paginate @guides, param_name: 'gpage', remote: true %></center>
+                    </div>
+                  
+                  </div>
+                  <div class="tab-pane fade" id="attachments-tab">
+                  
+                    <%= render 'shared/attachments', attachments: @attachments  %>
+                    <div class="a-pag">
+                      <center><%= paginate @attachments, param_name: 'apage', remote: true  %></center>
+                    </div>
+                  
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

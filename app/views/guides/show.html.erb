@@ -17,9 +17,9 @@
 
 <div id="liking-button-container">
   <% if liked?(@guide) %>
-    <%= render 'shared/dislike_btn', resource: @guide %>
+    <%= render 'shared/dislike_btn', resource: @guide, remote: true %>
   <% else %>
-    <%= render 'shared/like_btn', resource: @guide %>
+    <%= render 'shared/like_btn', resource: @guide, remote: true %>
   <% end %>
 </div>
 

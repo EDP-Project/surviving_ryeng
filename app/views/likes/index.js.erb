@@ -1,0 +1,11 @@
+//-- Guide AJAX pagination
+<% if @guides.any? %>
+  $('#g-pag').html("<center><%= j paginate @guides, remote: true, param_name: 'gpage' %></center>");
+  $('#search-guides').html("<%= j render 'shared/guides', guides: @guides %>");
+<% end %>
+
+//-- Attachment AJAX pagination
+<% if @attachments.any? %>
+  $('#a-pag').html("<center><%= j paginate @attachments, remote: true, param_name: 'apage' %></center>");
+  $('#search-attachments').html("<%= j render 'shared/attachments', attachments: @attachments %>");
+<% end %>

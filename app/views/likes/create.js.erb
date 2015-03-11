@@ -1,7 +1,8 @@
-$(function(){
-  $('#like-btn').hide();
-    $('#liking-button-container').html("<%= j render 'shared/dislike_btn', resource: @resource %>");
-    $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
-    <%= flash[:success] = nil %>
-    <%= flash[:error] = nil %>
-});
+  $('.like-btn.clicked').hide(); 
+  $('.like-btn.clicked').attr("class","like-btn");
+  // $('.liking-button-container.clicked').html("<%= j render 'shared/dislike_btn', resource: @resource %>");
+  $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
+  <%= flash[:success] = nil %>
+  <%= flash[:error] = nil %>
+ // $('.liking-button-container').removeClass('clicked');
+  

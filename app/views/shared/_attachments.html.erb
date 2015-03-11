@@ -1,7 +1,18 @@
 <div class="row">
   <% attachments.each do |a| %>
-    <div class="col-xs-6">
-      <div class="card">                
+    <div class="col-xs-4">
+      <div class="card"> 
+
+        <div class="favourite">
+          <div class="liking-button-container">
+            <% if liked?(a) %>
+              <%= render 'shared/dislike_btn', resource: a %>
+            <% else %>
+              <%= render 'shared/like_btn', resource: a %>
+            <% end %>
+          </div>
+
+        </div>               
         <div class="card-image"> 
           <%= link_to attachment_icon_for(a), a %>
         </div>
@@ -9,7 +20,7 @@
         <div class="card-info">
           
           <div class="name">
-            <p><%= link_to truncate(a.upload_file_name, length: 25), a %></p> 
+            <p><%= link_to truncate(a.upload_file_name, length: 10),  a %></p> 
           </div>
           
           <hr>
@@ -26,7 +37,11 @@
               <b>Uploader: </b> 
               <%= link_to a.user.username, user_path(username: a.user.username) %>
             </p>
-            <p><b>Downloads:</b> <%= a.download_count %></p>
+            <p data-no-turbolink><%= link_to download_path(id: a.id), class: 'btn btn-labeled btn-success' do %>
+              <span class="btn-label"><i class="fa fa-download"></i>&nbsp;<%= a.download_count %></span>
+              Download
+            <% end %></p>
+          
           </div>
         </div>
       </div>    

@@ -95,6 +95,9 @@
   <%= render 'shared/new_report', report: @report, type: "User", reportable: @user %>
 </div>
 
+<div id="new-message-container">
+  <%= render 'conversations/new_message', recipient: @user, conversation: @conversation %>
+</div>
 
 
 

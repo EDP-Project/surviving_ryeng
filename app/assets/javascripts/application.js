@@ -19,6 +19,7 @@
 //= require forms
 //= require reports
 //= require users
+//= require likes
 //= require froala_editor.min.js
 //= require plugins/block_styles.min.js
 //= require plugins/colors.min.js

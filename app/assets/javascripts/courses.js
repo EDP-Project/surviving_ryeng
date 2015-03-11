@@ -10,7 +10,11 @@ $(function(){
 
   $('.froala-textarea').editable({inlineMode: false});
 
-  $('[data-toggle="tooltip"]').tooltip();
+  //$('[data-toggle="tooltip"]').tooltip();
+
+  $('body').tooltip({
+    selector: '[data-toggle=tooltip]'
+  });
 
     var $btnSets = $('#responsive'),
     $btnLinks = $btnSets.find('a');
