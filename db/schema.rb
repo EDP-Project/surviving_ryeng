@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20150310231359) do
     t.text     "content",                    null: false
     t.boolean  "approved",   default: false
     t.integer  "likes",      default: 0
-    t.integer  "dislikes",   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -159,6 +158,7 @@ ActiveRecord::Schema.define(version: 20150310231359) do
   end
 
   add_index "reports", ["reportable_id", "reportable_type"], name: "index_reports_on_reportable_id_and_reportable_type"
+  add_index "reports", ["reporter_id"], name: "index_reports_on_reporter_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20150310231359) do
     t.string   "username"
     t.text     "about_me"
     t.boolean  "banned",                 default: false
+    t.text     "ban_reason"
   end
 
   add_index "users", ["admin"], name: "index_users_on_admin"
