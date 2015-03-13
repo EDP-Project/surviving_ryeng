@@ -1,0 +1,55 @@
+<div class="message-box">
+  <div class="col-md-12">
+    <div class="panel-body">
+      <ul class="chat">
+        <% box.each do |c| %>
+          <li class="left clearfix"><span class="chat-img pull-left">
+            <% p = participant(c) %>
+            <%= link_to (gravatar_for p, size: 100, class: 'img-circle'), user_path(username: p.username) %>
+          </span>
+            <div class="chat-body clearfix">
+              <div class="header">
+                  <strong class="primary-font"><%= link_to "#{p.username} | #{c.subject}", conversation_path(c) %>
+                  </strong> 
+                  <small class="text-muted">
+                    <span class="fa fa-clock-o"></span>
+                    <%= time_ago_in_words(c.last_message.updated_at) %>
+                  </small>
+                  <small class="pull-right">
+                      <% unless c.is_trashed?(current_user) %>
+                        <%= link_to trash_conversation_path(c), method: :post do %>
+                          <i class="fa fa-trash" data-toggle="tooltip" title="Move to trash"></i>
+                        <% end %>
+                      <% else %>
+                        <%= link_to untrash_conversation_path(c), method: :post do %>
+                          <i class="fa fa-level-up" data-toggle="tooltip" title="Remove from trash"></i>
+                        <% end %>
+                      <% end %>
+                    <%= link_to conversation_path(c), method: :delete do %>
+                      <i class="fa fa-times" data-toggle="tooltip" title="Delete"></i>
+                    <% end %>              
+                  </small>
+              </div>
+              <p class="message-body">
+
+                <b>Last message sent by 
+                  <%= c.last_message.sender.username == p.username? ? p.username : 'you' %>:
+                </b> 
+                <%= truncate c.last_message.body, length: 200 %>
+              </p>
+            </div>
+          </li>
+          <% end %>
+      </ul>
+    </div>
+    <div class="panel-footer">
+      <div class="input-group">
+          <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+          <span class="input-group-btn">
+              <button class="btn btn-warning btn-sm" id="btn-chat">
+                  Send</button>
+          </span>
+      </div>
+    </div>
+  </div> 
+</div>

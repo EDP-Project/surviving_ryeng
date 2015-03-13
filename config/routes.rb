@@ -86,15 +86,20 @@ Rails.application.routes.draw do
 #-- Report routes --
   resources :reports, only: [:new, :show, :create, :destroy]
 
-#-- Message routes --
-  resources :conversations, only: [:index, :show, :new, :create, :destroy] do
-    member do
-      post :reply
-      post :trash
-      post :untrash
-      #delete :remove
-    end
+#-- Messaging routes --
+resources :messages, only: [:create]
+resources :conversations, only: [:index, :show, :destroy] do
+  member do
+    post :reply
+    post :trash
+    post :untrash
+    post :mark_as_read
   end
+
+  collection do 
+    delete :empty_trash
+  end
+end
 
 
 

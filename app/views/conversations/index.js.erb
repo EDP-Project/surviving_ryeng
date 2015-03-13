@@ -1,0 +1,17 @@
+//-- Inbox AJAX pagination
+<% if @inbox.any? %>
+  $('#i-pag').html("<center><%= j paginate @inbox, remote: true, param_name: 'ipage' %></center>");
+  $('#inbox').html("<%= j render 'box', box: @inbox %>");
+<% end %>
+
+//-- Sentbox AJAX pagination
+<% if @sent.any? %>
+  $('#s-pag').html("<center><%= j paginate @sent, remote: true, param_name: 'spage' %></center>");
+  $('#sentbox').html("<%= j render 'box', box: @sent %>");
+<% end %>
+
+//-- Trash AJAX pagination
+<% if @trash.any? %>
+  $('#t-pag').html("<center><%= j paginate @trash, remote: true, param_name: 'tpage' %></center>");
+  $('#msg-trash').html("<%= j render 'box', box: @trash %>");
+<% end %>

@@ -10,6 +10,17 @@ class ApplicationController < ActionController::Base
   #before_action :save_previous_url
 
 
+  #Handling RecordNotFound exception
+  rescue_from ActiveRecord::RecordNotFound do
+  flash[:warning] = 'Resource not found.'
+  redirect_back_or root_path
+  end
+   
+  def redirect_back_or(path)
+    redirect_to request.referer || path
+  end
+
+
   def approve
     case params[:resource]
     when "attachment"

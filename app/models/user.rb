@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
     username
   end
 
+  def mailboxer_email
+    email
+  end
+
 #Used to allow users to login via username
   def login=(login)
     @login = login

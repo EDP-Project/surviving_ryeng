@@ -3,32 +3,31 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><%= "Send message to " %></h4>
+        <h4 class="modal-title"><%= "Send message to #{recipient.username}" %></h4>
       </div>
       <div class="modal-body">
         <div id="report-error-container">
           <%= render 'shared/errors', record: conversation %>  
         </div>
-        <%= form_for conversation, url: conversations_path do |f| %>
+        <%= form_tag messages_path, method: :post do %>
 
         <div class="input">
-          <%= f.text_field :subject, placeholder: 'Enter message subject', id: 'subject', required: true, autofocus: true %>
-          <label for="title">Subject</label>
-          <span class="help-block">Keep it simple (you may elaborate below)</span>
+          <%= text_field_tag 'message[subject', nil, placeholder: 'Enter message subject', id: 'subject', required: true, autofocus: true %>
+          <label for="subject">Subject</label>
+          <span class="help-block">Keep it simple (elaborate below)</span>
         </div>
 
         <div class="input">
-          <%= f.text_area :body, placeholder: 'Your message...', id: 'msg' %>
+          <%= text_area_tag 'message[body]', nil, placeholder: 'Your message...', id: 'msg' %>
           <label for="msg">Message</label>
-           <%= f.hidden_field :recipients, value: recipient.username %>
+           <%= hidden_field_tag 'recipient', recipient.id %>
         </div>
         
       </div>
       <div class="modal-footer">
-        <%= f.submit 'Send Message', class: 'btn btn-primary', id: 'message-submit'%>
+        <%= submit_tag 'Send Message', class: 'btn btn-primary', id: 'message-submit'%>
       </div>
       <% end %>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-        

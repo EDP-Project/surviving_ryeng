@@ -1,75 +1,43 @@
 <div class="main-card">
-  <div class="row">
-  <div class="custom-box" id= "conversations-show-box">
-    <h2>
-      <%= truncate(conversation.subject, length: 50) %> %>
-      <% if conversation.is_completely_trashed? (current_user)%>
-        <div id="convo-show-trash">
-          <%= link_to untrash_conversation_path(conversation), method: :post do %>
-          <span class="fa fa-mail-reply"></span> 
-          <% end %>
-        </div>
-      <% else %>
-        <div id="convo-show-trash">
-          <%= link_to trash_conversation_path(conversation), method: :post do %>
-          <span class="fa fa-trash-o"></span> 
-          <% end %>
-        </div>
-      <% end %>
-    </h2>
+  <h2><%= @conversation.subject %></h2>
 
-    <div class="qa-message-list" id="wallmessages">
-    <% conversation.receipts_for(current_user).each do |receipt| %>
+  <div class="conversation-container">
+    <div class="timeline-centered">
+    <% @conversation.receipts_for(current_user).each do |receipt| %>
       <% message = receipt.message %>
-      <div class="message-item" id="m16">
-        <div class="message-inner">
-          <div class="message-head clearfix">
-            <div class="avatar pull-left">
-              <%= gravatar_for message.sender, size: 60 %>
-            </div>
-            <div class="user-detail">
-                
-              <h5 class="handle"><%= message.subject %></h5>
-              <div class="post-meta">
-                <div class="asker-meta">
-                  <span class="qa-message-what"></span>
-                  <span class="qa-message-when">
-                    <span class="qa-message-when-data"><strong class="info-header">Sent: </strong><%= conversation.updated_at %></span>
-                  </span>
-                  <span class="qa-message-who">
-                    <span class="qa-message-who-pad">, by </span>
-                    <span class="qa-message-who-data">
-                    <%= link_to "#{message.sender.first_name} #{message.sender.last_name}", message.sender %>
-                    </span>
-                  </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="qa-message-content">
-              <p><%= message.body %></p>
-            </div>
+      <article class="timeline-entry">
+        <div class="timeline-entry-inner">
+          <div class="timeline-icon bg-success">
+            <%= gravatar_for message.sender, size: 40 %>
           </div>
-      </div>
-    <% end %><br>
-    <h2>Send a reply</h2>
 
-    <%= form_for :message, url: reply_conversation_path(conversation)  do |f| %>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">Subject</span>
-          <%= f.text_field :subject, class: 'form-control' %>
+          <div class="timeline-label">
+              <h2><%= link_to message.sender.name %> 
+                <i class="fa fa-clock-o">&nbsp;&nbsp;</i><span><%= time_ago_in_words(message.created_at) %> ago</span>
+              </h2>
+              <blockquote>
+                <%= message.body %>
+              </blockquote>
+          </div>
         </div>
-      </div>
-      <%= f.label :body, 'Message'%><br>
-      <div class="form-group">
-        <div class="input-group">
-          <%= f.text_area :body, class: 'expanding form-control', size: "80x3" %><br>
+      </article>
+    <% end %>
+      <article class="timeline-entry begin">
+        <div class="timeline-entry-inner">
+          <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+              <i class="entypo-flight"></i> <a href="#" id="new-reply-trigger">+</a>
+          </div>
         </div>
+      </article>
+    </div>
+  </div>
+  <div class="row" id="conversation-reply" hidden="true">
+    <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+      <div class="input">
+        <%= text_area_tag 'body', nil, placeholder: 'Reply...', id: 'msg', rows: 5, required: true %>
+        <label for="msg">Message</label>
       </div>
-
-      <%= f.submit 'Send', class: 'btn' %>
+      <%= submit_tag "Send Message", class: 'btn btn-primary' %>
     <% end %>
   </div>
-</div>
 </div>

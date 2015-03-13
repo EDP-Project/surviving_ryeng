@@ -1,2 +1,5 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(function(){
+  $('#new-reply-trigger').on('click', function(){
+    $('#conversation-reply').slideToggle(500);
+  });
+});

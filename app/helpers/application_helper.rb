@@ -27,7 +27,7 @@ module ApplicationHelper
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     size = options[:size]
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}&r=x&default=identicon"
-    image_tag(gravatar_url, alt: user.username, class: "gravatar")
+    image_tag(gravatar_url, alt: user.username, class: options[:class])
   end
 
   def attachment_icon_for(a)
@@ -136,5 +136,15 @@ module ApplicationHelper
     else
       image_tag "George_Vari.jpg", class: 'img-responsive thumbnail'
     end
+  end
+
+  def participant(conversation)
+    @participant = nil
+    conversation.participants.each do |p| 
+      unless p == current_user 
+        @participant = p
+      end 
+    end 
+    @participant
   end
 end
