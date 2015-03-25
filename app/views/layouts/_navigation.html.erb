@@ -46,6 +46,13 @@
         </li>
 
         <li>
+          <%= link_to favourites_path do %>
+            <i class="nav-icon fa fa-heart" ></i>
+            <div class="nav-text">My Favourites</div>
+          <% end %>
+        </li>
+
+        <li>
           <%= link_to friendships_path do %>
             <i class="nav-icon fa fa-group" ></i>
             <div class="nav-text">Friends</div>

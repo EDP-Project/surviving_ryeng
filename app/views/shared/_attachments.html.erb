@@ -2,17 +2,16 @@
   <% attachments.each do |a| %>
     <div class="col-xs-4">
       <div class="card"> 
-
+       
+      <% if favourite %>  
         <div class="favourite">
-          <div class="liking-button-container">
-            <% if liked?(a) %>
-              <%= render 'shared/dislike_btn', resource: a %>
-            <% else %>
-              <%= render 'shared/like_btn', resource: a %>
-            <% end %>
-          </div>
-
-        </div>               
+          <% if liked?(a) %>
+            <%= render 'shared/dislike_btn', resource: a %>
+          <% else %>
+            <%= render 'shared/like_btn', resource: a %>
+          <% end %>
+        </div> 
+      <% end %>              
         <div class="card-image"> 
           <%= link_to attachment_icon_for(a), a %>
         </div>

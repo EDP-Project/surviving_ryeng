@@ -1,7 +1,7 @@
   $('.dislike-btn.clicked').hide();
   $('.dislike-btn.clicked').attr("class","dislike-btn");
   //alert($('.liking-button-container.clicked').attr('class'));
-  //$('.liking-button-container.clicked').html("<%= j render 'shared/like_btn', resource: @resource %>");
+  $('.favourite').html("<%= j render 'shared/like_btn', resource: @resource %>");
   $('#flash-messages').html("<%= j render partial: 'shared/flash_messages', flash: flash %> ");
   //$('.liking-button-container').removeClass('clicked');
   <%= flash[:success] = nil %>

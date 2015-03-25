@@ -8,7 +8,7 @@
       <center><%= paginate @attachments, param_name: 'apage', remote: true %></center>
     </div>
     <div id="search-attachments">
-      <%= render 'shared/attachments', attachments: @attachments %>
+      <%= render 'shared/attachments', attachments: @attachments, favourite: false %>
     </div>
     <div class="a-pag">
       <center><%= paginate @attachments, param_name: 'apage', remote: true %></center>

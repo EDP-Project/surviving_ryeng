@@ -36,8 +36,8 @@
 .avatar {
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  -webkit-box-shadow: 0 0 0 3px #c30eb8 , 0 0 0 8px #fff;
-  box-shadow: 0 0 0 3px #c30eb8 , 0 0 0 8px #fff;
+  -webkit-box-shadow: 0 0 0 3px #4477aa , 0 0 0 8px #fff;
+  box-shadow: 0 0 0 3px #4477aa , 0 0 0 8px #fff;
   top: -75px;
   margin-left: -75px;
   left: 50%;
@@ -130,7 +130,7 @@
   color: #fff;
 }
 .followers-list > li.follow-list-item a:hover {
-  background: #c30eb8;
+  background: #4477aa;
 }
 .followers-list > li.follow-list-item .fa-plus {
   display: block;
@@ -167,7 +167,7 @@
   transition: 0.2s;
 }
 .social-list > li > a:hover {
-  background: #c30eb8;
+  background: #4477aa;
   color: #fff;
 }
 .social-list > li > a:hover.fa-facebook {

@@ -74,8 +74,13 @@ class GuidesController < ApplicationController
         redirect_to root_path, notice: "You may not view this guide; it has not been approved by an administrator."
       end
     end
-    @attachments = guide.attachments
+    @attachments = guide.attachments.page(params[:apage]).per(3)
     @report = @guide.reports.build
+    @like_type = 'btn'
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def edit

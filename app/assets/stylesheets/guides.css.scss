@@ -1,3 +1,44 @@
 #new-guide-modal {
   margin: auto;
 }
+
+article {
+  background: white;
+  color: #111;
+  border: 20px solid #D6D5D5;
+  padding: 40px;
+  width: 80%;
+  max-width: 80%;
+  margin: 20px auto;
+  .guide-author{
+    bottom: -100px;
+    img{
+      border-radius: 50px;
+    }
+    p{
+      float: right;
+      position: relative;
+      left: -70%;
+      .fade-text {
+        color: gray;
+      }
+    }
+  }
+}
+
+#guide-body {
+  margin-top: -50px;
+}
+
+#guide-options {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .favourite > .like-btn, .favourite > .dislike-btn {
+    color: red;
+    font-size: 2.3em;
+    position: relative;
+    bottom: 5px;
+  }
+}

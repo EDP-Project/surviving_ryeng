@@ -2,10 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.card > .favourite > div > a {
+.card > .favourite > a {
   font-size: 4em;
   color: rgba(180,30,40,0.9);
   position:relative;
   top:200px;
   left:10px;
+}
+
+.single-attachment {
+  position: relative;
+  left: 32%;
 }

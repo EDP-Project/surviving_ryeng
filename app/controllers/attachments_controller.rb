@@ -19,7 +19,11 @@ class AttachmentsController < ApplicationController
     attachment
     @report = @attachment.reports.build
     @attachments = Attachment.where(description: @attachment.description).page(params[:apage]).per(6)
-    @type = "favourite"
+    @attachments = @attachments.where.not(id: @attachment.id)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
   
   def new

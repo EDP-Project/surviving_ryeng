@@ -1,19 +1,23 @@
 <div class="main-card">
-  <hr>
-
-  <% if @attachments.size > 1 %>
-    <h2>Attachment Set</h2>
-    <div id="a-pag">
+  <h2><%= @attachment.upload_file_name %></h2> <hr>
+    <div class="single-attachment">
+      <%= render 'shared/attachments', attachments: Array.wrap(@attachment), favourite: true %> 
+    </div>
+  <hr><br>
+  <% if @attachments.any? %>
+    <div class="a-pag">
       <center><%= paginate @attachments, param_name: 'apage', remote: true %></center>
     </div>
-    <% else %>
-     <h2><%= @attachment.upload_file_name %></h2> 
   <% end %>
   <p><strong>Description:</strong>
-    <%= @attachment.description %></p>
+    <%= @attachment.description.blank? ? "Not provided." : @attachment.description %></p>
+    <% if @attachments.any? %>
+      <center><h4>This attachment is part of a set:</h4></center>
+    <% end %>
+    <div id="other-attachments">
+      <%= render 'shared/attachments', attachments: @attachments, favourite: false %>
+    </div>
 
-    <%= render 'shared/attachments', attachments: @attachments %>
-  
     
   <br>
 

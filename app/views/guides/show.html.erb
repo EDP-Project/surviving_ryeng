@@ -1,31 +1,80 @@
 <div class="main-card">
-  <h1>Guide: <%= @guide.title %></h1>
-<p><%= @guide.content.html_safe %></p>
 
-<%= render 'attachments', attachments: @attachments %>
-
-<% if user_signed_in? %>
-  <!-- DISPLAY EDIT/DELETE LINKS FOR AUTHORIZED USERS -->
-  <% if permitted_to_modify? @guide %>
-    <%= link_to 'Edit', edit_guide_path(@guide, course_code: @guide.course.course_code), class: 'btn btn-info' %>
-    <%= link_to 'Delete', guide_path(@guide), class: 'btn btn-danger', method: :delete %>
-    <% if !@guide.approved? && current_user.admin? %>
-      <%= link_to 'Approve', approve_path(resource: 'guide', id: @guide.id), method: :patch, class: 'btn btn-success'%>
-    <% end %>
+  <% if !@guide.approved? && user_signed_in? && current_user.admin? %>
+    <div style="float: right;">
+      <%= link_to 'Approve', approve_path(resource: 'guide', id: @guide.id), method: :patch, data: { toggle: 'tooltip', placement: 'top' }, title: 'Approve this guide', class: 'btn btn-success'%>
+    </div>
   <% end %>
-<% end %>
-
-<div id="liking-button-container">
-  <% if liked?(@guide) %>
-    <%= render 'shared/dislike_btn', resource: @guide, remote: true %>
-  <% else %>
-    <%= render 'shared/like_btn', resource: @guide, remote: true %>
+<div class="row" id="guide-options">
+  <% if user_signed_in? %>
+    <!-- DISPLAY EDIT/DELETE LINKS FOR AUTHORIZED USERS -->
+    <% if permitted_to_modify? @guide %>
+      <div class="col-xs-3">
+        <%= link_to edit_guide_path(@guide, course_code: @guide.course.course_code), data: { toggle: 'tooltip', placement: 'top' }, title: 'Edit this guide', class: 'btn btn-info' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %> 
+      </div>
+      
+      <div class="col-xs-3">
+        <%= link_to guide_path(@guide), class: 'btn btn-danger', data: { toggle: 'tooltip', placement: 'top' }, title: 'Delete this guide', method: :delete do %>
+          <i class="fa fa-times"></i>
+        <% end %>
+      </div>
+      
+    <% end %>
+    <div class="col-xs-3">
+      <div class="favourite">
+        <% if liked?(@guide) %>
+          <%= render 'shared/dislike_btn', resource: @guide, remote: true %>
+        <% else %>
+          <%= render 'shared/like_btn', resource: @guide, remote: true %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <%= link_to '#', class: 'btn btn-warning', id: 'new-report-trigger', data: { toggle: 'tooltip', placement: 'top' }, title: 'Report this guide' do %>
+        <i class="fa fa-flag"></i>
+      <% end %>
+    </div> 
   <% end %>
 </div>
 
-  <button type="button" class="btn btn-primary btn-lg" id="new-report-trigger">
-    <i class="fa fa-flag"></i>
-  </button>
+<!-- GUIDE CONTENT -->
+<article>
+
+<div class="row">
+  <div class="guide-author">
+  <%= link_to (gravatar_for @guide.user, size: 100), user_path(username: @guide.user.username)%>   
+  <p>
+    Written by: <br>  
+    <%= link_to @guide.user.username, user_path(username: @guide.user.username) %> <br>
+    <%= @guide.updated_at.strftime("%B %d, %Y | %I:%M%p") %>
+  </p>
+</div>
+</div >
+<hr>
+<div class="row" id="guide-body">
+  <p><%= @guide.content.html_safe %></p>
+</div>
+  
+</article>
+
+<hr>
+<div class="a-pag">
+  <center><%= paginate @attachments, remote: true, param_name: 'apage' %></center>  
+</div>
+
+<div id="guide-attachments">
+  <%= render 'shared/attachments', attachments: @attachments, favourite: false %>  
+</div>
+<hr><br>
+
+</div>
+
+<div class="main-card" style="position:relative;top:-60px;width:1020px;">
+<div class="fb-comments" data-href="localhost:5000<%= guide_path(@guide)%>" data-numposts="10" data-colorscheme="light" data-width="1000"></div>
+
+
 </div>
 
 <div id="new-report-container">

@@ -1,11 +1,15 @@
 #conversation-reply {
     width: 400px;
     position: relative;
-    left: 80px;
+    left: 180px;
     padding-bottom: 30px;
     bottom: 30px;
   }
 .conversation-container {
+
+  max-width: 80%;
+  position:relative;
+  left: 80px;
 
 img {
     vertical-align: middle;

@@ -44,7 +44,7 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
-    @conversation.mark_as_deleted(current_user)
+    @conversation.receipts_for(current_user).destroy_all
     flash[:notice] = 'Conversation removed'
     redirect_to :conversations
   end
