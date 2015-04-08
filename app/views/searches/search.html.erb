@@ -44,7 +44,7 @@
   <h4>Attachment results (<%= @a_size %>) &nbsp; <%= link_to '', attachments_path(q: params[:q]), class: 'fa fa-external-link' %></h4>
   <hr>
     <div id="search-attachments">
-      <%= render 'shared/attachments', attachments: @attachments %>
+      <%= render 'shared/attachments', attachments: @attachments, favourite: false %>
     </div>
     <div id="a-pag">
       <center><%= paginate @attachments, param_name: 'apage', remote: true %></center>

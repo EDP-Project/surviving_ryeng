@@ -62,11 +62,6 @@ gem "wysiwyg-rails"
 #Use Paperclip for file uploads
 gem 'paperclip'
 
-#Couple paperclip with JQuery File Upload
-gem 'dropzonejs-rails'
-
-#Use MiniMagick for image processing
-gem "mini_magick"
 
 #Use Puma as the web server (WEBrick is too slow)
 gem 'puma'
