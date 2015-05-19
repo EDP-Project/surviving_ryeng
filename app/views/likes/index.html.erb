@@ -1,38 +1,112 @@
 <div class="main-card">
   <h2>Favourites</h2>
-
-
-
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel with-nav-tabs panel-primary">
-            <div class="panel-heading">
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#guides-tab" data-toggle="tab">Guides</a></li>
-                <li><a href="#guides-tab" data-toggle="tab">Attachments</a></li>
-              </ul>
-            </div>
-            <div class="panel-body">
-              <div class="tab-content">
-                  <div class="tab-pane fade in active" id="guides-tab">
-
-                    <%= render 'shared/guides', guides: @guides %>
-                    <div class="a-pag">
-                      <center><%= paginate @guides, param_name: 'gpage', remote: true %></center>
+ <div class="[ text-center nav nav-justified ]">
+    <div class="row">
+      <div class="col-md-12">
+      <div class="tabbable-panel">
+        <div class="tabbable-line">
+          <ul class="nav nav-tabs ">
+            <li class="active">
+              <a href="#tab_default_1" data-toggle="tab">
+              <h4 >Guides</h4> </a>
+            </li>
+            <li>
+              <a href="#tab_default_2" data-toggle="tab">
+              <h4 >Attachments</h4> </a>
+            </li>
+          </ul>
+          
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_default_1">
+              <div class="row friends-container">
+              <% if @guides.any? %>
+                <% @guides.each do |g| %>
+                <div class="col-xs-6">
+                  <div class="card">                
+                    <div class="card-image"> 
+                      <%= link_to (course_image g.likeable.course), course_path(course_code: g.likeable.course.course_code) %>
                     </div>
-                  
-                  </div>
-                  <div class="tab-pane fade" id="attachments-tab">
-                  
-                    <%= render 'shared/attachments', attachments: @attachments  %>
-                    <div class="a-pag">
-                      <center><%= paginate @attachments, param_name: 'apage', remote: true  %></center>
+                    
+                    <div class="card-info">
+                      
+                      <div class="name">
+                        <p><%= link_to truncate(g.likeable.title,length: 80), guide_path(g.likeable) %></p> 
+                      </div>
+                      
+                      <hr>
+                      
+                      <div class="content">
+                        <p>
+                          <b>Guide for:</b> 
+                          <%= g.likeable.course.course_code %>
+                        </p>
+                        <p><b>Attachments:</b> <%= g.likeable.attachments.count %></p>
+                      </div>
                     </div>
-                  
-                  </div>
-              </div>
+                  </div>    
+                </div>
+                <% end %>
+              <% else %>
+              
+              No guides favourited yet. <%= link_to 'Find some', guides_path %>
+  
+              <% end %>
+
+              </div> 
             </div>
+
+            <div class="tab-pane" id="tab_default_2">
+              <div class="row friends-container">
+               <% if @attachments.any? %>
+                <% @attachments.each do |a| %>
+                  <div class="col-xs-6">
+                    <div class="card">                
+                       <div class="card-image"> 
+                      <%= link_to attachment_icon_for(a.likeable), a.likeable %>
+                    </div>
+                    
+                    <div class="card-info">
+                      
+                      <div class="name">
+                        <p><%= link_to truncate(a.likeable.upload_file_name, length: 10),  a.likeable %></p> 
+                      </div>
+                      
+                      <hr>
+                      
+                      <div class="content">
+                        <p>
+                          <b>For <%= a.likeable.attachable_type.downcase %>:</b> 
+                          <% if a.likeable.attachable_type == "Course" %>  
+                            <%= link_to a.likeable.attachable.course_code, course_path(course_code: a.likeable.attachable.course_code) %>
+                          <% elsif a.likeable.attachable_type == "Guide" %>
+                            <%= link_to a.likeable.attachable.title, a.likeable.attachable %>
+                          <% end %>
+                          <br>
+                          <b>Uploader: </b> 
+                          <%= link_to a.likeable.user.username, user_path(username: a.likeable.user.username) %>
+                        </p>
+                        <p data-no-turbolink><%= link_to download_path(id: a.likeable.id), class: 'btn btn-labeled btn-success' do %>
+                          <span class="btn-label"><i class="fa fa-download"></i>&nbsp;<%= a.likeable.download_count %></span>
+                          Download
+                        <% end %></p>
+                      
+                      </div>
+                    </div>
+                  </div>    
+                </div>
+                <% end %>
+              <% else %>
+                No guides favourited yet. <%= link_to 'Find some', guides_path %> 
+              <% end %>
+
+
+              </div> 
+            </div>  
+
+          </div>
+         </div>
         </div>
-    </div>
-  </div>
+       </div>
+      </div>    
+</div>
 </div>

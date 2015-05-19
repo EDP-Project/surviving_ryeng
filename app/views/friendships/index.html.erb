@@ -2,7 +2,7 @@
 <div class="main-card">
   <div class="[ text-center nav nav-justified ]">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-lg-12">
       <div class="tabbable-panel">
         <div class="tabbable-line">
           <ul class="nav nav-tabs ">
@@ -23,392 +23,64 @@
           <div class="tab-content">
             <div class="tab-pane active" id="tab_default_1">
               <div class="row friends-container">
-              <% 5.times do %>
-                  <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal">
-                    <img class="img-circle"  src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" />
-                    <h5>username1</h5>
-                  </a>
-
-                  <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal2">
-                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" />
-                    <h5>username2</h5>
-                  </a>
-
-                  <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal3">
-                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" />
-                    <h5>username3</h5>
-                  </a>
-
-                  <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal4">
-                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                    <h5>username4</h5>
-                  </a>
+              <% if @friends.any? %>
+                <% @friends.each do |f| %>
+                  <%= link_to user_path(username: f.username) do %>
+                    <%= gravatar_for f, size: 100 %>
+                    <h5><%= f.username %></h5>
+                    <%= link_to 'Remove', friendship_path(f), method: :delete %>
+                  <% end %>
+                <% end %>
+              <% else %>
+              
+              No friends yet. <%= link_to 'Find some', users_path %>
+  
               <% end %>
 
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal">
-                  <img class="img-circle"  src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" />
-                  <h5>username1</h5>
-              </a>
-
-              <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-danger">Remove from friends</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal2">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" />
-                  <h5>username2</h5>
-              </a>
-              
-              <div class="modal fade" id="myModal2" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-danger">Remove from friends</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal3">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" />
-                  <h5>username3</h5>
-              </a>
-
-              <div class="modal fade" id="myModal3" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-danger">Remove from friends</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal4">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                  <h5>username4</h5>
-              </a>
-
-              <div class="modal fade" id="myModal4" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-danger">Remove from friends</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> 
+              </div> 
             </div>
 
             <div class="tab-pane" id="tab_default_2">
               <div class="row friends-container">
-
-              <% 2.times do %>
-                <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal5">
-                  <img class="img-circle"  src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" />
-                  <h5>username5</h5>
-                </a>
-
-                <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal6">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" />
-                  <h5>username6</h5>
-                </a>
+              <% if @friend_requests_received.any? %>
+                <% @friend_requests_received.each do |fr| %>
+                  <%= link_to user_path(username: fr.user.username) do %>
+                    <%= gravatar_for fr.user, size: 100 %>
+                    <h5><%= fr.user.username %></h5>
+                    <%= link_to friendships_path(friend_id: fr.user.id), method: :post do %>
+                      <span class="fa fa-thumbs-up" data-toggle="tooltip" title="Accept"></span>     
+                    <% end %>
+               
+                    <%= link_to friend_request_path(fr), method: :delete do %>
+                      <span class="fa fa-thumbs-down" data-toggle="tooltip" title="Reject"></span>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                None.
               <% end %>
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal5">
-                  <img class="img-circle"  src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" />
-                  <h5>username5</h5>
-              </a>
-
-              <div class="modal fade" id="myModal5" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-danger">Cancel Request</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal6">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" />
-                  <h5>username6</h5>
-              </a>
-              
-              <div class="modal fade" id="myModal6" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-danger">Cancel Request</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal7">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" />
-                  <h5>username7</h5>
-              </a>
-
-              <div class="modal fade" id="myModal7" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-danger">Cancel Request</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal8">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                  <h5>username8</h5>
-              </a>
-
-              <div class="modal fade" id="myModal8" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-danger">Cancel Request</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> 
+              </div> 
             </div>  
 
             <div class="tab-pane" id="tab_default_3">   
               <div class="row friends-container">
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal9">
-                  <img class="img-circle"  src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" />
-                  <h5>username9</h5>
-              </a>
+              <% if @friend_requests_sent.any? %>
+                <% @friend_requests_sent.each do |fr| %>
+                  <%= link_to user_path(username: fr.receiver.username) do %>
+                    <%= gravatar_for fr.receiver, size: 100 %>
+                    <h5><%= fr.receiver.username %></h5>
+                  <% end %>
+                  <%= link_to friend_request_path(fr), method: :delete do %>
+                    <span class="fa fa-times" data-toggle="tooltip" title="Cancel"></span>             
+                  <% end %>
+                <% end %>
 
-              <div class="modal fade" id="myModal9" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-success">Accept Request</button>
-                          <button type="button" class="btn btn-danger">Deny Request</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal10">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" />
-                  <h5>username10</h5>
-              </a>
+              <% else %>
               
-              <div class="modal fade" id="myModal10" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-success">Accept Request</button>
-                          <button type="button" class="btn btn-danger">Deny Request</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              None. 
+      
+              <% end %>
 
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal11">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" />
-                  <h5>username11</h5>
-              </a>
-
-              <div class="modal fade" id="myModal11" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-success">Accept Request</button>
-                          <button type="button" class="btn btn-danger">Deny Request</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <a class="col-lg-2" href="#aboutModal" data-toggle="modal" data-target="#myModal12">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
-                  <h5>username12</h5>
-              </a>
-
-              <div class="modal fade" id="myModal12" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                          <h3 class="modal-title" id="myModalLabel">Username and/or real name</h3>
-                    </div>
-                    <div class="modal-body">
-                          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle" />
-                        <hr>
-                        <p class="text-left"><strong>Bio: </strong><br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                      <center>
-                          <button type="button" class="btn btn-info">Message</button>
-                          <button type="button" class="btn btn-success">Accept Request</button>
-                          <button type="button" class="btn btn-danger">Deny Request</button>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>    
             </div>
           </div>
@@ -418,37 +90,3 @@
       </div>    
 </div>
 </div>
-
-
-<h1>Friends</h1><hr>
-<% @friendships.each do |f| %>
-  <%= link_to f.friend.username, user_path(username: f.friend.username) %> 
-  &nbsp;<%= link_to 'Remove', friendship_path(f), method: :delete %>
-  <br>
-<% end %>
-<br>
-<h1>Friend Requests Sent</h1><hr>
-
-<% @friend_requests_sent.each do |f| %>
-  <div class="well col-xs-6">
-    <h3>Sent to</h3> <p><%= f.receiver.username %></p>
-    <%= link_to friend_request_path(f), method: :delete do %>
-      <span class="fa fa-times" data-toggle="tooltip" title="Cancel"></span>             
-    <% end %>
-  </div>
-  <br>
-<% end %>
-
-<h1>Friend Requests Received</h1><hr>
-<% @friend_requests_received.each do |f| %>
-  <div class="well col-xs-6">
-    <h3>Sent by</h3> <p><%= f.user.username %></p>
-    <%= link_to friendships_path(friend_id: f.user.id), method: :post do %>
-      <span class="fa fa-thumbs-up" data-toggle="tooltip" title="Accept"></span>     
-    <% end %>
-    OR
-    <%= link_to friend_request_path(f), method: :delete do %>
-      <span class="fa fa-thumbs-down" data-toggle="tooltip" title="Reject"></span>
-    <% end %>
-  </div>
-<% end %>

@@ -6,6 +6,15 @@
   }
 }
 
+#new-guide-modal.larger-modal {
+  width: 1000px;
+ 
+}
+
+#new-guide-modal .modal-body {
+  max-width: 800px;
+}
+
 .square{
   border-radius: 0px!important;
 }

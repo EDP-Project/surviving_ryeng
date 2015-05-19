@@ -1,8 +1,8 @@
 #new-guide-modal {
   margin: auto;
 }
-
-article {
+#guide-wrapper, #report-wrapper{
+  article {
   background: white;
   color: #111;
   border: 20px solid #D6D5D5;
@@ -28,6 +28,8 @@ article {
 
 #guide-body {
   margin-top: -50px;
+}
+
 }
 
 #guide-options {

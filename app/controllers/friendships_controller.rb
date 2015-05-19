@@ -1,8 +1,8 @@
 class FriendshipsController < ApplicationController
   def index
-    @friendships = current_user.friendships.page(params[:page_1]).per(6)
-    @friend_requests_received = FriendRequest.where(receiver_id: current_user.id).page(params[:page_2]).per(6)
-    @friend_requests_sent = FriendRequest.where(user_id: current_user.id).page(params[:page_3]).per(6)
+    @friends = current_user.friends.page(params[:page_1]).per(24)
+    @friend_requests_received = FriendRequest.where(receiver_id: current_user.id).page(params[:page_2]).per(24)
+    @friend_requests_sent = FriendRequest.where(user_id: current_user.id).page(params[:page_3]).per(24)
     respond_to do |format|
       format.js
       format.html

@@ -4,11 +4,18 @@ $(function(){
     $('#new-guide-modal').modal('show');
   })
 
+  $('#edit-guide-trigger').on('click', function(){
+    $('#edit-guide-modal').modal('show');
+  })
+
   $('#new-attachment-trigger').on('click', function(){
     $('#new-attachment-modal').modal('show');
   })
 
-  $('.froala-textarea').editable({inlineMode: false});
+  $('.froala-textarea').editable({
+    inlineMode: false,
+    minHeight: 600
+  });
 
   //$('[data-toggle="tooltip"]').tooltip();
 

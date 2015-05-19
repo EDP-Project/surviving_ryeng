@@ -1,19 +1,9 @@
 class LikesController < ApplicationController
   
   def index
-    @likes = current_user.likes
-    @guides = Guide.none
-    @attachments = Attachment.none
-    @likes.each do |l|
-      if l.likeable_type == "Guide"
-        @guides << Guide.find(l.likeable_id)
-      elsif l.likeable_type == "Attachment"
-        @attachments << Attachment.find(l.likeable_id)
-      end
-    end
-
-    @guides = @guides.page(params[:gpage]).per(6)
-    @attachments = @attachments.page(params[:apage]).per(6)
+    @favourites = current_user.likes
+    @guides = @favourites.where(likeable_type: "Guide").page(params[:gpage]).per(10)
+    @attachments = @favourites.where(likeable_type: "Attachment").page(params[:apage]).per(10)
   end
 
   def create

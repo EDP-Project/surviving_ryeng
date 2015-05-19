@@ -27,11 +27,6 @@ class ConversationsController < ApplicationController
     redirect_to conversation_path(@conversation)
   end
 
-  def reply
-    current_user.reply_to_conversation(@conversation, params[:body])
-    redirect_to conversation_path(@conversation)
-  end
-
   def trash
     flash[:notice] = 'Conversation moved to trash'
     @conversation.move_to_trash(current_user)

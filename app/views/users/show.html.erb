@@ -33,7 +33,7 @@
 						</ul>
 					</div>
 					<ul class="social-list">
-            <% unless @friends.include? current_user || @user == current_user  %>
+            <% unless @user == current_user || @friends.include?(current_user) %>
               <li>
                 <%= link_to user_friend_requests_path(user_id: @user.id), method: :post do %>
                   <i class="fa fa-user-plus"></i>
@@ -41,8 +41,6 @@
               </li>
             <% end %>
 						<li><a href="#" class="fa fa-comments-o" id="message-trigger"></a></li>
-						<li><a href="#" class="fa fa-dribbble"></a></li>
-						<li><a href="#" class="fa fa-twitter"></a></li>
               
 						<li>
               <%= link_to '#', id: 'new-report-trigger' do %>
@@ -51,6 +49,11 @@
             </li>
 						<% if current_user.admin? && @user != current_user %>
 							<li><a href='#' id="ban-trigger"><id="#" class="fa fa-user-times"></a></li>
+              <li>
+                <%= link_to remove_user_path(id: @user.id), method: :delete do %>
+                  <i class="fa fa-times"></i>
+                <% end %>
+              </li>
 						<% end %>
 					</ul>
 				</div>
@@ -60,8 +63,55 @@
 
 	<% end %>	
 
+<div class="main-card" id="contributions-panel">
+  <h2>Contributions</h2>
+  <div class="[ text-center nav nav-justified ]">
+    <div class="row">
+      <div class="col-md-12">
+      <div class="tabbable-panel">
+        <div class="tabbable-line">
+          <ul class="nav nav-tabs ">
+            <li class="active">
+              <a href="#tab_default_1" data-toggle="tab">
+              <h4 >Guides</h4> </a>
+            </li>
+            <li>
+              <a href="#tab_default_2" data-toggle="tab">
+              <h4 >Attachments</h4> </a>
+            </li>
+          </ul>
+          
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_default_1">
+              <div class="row friends-container">
+              <% if @user.guides.any? %>
+                <%= render 'shared/guides', guides: @user.guides %>
+              <% else %>
+                None
+              <% end %>
+
+              </div> 
+            </div>
+
+            <div class="tab-pane" id="tab_default_2">
+              <div class="row friends-container">
+                <% if @attachments.any? %>
+                  <%= render 'shared/attachments', attachments: @attachments, favourite: false %>
+                <% else %>
+                  None
+                <% end %>
 
 
+              </div> 
+            </div>  
+
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>    
+</div>
+</div>
 
 
 

@@ -1,16 +1,32 @@
 <div class="main-card">
   <hr>
-    <h2>Report: <span title="<%= @report.title%>"><%= @report.title %></span></h2>
-  
-    <p>        
-      <i class="fa fa-quote-left fa-3x fa-border"></i>
-      <p><%= @report.reason %>
-    </p>
 
-    <h4>Reporter:</h4> 
-    <%= link_to @report.reporter.username, user_path(username: @report.reporter.username) %>
-    
-    <div class="report-links">
+  <!-- REPORT CONTENT -->
+<div id="report-wrapper">
+  <article>
+
+<div class="row">
+  <div class="guide-author">
+  <%= link_to (gravatar_for @report.reporter, size: 100), user_path(username: @report.reporter.username)%>   
+  <p>
+    Reported by: <br>  
+    <%= link_to @report.reporter.username, user_path(username: @report.reporter.username) %> <br>
+    <%= @report.updated_at.strftime("%B %d, %Y | %I:%M%p") %>
+  </p>
+</div>
+</div >
+<hr>
+
+<div class="row" id="guide-body">
+<h2>Report: <span title="<%= @report.title%>"><%= @report.title %></span></h2>
+  <p><%= @report.reason %></p>
+</div>
+  
+</article>  
+</div>
+
+<div class="row">
+  <div class="report-links">
       <!-- DELETE REPORT LINK -->
       <%= link_to report_path(@report), class: 'btn btn-danger', method: :delete do %>
         <i class="fa fa-trash-o fa-lg"></i>
@@ -20,5 +36,9 @@
       <!-- VIEW (REPORTABLE) LINK -->
       <%= reportable_link @report %>
     </div>
+</div>
+
+
+
   <hr>
 </div>

@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @report = @user.reports.build
     @friends = @user.friends.order('created_at DESC').limit(4)
     @conversation = current_user.mailbox.conversations.build
+    @attachments = @user.attachments.where(attachable_type: "Course")
   end
 
   def ban
@@ -45,6 +46,15 @@ class UsersController < ApplicationController
       flash[:error] = "Unable to un-ban user."
     end
     redirect_to user_path(username: @user.username)
+  end
+
+  def destroy
+    user
+    if current_user.admin? && @user.destroy
+      redirect_to root_path, notice: "User was successfully removed."
+    else
+      redirect_to :back, notice: "Unable to remove user."
+    end
   end
 
 private

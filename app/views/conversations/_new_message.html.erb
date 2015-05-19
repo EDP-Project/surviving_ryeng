@@ -18,12 +18,12 @@
         </div>
 
         <div class="input">
-          <%= text_area_tag 'message[body]', nil, placeholder: 'Your message...', id: 'msg' %>
+          <%= text_area_tag 'message[body]', nil, placeholder: 'Your message...', id: 'msg', rows: 5 %>
           <label for="msg">Message</label>
            <%= hidden_field_tag 'recipient', recipient.id %>
         </div>
         
-      </div>
+   
       <div class="modal-footer">
         <%= submit_tag 'Send Message', class: 'btn btn-primary', id: 'message-submit'%>
       </div>

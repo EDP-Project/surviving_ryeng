@@ -83,11 +83,6 @@ class GuidesController < ApplicationController
     end
   end
 
-  def edit
-    guide
-    @attachments = @guide.attachments
-  end
-
   def update
     if guide.update_attributes(guide_update_params)
 

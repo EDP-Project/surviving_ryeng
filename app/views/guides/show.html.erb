@@ -10,7 +10,7 @@
     <!-- DISPLAY EDIT/DELETE LINKS FOR AUTHORIZED USERS -->
     <% if permitted_to_modify? @guide %>
       <div class="col-xs-3">
-        <%= link_to edit_guide_path(@guide, course_code: @guide.course.course_code), data: { toggle: 'tooltip', placement: 'top' }, title: 'Edit this guide', class: 'btn btn-info' do %>
+        <%= link_to '#edit-guide', data: { toggle: 'tooltip', placement: 'top' }, title: 'Edit this guide', class: 'btn btn-info', id: 'edit-guide-trigger' do %>
           <i class="fa fa-pencil"></i>
         <% end %> 
       </div>
@@ -40,7 +40,8 @@
 </div>
 
 <!-- GUIDE CONTENT -->
-<article>
+<div id="guide-wrapper">
+  <article>
 
 <div class="row">
   <div class="guide-author">
@@ -57,7 +58,9 @@
   <p><%= @guide.content.html_safe %></p>
 </div>
   
-</article>
+</article>  
+</div>
+
 
 <hr>
 <div class="a-pag">
@@ -80,3 +83,53 @@
 <div id="new-report-container">
   <%= render 'shared/new_report', report: @report, type: "Guide", reportable: @guide %>
 </div>
+
+<div class="modal fade larger-modal" id="edit-guide-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%= "Editing guide: #{@guide.title}" %></h4>
+      </div>
+      <div class="modal-body">
+        <div id="guide-error-container">
+          <%= render 'shared/errors', record: @guide %>  
+        </div>
+
+        <%= form_for @guide, html: { multipart: true } do |f| %>
+        <div class="input">
+          <%= f.text_field :title, placeholder: "Enter the guide's title", id: 'title', class: 'text_field' %>
+          <label for="title">Title</label>
+        </div>
+        <div class="control-group">
+          <%= f.label :content, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_area :content, class: 'froala-textarea', id: 'guide-content', value: @guide.content %>
+          </div>
+          <%= f.hidden_field :id, value: @guide.id %>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :attachments, :class => 'control-label' %>
+          <div class="controls">
+            <!-- GUIDE ATTACHMENTS UPLOAD -->
+            <%= file_field_tag "uploads[]", type: :file, multiple: true %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit 'Finish', class: 'btn btn-primary', id: 'guide-submit' %>
+      </div>
+
+
+
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+        
+
+
+
+
+

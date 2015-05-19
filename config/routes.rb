@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   match '/admin_feed', to: 'main_pages#admin_feed', via: :get
   match '/user/ban/:id', to: 'users#ban', as: :ban, via: :post
   match '/unban/:id', to: 'users#unban', as: :unban, via: :get
+  match '/user/remove/:id', to: 'users#destroy', as: :remove_user, via: :delete
   match 'approve/:resource/:id', to: 'application#approve', as: :approve, via: :patch
 #-- Cumulative searches --
 
@@ -28,14 +29,13 @@ Rails.application.routes.draw do
     post '/signin' => 'devise/sessions#create', :as => :user_session
     match '/signout' => 'devise/sessions#destroy', :as => :log_out, :via => :delete
     match '/signout' => 'devise/sessions#destroy', :via => :get
-    #custom route for showing users via UsersController
-    #(devise doesn't come with a 'show' view)
-    #match '/users/:username', to: 'users#show', :as => :show_user, via: :get
   end
+
 
   #Route for allowing users to be viewed publicly
   match '/user/:username', to: 'users#show', as: :user, via: :get
   
+
 
   resources :users, only: [:index] do
     resources :friend_requests, only: [:create]

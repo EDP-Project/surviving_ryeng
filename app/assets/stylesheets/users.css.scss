@@ -6,7 +6,7 @@
 }
 .box-wrapper {
   position: absolute;
-  top: 50%;
+  top: 60px;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -189,3 +189,6 @@
   border-right: none;
 }
 
+#contributions-panel {
+  margin-top: 500px;
+}
